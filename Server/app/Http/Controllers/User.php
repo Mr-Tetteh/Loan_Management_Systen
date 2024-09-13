@@ -69,7 +69,7 @@ class User extends Controller
             $cookie = cookie('jwt', $token, 60 * 24);
             return response([
                 'message' => 'Success',
-            ])->withCookie($cookie);
+            ]);
         }
     }
 

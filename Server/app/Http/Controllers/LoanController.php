@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreLoanRequest;
 use App\Http\Requests\UpdateLoanRequest;
 use App\Models\Loan;
+use Illuminate\Support\Facades\Request;
 
 class LoanController extends Controller
 {
@@ -19,9 +20,12 @@ class LoanController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function loan(Request $request)
     {
-        //
+        Loan::create([
+           'purpose' => $request->input('purpose'),
+            'amount' => $request->input('amount')
+        ]);
     }
 
     /**

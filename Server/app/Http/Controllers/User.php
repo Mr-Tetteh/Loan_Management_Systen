@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Enums\UserTypeEnum;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -17,7 +18,6 @@ class User extends Controller
     {
         //
     }
-
 
 
     /**
@@ -56,66 +56,61 @@ class User extends Controller
 
     }
 
-    public function login(Request $request)
+    public function userRepository()
     {
+//        return Auth::user();
 
-        if (!Auth::attempt($request->only('email', 'password'))) {
-            return response([
-                "message" => 'Invalid Credentials'
-            ], Response::HTTP_UNAUTHORIZED);
-        } else {
-            $user = Auth::user();
-            $token = Auth()->user()->createToken('token')->plainTextToken;
-            $cookie = cookie('jwt', $token, 60 * 24);
-            return response([
-                'message' => 'Success',
+    }
+
+    public function login(array $credentials)
+    {
+        DB::beginTransaction();
+        try {
+            $user = $this->userRepository->getByEmailOrPhone($credentials['identifier']);
+
+            if (!$user || Hash::check($credentials['password'], $user->password)) {
+                return ApiResponse::unauthorizedError('Invalid credentials');
+            }
+
+            DB::commit();
+            return ApiResponse::success('Login Successful', [
+                'user' => new AuthUserResource($user),
+                'authorisation' => [
+                    'type' => 'Bearer',
+                    'token' => $user->createToken($user->email ?? $user->phone)->plainTextToken,
+                ]
             ]);
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            GeneralHelpers::errorLogger($th, 'Login failed');
+            return ApiResponse::serverError('Login failed');
         }
     }
 
-    public function user()
-    {
-        return Auth::user();
+//        if (!Auth::attempt($request->only('email', 'password'))) {
+//            return response([
+//                "message" => 'Invalid Credentials'
+//            ], Response::HTTP_UNAUTHORIZED);
+//        } else {
+//            $user = Auth::user();
+//            $token = Auth()->user()->createToken('token')->plainTextToken;
+//            $cookie = cookie('jwt', $token, 60 * 24);
+//            return response([
+//                'message' => 'Success',
+//            ]);
+//        }
+//    }
 
-    }
 
-    public function logout()
-    {
-        $cookie = \Illuminate\Support\Facades\Cookie::forget('jwt');
-        return response([
-            'message' => 'Success'
-        ])->withCookie($cookie);
-    }
+//    public function logout()
+//    {
+//        $cookie = \Illuminate\Support\Facades\Cookie::forget('jwt');
+//        return response([
+//            'message' => 'Success'
+//        ])->withCookie($cookie);
+//    }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
 }
+
+

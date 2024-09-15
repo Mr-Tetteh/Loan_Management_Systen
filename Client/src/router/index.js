@@ -6,6 +6,8 @@ import ContactView from "@/views/user/ContactView.vue";
 import LoanView from "@/views/user/LoanView.vue";
 import AdminHomeView from "@/views/admin/AdminHomeView.vue";
 import AdminLoanView from "@/views/admin/AdminLoanView.vue";
+import AdminUserView from "@/views/admin/AdminUserView.vue";
+import AllLoansView from "@/views/user/AllLoansView.vue";
 
 
 
@@ -24,7 +26,7 @@ const router = createRouter({
         },
         {
             path: '/',
-            name: 'home',
+            name: '/home',
             component: HomeView
         },
         {
@@ -37,6 +39,11 @@ const router = createRouter({
             name: 'loan',
             component: LoanView
         },
+        {
+            path: '/all_loans',
+            name: 'loans',
+            component: AllLoansView
+        },
 
 // Admin paths
         {
@@ -48,6 +55,11 @@ const router = createRouter({
             path: '/admin_loan',
             name: 'admin_loan',
             component: AdminLoanView
+        },
+        {
+            path: '/admin_user',
+            name: 'admin_user',
+            component: AdminUserView
         },
 
     ]

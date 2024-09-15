@@ -4,13 +4,14 @@ import {Switch, SwitchGroup, SwitchLabel} from '@headlessui/vue'
 import useLoan from "@/composerables/useLoan.js";
 import {useRouter} from "vue-router";
 import axios from "axios";
+import Header from "@/layouts/user/Header.vue";
 
 
-const {loan} =useLoan()
+const {loan} = useLoan()
 const router = useRouter()
 
 
-const getloan = async () =>{
+const getloan = async () => {
   alert(loan.purpose.value, loan.amount.value)
 
   const response = await axios.post('http://127.0.0.1:8000/api/loan')
@@ -19,6 +20,7 @@ const getloan = async () =>{
 </script>
 
 <template>
+  <Header/>
   <div class="isolate bg-white px-6 py-24 sm:py-32 lg:px-8">
     <div class="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]"
          aria-hidden="true">
@@ -28,7 +30,7 @@ const getloan = async () =>{
     </div>
     <div class="mx-auto max-w-2xl text-center">
       <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">To Get a Loan fill the form below </h2>
-<!--      <p class="mt-2 text-lg leading-8 text-gray-600">Aute magna irure deserunt veniam aliqua magna enim voluptate.</p>-->
+      <!--      <p class="mt-2 text-lg leading-8 text-gray-600">Aute magna irure deserunt veniam aliqua magna enim voluptate.</p>-->
     </div>
     <form class="mx-auto mt-16 max-w-xl sm:mt-20" @submit.prevent="getloan">
       <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">

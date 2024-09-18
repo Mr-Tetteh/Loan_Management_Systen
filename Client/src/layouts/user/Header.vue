@@ -35,12 +35,12 @@ const navigation = [
           <div class="hidden sm:ml-6 sm:block">
             <div class="flex space-x-4 text-white m-60">
               <router-link to="/"><span class="flex-1 ms-10 whitespace-nowrap">Home</span></router-link>
-              <router-link to="contact"><span class="flex-1 ms-7 whitespace-nowrap">Contact</span></router-link>
-              <router-link to="loan"><span class="flex-1 ms-7 whitespace-nowrap">Request Loan</span></router-link>
-              <router-link to="all_loans"><span class="flex-1 ms-7 whitespace-nowrap">Your Loan</span></router-link>
-              <router-link to="admin_home"><span class="flex-1 ms-7 whitespace-nowrap">Admin</span></router-link>
-              <router-link to="login"><span class="flex-1 ms-7 whitespace-nowrap">Login</span></router-link>
-              <router-link to="register"><span class="flex-1 ms-7 whitespace-nowrap">Register</span></router-link>
+              <router-link to="/contact"><span class="flex-1 ms-7 whitespace-nowrap">Contact</span></router-link>
+              <router-link to="/loan"><span class="flex-1 ms-7 whitespace-nowrap">Request Loan</span></router-link>
+              <router-link to="/all_loans"><span class="flex-1 ms-7 whitespace-nowrap">Your Loan</span></router-link>
+              <router-link to="/admin_home"><span class="flex-1 ms-7 whitespace-nowrap">Admin</span></router-link>
+              <router-link to="/login"><span class="flex-1 ms-7 whitespace-nowrap">Login</span></router-link>
+              <router-link to="/register"><span class="flex-1 ms-7 whitespace-nowrap">Register</span></router-link>
 
               <!--              <router-link :to="{name: 'posts.index'}" class="[item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'rounded-md px-3 py-2 text-sm font-medium']">Home</router-link>-->
               <!--              <a v-for="item in navigation" :key="item.name" :href="item.href" :class="[item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'rounded-md px-3 py-2 text-sm font-medium']" :aria-current="item.current ? 'page' : undefined">{{ item.name }}</a>-->

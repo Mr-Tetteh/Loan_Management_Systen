@@ -7,11 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Loan extends Model
 {
-    protected $fillable = ['amount', 'purpose'];
     use HasFactory;
+    protected $fillable = ['amount', 'purpose'];
 
 
-    public function Loan()
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+
+    }
+    public function payments()
     {
         return $this->hasMany(Payments::class);
 

@@ -1,9 +1,20 @@
 <script setup>
 import axios from "axios";
 import Header from "@/layouts/user/Header.vue";
+import useLogin from "@/composerables/useLogin.js";
+import {useRouter} from "vue-router";
 
+const {login_user, password} = useLogin()
+const router = useRouter()
 const login = async () => {
-  await axios.post('http://127.0.0.1:8000/api/login', {email: 'danielstay73@gmail.com', password: '123456789'})
+  // if (password.value !== login_user.value.password){
+  //   alert("Invalid credentials")
+  // }
+  // await axios.post('http://127.0.0.1:8000/api/login', {email: 'danielstay73@gmail.com', password: '123456789'})
+  const response =  await axios.post('http://127.0.0.1:8000/api/login', login_user.value)
+  const token = response.data.authorisation.token
+  localStorage.setItem("AUTH_TOKEN", token )
+  await router.push('/loan')
 }
 
 
@@ -16,14 +27,13 @@ const login = async () => {
       <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Sign in to your
         account</h2>
     </div>
-    <button @click="login">login</button>
 
     <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-      <form class="space-y-6" action="#" method="POST">
+      <form class="space-y-6" @submit.prevent="login">
         <div>
           <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email address</label>
           <div class="mt-2">
-            <input id="email" name="email" type="email" autocomplete="email" required=""
+            <input v-model="login_user.email" id="email"  type="email" autocomplete="email" required=""
                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
           </div>
         </div>
@@ -36,7 +46,7 @@ const login = async () => {
             </div>
           </div>
           <div class="mt-2">
-            <input id="password" name="password" type="password" autocomplete="current-password" required=""
+            <input v-model="login_user.password" id="password" type="password" autocomplete="current-password" required=""
                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
           </div>
         </div>

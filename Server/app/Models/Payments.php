@@ -11,9 +11,15 @@ class Payments extends Model
     use HasFactory;
 
 
-    public function payment()
+    public function user()
     {
-        return $this->hasMany(Loan::class);
+        return $this->belongsTo(User::class);
+
+    }
+
+    public function loan()
+    {
+        return $this->belongsTo(Loan::class);
 
     }
 }

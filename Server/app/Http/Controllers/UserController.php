@@ -1,0 +1,141 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Enums\UserTypeEnum;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Symfony\Component\HttpFoundation\Response;
+
+class UserController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        //
+    }
+
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        //
+    }
+
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+
+    }
+
+    public function register(Request $request)
+    {
+        return \App\Models\User::create([
+            'first_name' => $request->input('first_name'),
+            'last_name' => $request->input('last_name'),
+            'other_names' => $request->input('other_names'),
+            'email' => $request->input('email'),
+            'password' => Hash::make($request->input('password')),
+            'phone' => $request->input('phone'),
+            'country' => $request->input('country'),
+            'date_of_birth' => $request->input('date_of_birth'),
+            'salary' => $request->input('salary'),
+            'national_id' => $request->input('national_id'),
+            'user_type' => UserTypeEnum::USER,
+            'nationality' => $request->input('nationality')
+        ]);
+
+    }
+
+    public function admin_register(Request $request)
+    {
+        return \App\Models\User::create([
+            'first_name' => $request->input('first_name'),
+            'last_name' => $request->input('last_name'),
+            'other_names' => $request->input('other_names'),
+            'email' => $request->input('email'),
+            'password' => Hash::make($request->input('password')),
+            'phone' => $request->input('phone'),
+            'country' => $request->input('country'),
+            'date_of_birth' => $request->input('date_of_birth'),
+            'salary' => $request->input('salary'),
+            'national_id' => $request->input('national_id'),
+            'user_type' => $request->input('user_type'),
+            'nationality' => $request->input('nationality')
+        ]);
+
+    }
+
+
+    public function login(Request $request)
+    {
+//        DB::beginTransaction();
+        try {
+//            $user = $this->userRepository->getByEmailOrPhone($credentials['identifier']);
+            $user = \App\Models\User::where('email', $request->email)->first();
+
+            if (!$user || !Hash::check($request['password'], $user->password)) {
+//                return ApiResponse::unauthorizedError('Invalid credentials');
+                return response()->json([
+                    'error' => 'invalid'
+                ], 401);
+            }
+
+//            DB::commit();
+//            return ApiResponse::success('Login Successful', [
+//                'user' => new AuthUserResource($user),
+//                'authorisation' => [
+//                    'type' => 'Bearer',
+//                    'token' => $user->createToken($user->email ?? $user->phone)->plainTextToken,
+//                ]
+//            ]);
+            return response()->json([
+                'message' => 'Success',
+                'user' => $user,
+                'authorisation' => [
+                    'type' => 'Bearer',
+                    'token' => $user->createToken($user->email ?? $user->phone)->plainTextToken,
+                ]
+
+            ]);
+
+
+        } catch (\Throwable $th) {
+//           DB::rollBack();
+//         GeneralHelpers::errorLogger($th, 'Login failed');
+//         return ApiResponse::serverError('Login failed');
+            return \response()->json([
+                'error' => "Something went wrong"
+            ], 500);
+        }
+
+    }
+
+
+    public function user()
+    {
+        return Auth::user();
+    }
+
+
+    public function logout()
+    {
+        Auth::user()->delete();
+        return response()->json([
+            'message' => 'Logout'
+        ]);
+    }
+
+
+}
+
+

@@ -15,7 +15,7 @@ const register = async () => {
   }
 
   const response = await axios.post('http://127.0.0.1:8000/api/register', user.value)
-  await router.push('/')
+  await router.push('/loan')
 }
 </script>
 
@@ -106,7 +106,7 @@ const register = async () => {
         <div>
           <label for="first_name" class="block text-sm font-medium leading-6 text-gray-900">Date of Birth </label>
           <div class="mt-2">
-            <input v-model="user.DOB" id="DOB" type="date" required=""
+            <input v-model="user.date_of_birth" id="DOB" type="date" required=""
                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
           </div>
         </div>

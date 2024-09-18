@@ -21,7 +21,6 @@ import Header from "@/layouts/admin/Header.vue";
           </router-link>
         </div>
 
-
         <div class="mt-6 bg-white clear-end rounded-lg">
           <table class="min-w-full  rounded-3xl shadow divide-y divide-gray-200">
             <thead>

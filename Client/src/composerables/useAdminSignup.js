@@ -11,6 +11,7 @@ export default function useSignup() {
         country: "",
         date_of_birth: "",
         salary: "",
+        user_type:"",
         national_id: "",
         nationality: ""
     })

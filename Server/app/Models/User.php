@@ -25,7 +25,7 @@ class User extends Authenticatable
         'password',
         'phone',
         'country',
-        'DOB',
+        'date_of_birth',
         'salary',
         'national_id',
         'user_type',
@@ -36,9 +36,14 @@ class User extends Authenticatable
         'password',
     ];
 
-    public function Loan()
+    public function Loans()
     {
         return $this->hasMany(Loan::class);
+
+    }
+    public function payments()
+    {
+        return $this->hasMany(Payments::class);
 
     }
 

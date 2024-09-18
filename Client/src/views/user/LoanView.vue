@@ -1,5 +1,5 @@
 <script setup>
-import {ref} from 'vue'
+import {reactive, ref} from 'vue'
 import {Switch, SwitchGroup, SwitchLabel} from '@headlessui/vue'
 import useLoan from "@/composerables/useLoan.js";
 import {useRouter} from "vue-router";
@@ -7,15 +7,15 @@ import axios from "axios";
 import Header from "@/layouts/user/Header.vue";
 
 
-const {loan} = useLoan()
-const router = useRouter()
-
+const {loan,storeloan} = useLoan()
+const form = reactive({
+  purpose: '',
+  amount: ''
+})
+// const router = useRouter()
 
 const getloan = async () => {
-  alert(loan.purpose.value, loan.amount.value)
-
-  const response = await axios.post('http://127.0.0.1:8000/api/loan')
-  await router.push('/')
+  await storeloan({...form})
 }
 </script>
 
@@ -38,14 +38,14 @@ const getloan = async () => {
           <label for="purpose_for_loan" class="block text-sm font-semibold leading-6 text-gray-900">Purpose for
             loan</label>
           <div class="mt-2.5">
-            <input v-model="loan.purpose" type="text" id="purpose_for_loan"
+            <input v-model="form.purpose" type="text" id="purpose_for_loan"
                    class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
           </div>
         </div>
         <div>
           <label for="amount" class="block text-sm font-semibold leading-6 text-gray-900">Amount</label>
           <div class="mt-2.5">
-            <input v-model="loan.amount" type="text" name="last-name" id="amount"
+            <input v-model="form.amount" type="text" name="last-name" id="amount"
                    class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
           </div>
         </div>

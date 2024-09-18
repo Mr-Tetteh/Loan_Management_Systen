@@ -5,14 +5,7 @@ import {Bars3Icon, XMarkIcon} from '@heroicons/vue/24/outline'
 import Header from "@/layouts/user/Header.vue";
 import Footer from "@/layouts/user/Footer.vue";
 
-const navigation = [
-  {name: 'Product', href: '#'},
-  {name: 'Features', href: '#'},
-  {name: 'Marketplace', href: '#'},
-  {name: 'Company', href: '#'},
-]
 
-const mobileMenuOpen = ref(false)
 </script>
 
 <template>

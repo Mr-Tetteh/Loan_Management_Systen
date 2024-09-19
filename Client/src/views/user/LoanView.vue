@@ -9,7 +9,7 @@ import Header from "@/layouts/user/Header.vue";
 
 const {loan,storeloan} = useLoan()
 const form = reactive({
-  purpose: '',
+  purpose:'',
   amount: ''
 })
 // const router = useRouter()

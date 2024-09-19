@@ -17,12 +17,13 @@ class LoanResource extends JsonResource
 //        return parent::toArray($request);
         return [
             "id" => $this->id,
+            'user_id' => $this->user->user_id,
             'first_name' => $this->user->first_name,
             'other_names' => $this->user->other_names,
             'email' => $this->user->email,
             'amount' => $this->amount,
             'status' => $this->status,
-            'purpose' => $this->user->purpose,
+            'purpose' => $this->purpose,
             'phone' => $this->user->phone,
             'country' => $this->user->country,
             'salary' => $this->user->salary,

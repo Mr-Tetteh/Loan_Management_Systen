@@ -15,7 +15,7 @@ const register = async () => {
   }
 
   const response = await axios.post('http://127.0.0.1:8000/api/register', user.value)
-  await router.push('/loan')
+  await router.push('/login')
 }
 </script>
 

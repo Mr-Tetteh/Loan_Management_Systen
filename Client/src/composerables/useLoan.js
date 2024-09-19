@@ -6,11 +6,25 @@ import router from "@/router/index.js";
 export default function useLoan() {
     const loan = ref([])
     const loans = ref([])
+    const userloan = ref([])
 
 
     const get_loans = async () => {
-        let res = await axios.get('http://127.0.0.1:8000/api/all_loans')
+        const token = localStorage.getItem('AUTH_TOKEN')
+        const config = {
+            headers : {Authorization: `Bearer ${token}`}
+        }
+        let res = await axios.get('http://127.0.0.1:8000/api/all_loans', config)
         loans.value = res.data.data
+    }
+
+    const get_loan = async () => {
+        const token = localStorage.getItem('AUTH_TOKEN')
+        const config = {
+            headers : {Authorization: `Bearer ${token}`}
+        }
+        let res = await axios.get('http://127.0.0.1:8000/api/all_user_loans', config)
+        userloan.value = res.data.data
     }
 
 
@@ -35,7 +49,10 @@ export default function useLoan() {
         loans,
 
         loan,
-        storeloan
+        storeloan,
+
+        userloan,
+        get_loan
 
     }
 }

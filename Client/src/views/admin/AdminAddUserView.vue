@@ -4,16 +4,20 @@ import useAdminSignup from "@/composerables/useAdminSignup.js";
 import axios from "axios";
 import {useRouter} from "vue-router";
 
-const {user, confirm_password} = useAdminSignup
+const {admin, confirm_password} = useAdminSignup()
 const router = useRouter()
 const register = async () => {
-  if (confirm_password.value !== user.value.password) {
+  const token = localStorage.getItem('AUTH_TOKEN')
+  const config = {
+    headers : {Authorization: `Bearer ${token}`}
+  }
+
+  if (confirm_password.value !== admin.value.password) {
     alert("Passwords do not match")
     return
   }
-
-  const response = await axios.post('http://127.0.0.1:8000/api/admin_register', user.value)
-  await router.push('/loan')
+  const response = await axios.post('http://127.0.0.1:8000/api/admin_register', admin.value, config)
+  await router.push('/admin_user')
 }
 </script>
 
@@ -32,7 +36,7 @@ const register = async () => {
           <label class="block">
             <span class="text-gray-700">First Name</span>
             <input
-                v-model="user.first_name" type="text"
+                v-model="admin.first_name" type="text"
                 class="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200 focus:ring-0"
                 placeholder=""
             />
@@ -40,7 +44,7 @@ const register = async () => {
 
           <label class="block">
             <span class="text-gray-700">Last Name</span>
-            <input v-model="user.last_name"
+            <input v-model="admin.last_name"
                 type="text"
                 class="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200 focus:ring-0 focus:border-black"
                 placeholder=""
@@ -49,7 +53,7 @@ const register = async () => {
 
           <label class="block">
             <span class="text-gray-700">Other Names</span>
-            <input v-model="user.other_names"
+            <input v-model="admin.other_names"
                 type="text"
                 class="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200 focus:ring-0 focus:border-black"
                 placeholder=""
@@ -58,7 +62,7 @@ const register = async () => {
           <label class="block">
             <span class="text-gray-700">Email address</span>
             <input
-                v-model="user.email"
+                v-model="admin.email"
                 type="email"
                 class="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200 focus:ring-0 focus:border-black"
                 placeholder="john@example.com"
@@ -66,13 +70,13 @@ const register = async () => {
           </label>
           <label class="block">
             <span class="text-gray-700">Password</span>
-            <input v-model="user.password"
+            <input v-model="admin.password"
                 type="password"
                 class="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200 focus:ring-0 focus:border-black"
             />
             <label class="block">
               <span class="text-gray-700">Confirm Password</span>
-              <input v-model="user.confirm_password"
+              <input v-model="confirm_password"
                   type="password"
                   class="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200 focus:ring-0 focus:border-black"
               />
@@ -80,7 +84,7 @@ const register = async () => {
           </label>
           <label class="block">
             <span class="text-gray-700">Phone</span>
-            <input v-model="user.phone"
+            <input v-model="admin.phone"
                 type="tel"
                 class="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200 focus:ring-0 focus:border-black"
                 placeholder=""
@@ -90,7 +94,7 @@ const register = async () => {
           <label class="block">
             <span class="text-gray-700">Country</span>
             <input
-                v-model="user.country"
+                v-model="admin.country"
                 type="text"
                 class="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200 focus:ring-0 focus:border-black"
                 placeholder=""
@@ -100,7 +104,7 @@ const register = async () => {
           <label class="block">
             <span class="text-gray-700">Date of Birth Name</span>
             <input
-                v-model="user.date_of_birth"
+                v-model="admin.date_of_birth"
                 type="date"
                 class="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200 focus:ring-0 focus:border-black"
                 placeholder=""
@@ -110,7 +114,7 @@ const register = async () => {
           <label class="block">
             <span class="text-gray-700">Salary</span>
             <input
-                v-model="user.salary"
+                v-model="admin.salary"
                 type="number"
                 class="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200 focus:ring-0 focus:border-black"
                 placeholder=""
@@ -119,7 +123,7 @@ const register = async () => {
 
           <label class="block">
             <span class="text-gray-700">National_id </span>
-            <input v-model="user.national_id"
+            <input v-model="admin.national_id"
                 type="text"
                 class="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200 focus:ring-0 focus:border-black"
                 placeholder=""
@@ -129,18 +133,18 @@ const register = async () => {
 
           <label class="block">
             <span class="text-gray-700">User type</span>
-            <select v-model="user.user_type"
+            <select v-model="admin.user_type"
                 class="block w-full mt-0 px-0.5 border-0 border-b-2 border-gray-200 focus:ring-0 focus:border-black"
             >
               <option selected disabled>Select Option</option>
               <option value="Admin">Admin</option>
-              <option value="User">Usr</option>
+              <option value="User">User</option>
             </select>
           </label>
 
           <label class="block">
             <span class="text-gray-700">Nationality</span>
-            <input v-model="user.nationality"
+            <input v-model="admin.nationality"
                 type="text"
                 class="mt-0 block w-full px-0.5 border-0 border-b-2 border-gray-200 focus:ring-0 focus:border-black"
                 placeholder=""

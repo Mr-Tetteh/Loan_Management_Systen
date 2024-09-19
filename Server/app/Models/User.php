@@ -36,7 +36,7 @@ class User extends Authenticatable
         'password',
     ];
 
-    public function Loans()
+    public function loans()
     {
         return $this->hasMany(Loan::class);
 

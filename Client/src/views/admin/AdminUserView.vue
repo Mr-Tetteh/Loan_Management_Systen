@@ -1,27 +1,34 @@
 <script setup>
 
 import Header from "@/layouts/admin/Header.vue";
+import useAdminSignup from "@/composerables/useAdminSignup.js";
+import {onMounted} from "vue";
 
+const {users, get_users} =useAdminSignup()
 
+onMounted(get_users)
 </script>
 
 <template>
   <Header/>
-  <div class="p-4 mr-80">
-    <div class="p-4 rounded-lg">
-      <div class="container mx-auto my-8">
-        <div class="flex justify-between items-center">
-          <h2 class="text-3xl font-semibold">Users</h2>
 
-          <router-link to="register">
+<!--  <div class="p-4 mr-80">-->
+<!--    <div class="p-4 rounded-lg">-->
+<!--      <div class="container mx-auto my-8">-->
+<!--        <div class="flex justify-between items-center">-->
+<!--          <h2 class="text-3xl font-semibold">Users</h2>-->
+<!--        </div>-->
+<!--        <div class="mt-6 bg-white clear-end rounded-lg">-->
+
+  <div class="p-4 sm:ml-64">
+    <div class="p-4 rounded-lg">
+      <div class="mt-6 bg-white clear-end rounded-lg">
+        <router-link to="admin_add_user">
           <button
-              class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 sm: m-5">
+              class="bg-purple-600 text-white rounded hover:bg-purple-700 sm: m-5">
             Add User
           </button>
-          </router-link>
-        </div>
-
-        <div class="mt-6 bg-white clear-end rounded-lg">
+        </router-link>
           <table class="min-w-full  rounded-3xl shadow divide-y divide-gray-200">
             <thead>
             <tr>
@@ -47,43 +54,43 @@ import Header from "@/layouts/admin/Header.vue";
             </tr>
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
-            <tr>
+            <tr v-for="user in users" :key="users.id">
               <td class="px-6 py-4 whitespace-nowrap flex items-center">
                 <div>
-                  <div class="text-sm font-medium text-gray-900">Daniel</div>
+                  <div class="text-sm font-medium text-gray-900">{{ user.first_name }}</div>
                 </div>
               </td>
               <td class="px-6 py-4 whitespace-nowrap">
-                <div class="text-sm text-gray-900">GOOD GOD</div>
+                <div class="text-sm text-gray-900">{{user.last_name}}</div>
               </td>
               <td class="px-6 py-4 whitespace-nowrap">
-                Nii Ayitey
+                {{user.other_names}}
               </td>
               <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                danielsatu73@gmail.com
+                {{user.email}}
               </td>
               <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                0559724772
+                {{ user.phone }}
               </td>
               <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                Ghana
+                {{ user.country }}
               </td>
               <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                29-10-2024
+                {{user.date_of_birth}}
               </td>
 
               <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                USD 200000
+                GHC {{user.salary}}}
               </td>
               <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                GH93ifsd3we3ws
+                {{ user.national_id }}
               </td>
               <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                Ghanaian
+                {{ user.nationality }}
               </td>
               <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
             <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-              Admin
+              {{ user.user_type }}
               </span>
               </td>
 
@@ -101,7 +108,6 @@ import Header from "@/layouts/admin/Header.vue";
         </div>
       </div>
     </div>
-  </div>
 </template>
 
 <style scoped>

@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateLoanRequest;
 use App\Http\Resources\LoanResource;
 use App\Models\Loan;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
 
 class LoanController extends Controller
@@ -26,12 +27,9 @@ class LoanController extends Controller
     public function allloans()
     {
         return LoanResource::collection(Loan::all());
-//        $loans = Loan::all();
-//        return response()->json([
-//            'loans' => $loans
-//        ]);
 
     }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -49,9 +47,17 @@ class LoanController extends Controller
      */
     public function store(StoreLoanRequest $request)
     {
-        $loan = Loan::create($request->validated());
-        return new LoanResource($loan);
 
+//        $loan = Loan::create([
+//            'user_id' => Auth::id(),
+//            'amount' => $request->amount,
+//            'purpose' => $request->purpose,
+//        ]);
+//        return new LoanResource($loan);
+
+
+        $loan = Auth::user()->loans()->create($request->validated());
+        return new LoanResource($loan);
     }
 
     /**

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Enums\UserTypeEnum;
+use App\Http\Resources\UserResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -39,7 +40,7 @@ class UserController extends Controller
 
     public function register(Request $request)
     {
-        return \App\Models\User::create([
+        $user =  \App\Models\User::create([
             'first_name' => $request->input('first_name'),
             'last_name' => $request->input('last_name'),
             'other_names' => $request->input('other_names'),
@@ -53,12 +54,13 @@ class UserController extends Controller
             'user_type' => UserTypeEnum::USER,
             'nationality' => $request->input('nationality')
         ]);
+        return new UserResource($user);
 
     }
 
     public function admin_register(Request $request)
     {
-        return \App\Models\User::create([
+        $user =  \App\Models\User::create([
             'first_name' => $request->input('first_name'),
             'last_name' => $request->input('last_name'),
             'other_names' => $request->input('other_names'),
@@ -72,6 +74,7 @@ class UserController extends Controller
             'user_type' => $request->input('user_type'),
             'nationality' => $request->input('nationality')
         ]);
+        return new UserResource($user);
 
     }
 
@@ -121,6 +124,8 @@ class UserController extends Controller
     }
 
 
+
+
     public function user()
     {
         return Auth::user();
@@ -129,7 +134,7 @@ class UserController extends Controller
 
     public function logout()
     {
-        Auth::user()->delete();
+        Auth::user()->currentAccessToken()->delete();
         return response()->json([
             'message' => 'Logout'
         ]);

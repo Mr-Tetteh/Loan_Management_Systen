@@ -1,4 +1,5 @@
 import {ref} from "vue";
+import axios from "axios";
 
 export default function useSignup() {
     const user = ref({
@@ -17,5 +18,12 @@ export default function useSignup() {
 
     const confirm_password = ref('')
 
-    return {user, confirm_password}
+
+
+    return {
+        user,
+        confirm_password,
+
+
+    }
 }

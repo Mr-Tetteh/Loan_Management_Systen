@@ -22,11 +22,16 @@ Route::middleware('auth:sanctum')->group(function () {
 
 
     // user loans
-    Route::get('all_user_loans', [LoanController::class, 'index' ]);
+    Route::get('loan', [LoanController::class, 'index' ]);
+    Route::post('loans', [LoanController::class, 'store'])->middleware(Cors::class);
+    Route::get('loans/{loan}', [LoanController::class, 'show']);
+    Route::delete('loans/{loan}', [LoanController::class, 'destroy']);
+    Route::patch('loans/{loan}', [LoanController::class, 'update'])->middleware(Cors::class);
+
+
 
     //loans
-    Route::get('all_loans', [LoanController::class, 'allloans']);
-    Route::post('loan', [LoanController::class, 'store'])->middleware(Cors::class);
+    Route::get('loans', [LoanController::class, 'allloans']);
 
     // Loan request route
 

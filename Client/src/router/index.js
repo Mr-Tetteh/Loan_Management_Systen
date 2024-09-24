@@ -9,6 +9,7 @@ import AdminLoanView from "@/views/admin/AdminLoanView.vue";
 import AdminUserView from "@/views/admin/AdminUserView.vue";
 import AllLoansView from "@/views/user/AllLoansView.vue";
 import AdminAddUserView from "@/views/admin/AdminAddUserView.vue";
+import AdminLoanEdit from "@/views/admin/AdminLoanEdit.vue";
 
 
 const router = createRouter({
@@ -66,6 +67,12 @@ const router = createRouter({
             path: '/admin_add_user',
             name: 'admin_add_user',
             component: AdminAddUserView
+        },
+        {
+            path: '/loan/:id/edit',
+            name: 'loan.edit',
+            component: AdminLoanEdit,
+            props:true
         },
 
     ]

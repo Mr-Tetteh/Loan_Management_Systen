@@ -4,9 +4,26 @@ import {ref, onMounted} from "vue";
 import axios from "axios";
 import Header from "@/layouts/admin/Header.vue";
 
-const {loans, get_loans} = useLoan()
+const {loans, get_loans, deleteloan} = useLoan()
 
-onMounted(get_loans)
+
+// const props = defineProps({
+//   id:{
+//     type: String,
+//     required: true
+//   }
+// })
+onMounted( get_loans)
+
+// updateloan, get_loan}
+// get_loan(props.id)
+// const approve = async () => {
+//   await updateloan(props.id)
+// }
+
+
+import {Menu, MenuButton, MenuItem, MenuItems} from '@headlessui/vue'
+import {ChevronDownIcon} from '@heroicons/vue/20/solid'
 </script>
 
 <template>
@@ -28,7 +45,9 @@ onMounted(get_loans)
             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Purpose of Loan
             </th>
-            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Telephone Number</th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Telephone
+              Number
+            </th>
             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Country
             </th>
             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Salary
@@ -42,24 +61,24 @@ onMounted(get_loans)
           <tr v-for="(loan) in  loans" :key="loans.id">
             <td class="px-6 py-4 whitespace-nowrap flex items-center">
               <div>
-                <div class="text-sm font-medium text-gray-900">{{loan.first_name }}</div>
+                <div class="text-sm font-medium text-gray-900">{{ loan.first_name }}</div>
               </div>
             </td>
             <td class="px-6 py-4 whitespace-nowrap">
-              <div class="text-sm text-gray-900">Tetteh</div>
+              <div class="text-sm text-gray-900">{{ loan.last_name }}</div>
             </td>
             <td class="px-6 py-4 whitespace-nowrap">
-              Nii Ayitey
+              {{ loan.other_names }}
             </td>
             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-              danielsatu73@gmail.com
+              {{ loan.email }}
             </td>
             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-              GHC {{loan.amount}}
+              GHC {{ loan.amount }}
             </td>
             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                 <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-              {{loan.status}}
+                 {{ loan.status }}
               </span>
             </td>
             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
@@ -67,21 +86,77 @@ onMounted(get_loans)
             </td>
 
             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-              0574832324
+              {{ loan.phone }}
             </td>
             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-             Ghana
+              {{ loan.country }}
             </td>
             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
               2000
             </td>
             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-          GH-21423erefd
+              {{ loan.national_id }}
             </td>
 
             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-              Edit
-              Delete
+              <Menu as="div" class="relative inline-block text-left">
+                <div>
+                  <MenuButton
+                      class="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+                    Actions
+                    <ChevronDownIcon class="-mr-1 h-5 w-5 text-gray-400" aria-hidden="true"/>
+                  </MenuButton>
+                </div>
+
+                <transition enter-active-class="transition ease-out duration-100"
+                            enter-from-class="transform opacity-0 scale-95"
+                            enter-to-class="transform opacity-100 scale-100"
+                            leave-active-class="transition ease-in duration-75"
+                            leave-from-class="transform opacity-100 scale-100"
+                            leave-to-class="transform opacity-0 scale-95">
+                  <MenuItems
+                      class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                    <div class="py-1">
+                      <router-link :to="{name: 'loan.edit', params: {id: loan.id}}" >
+                        <MenuItem v-slot="{ active }">
+                          <a href="#" class='bg-blue-100 text-gray-700 block px-4 py-2 text-sm'>
+                            <div class="flex ">
+                              <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                     stroke-width="1.5"
+                                     stroke="currentColor" class="size-5">
+                                  <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10"/>
+                                </svg>
+                              </div>
+                              <div class="ml-3 text-base">Loan Approval</div>
+                            </div>
+                          </a>
+                        </MenuItem>
+                      </router-link>
+                      <div class="py-1">
+
+                        <MenuItem v-slot="{ active }">
+
+                          <button @click="deleteloan(loan.id)" class='bg-red-100 text-gray-900  px-4 py-2 text-sm'>
+                            <div class="flex ">
+                              <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                     stroke-width="1.5" stroke="currentColor" class="size-5">
+                                  <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"/>
+                                </svg>
+                              </div>
+                              <div class="ml-3 text-base">Delete</div>
+                            </div>
+                          </button>
+                        </MenuItem>
+                      </div>
+
+                    </div>
+                  </MenuItems>
+                </transition>
+              </Menu>
             </td>
 
             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">

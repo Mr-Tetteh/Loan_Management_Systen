@@ -50,7 +50,7 @@ const register = async () => {
         <div>
           <label for="other_names" class="block text-sm font-medium leading-6 text-gray-900">Other Names</label>
           <div class="mt-2">
-            <input v-model="user.other_names" id="other_names" type="text" required=""
+            <input v-model="user.other_names" id="other_names" type="text"
                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
           </div>
         </div>

@@ -5,18 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9aea767f-8c38-4fc5-96e9-77c6004700e4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Loan_Management_system.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Loan_Management_system.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/src/views/admin/AdminLoanEdit.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/composerables/useAdminSignup.js" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/composerables/useAdminSignup.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/src/composerables/useLoan.js" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/composerables/useLoan.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/composerables/useSignup.js" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/composerables/useSignup.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/layouts/admin/Header.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/layouts/admin/Header.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/views/admin/AdminAddUserView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/views/admin/AdminAddUserView.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/views/admin/AdminUserView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/views/admin/AdminUserView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/views/admin/AdminLoanView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/views/admin/AdminLoanView.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/src/views/auth/RegistrationView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/views/auth/RegistrationView.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/src/views/user/AllLoansView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/views/user/AllLoansView.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/views/user/LoanView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/views/user/LoanView.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -222,6 +217,7 @@
       <workItem from="1726140518692" duration="66807000" />
       <workItem from="1726729381960" duration="121000" />
       <workItem from="1726740032594" duration="10754000" />
+      <workItem from="1727049003410" duration="4412000" />
     </task>
     <servers />
   </component>

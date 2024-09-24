@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\LoanStatusEnum;
+use App\Enums\UserTypeEnum;
 use App\Http\Requests\StoreLoanRequest;
 use App\Http\Requests\UpdateLoanRequest;
 use App\Http\Resources\LoanResource;
 use App\Models\Loan;
-use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Request;
 
 class LoanController extends Controller
@@ -48,16 +50,18 @@ class LoanController extends Controller
     public function store(StoreLoanRequest $request)
     {
 
-//        $loan = Loan::create([
-//            'user_id' => Auth::id(),
-//            'amount' => $request->amount,
-//            'purpose' => $request->purpose,
-//        ]);
-//        return new LoanResource($loan);
 
+        $loan = Loan::create([
+            'user_id' => Auth::id(),
+            'amount' => $request->amount,
+            'purpose' => $request->purpose,
+        ]);
 
-        $loan = Auth::user()->loans()->create($request->validated());
         return new LoanResource($loan);
+
+
+//        $loan = Auth::user()->loans()->create($request->validated());
+//        return new LoanResource($loan);
     }
 
     /**
@@ -65,7 +69,7 @@ class LoanController extends Controller
      */
     public function show(Loan $loan)
     {
-        //
+        return new LoanResource($loan);
     }
 
     /**
@@ -81,7 +85,11 @@ class LoanController extends Controller
      */
     public function update(UpdateLoanRequest $request, Loan $loan)
     {
-        //
+//        $loan = Loan::update([
+//           "status" => $request->status,
+//        ]);
+        $loan->update($request->validated());
+        return new LoanResource($loan);
     }
 
     /**
@@ -89,6 +97,6 @@ class LoanController extends Controller
      */
     public function destroy(Loan $loan)
     {
-        //
+        $loan->delete();
     }
 }

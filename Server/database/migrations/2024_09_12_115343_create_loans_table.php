@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignIdFor(\App\Models\User::class);
             $table->double('amount');
             $table->string('purpose');
-            $table->boolean('status')->default(false);
+            $table->string('status')->default('pending');
             $table->timestamps();
         });
     }

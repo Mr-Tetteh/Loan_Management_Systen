@@ -22,6 +22,7 @@ class UpdateLoanRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'purpose'=> 'required',
             'status'=> 'required'
         ];
     }

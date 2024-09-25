@@ -4,6 +4,7 @@ import Header from "@/layouts/user/Header.vue";
 import Footer from "@/layouts/user/Footer.vue";
 import useLoan from "@/composerables/useLoan.js";
 import {onMounted} from "vue";
+import LoanStatus from "@/components/LoanStatus.vue";
 
 
 const {userloan, get_loan} = useLoan()
@@ -30,21 +31,19 @@ onMounted(get_loan)
           </tr>
           </thead>
           <tbody class="bg-white divide-y divide-gray-200">
-          <tr v-for="(userloans) in userloan" :key="userloans.id" class="hover:bg-blue-300">
+          <tr v-for="(loan) in userloan" :key="loan.id" class="hover:bg-blue-300">
             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-              GHC {{userloans.amount}}
+              GHC {{loan.amount}}
             </td>
             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-              <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                {{ userloans.status}}
-<!--                <td>{!! $record->active ? '<small class="alert alert-success"> Active </div>': '<small class="alert alert-warning">In-Active</div>' !!}</td>-->
-  </span>
+              <LoanStatus :status="loan.status" />
+
             </td>
             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-              {{userloans.purpose}}
+              {{loan.purpose}}
             </td>
             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-              {{userloans.created_at}}
+              {{loan.created_at}}
             </td>
             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
               Delete

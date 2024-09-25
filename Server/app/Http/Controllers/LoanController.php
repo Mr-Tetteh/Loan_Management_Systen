@@ -88,7 +88,12 @@ class LoanController extends Controller
 //        $loan = Loan::update([
 //           "status" => $request->status,
 //        ]);
-        $loan->update($request->validated());
+//        $loan->update($request->validated());
+        $loan->update([
+           'status' => $request->status,
+            'purpose'=> $request->purpose,
+            'amount'=> $request->amount,
+        ]);
         return new LoanResource($loan);
     }
 

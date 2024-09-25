@@ -13,7 +13,7 @@ const {loans, get_loans, deleteloan} = useLoan()
 //     required: true
 //   }
 // })
-onMounted( get_loans)
+onMounted(get_loans)
 
 // updateloan, get_loan}
 // get_loan(props.id)
@@ -24,6 +24,8 @@ onMounted( get_loans)
 
 import {Menu, MenuButton, MenuItem, MenuItems} from '@headlessui/vue'
 import {ChevronDownIcon} from '@heroicons/vue/20/solid'
+import LoanStatus from "@/components/LoanStatus.vue";
+import TableHeader from "@/components/TableHeader.vue";
 </script>
 
 <template>
@@ -34,27 +36,19 @@ import {ChevronDownIcon} from '@heroicons/vue/20/solid'
         <table class="min-w-full  rounded-3xl shadow divide-y divide-gray-200">
           <thead>
           <tr>
-            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">First Name</th>
-            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Last Name</th>
-            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Other Names
-            </th>
-            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
-            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Loan Amount
-              Number
-            </th>
-            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Purpose of Loan
-            </th>
-            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Telephone
-              Number
-            </th>
-            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Country
-            </th>
-            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Salary
-            </th>
-            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">National_id</th>
-            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
-            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Created AT</th>
+            <TableHeader title="First Name"/>
+            <TableHeader title="Last Name"/>
+            <TableHeader title="Other Names"/>
+            <TableHeader title="Email"/>
+            <TableHeader title="Loan Amount"/>
+            <TableHeader title="Purpose of Loan"/>
+            <TableHeader title="Status"/>
+            <TableHeader title="Telephone Number"/>
+            <TableHeader title="Country"/>
+            <TableHeader title="Salary"/>
+            <TableHeader title="National_id"/>
+            <TableHeader title="Actions"/>
+            <TableHeader title="Created At"/>
           </tr>
           </thead>
           <tbody class="bg-white divide-y divide-gray-200">
@@ -77,9 +71,10 @@ import {ChevronDownIcon} from '@heroicons/vue/20/solid'
               GHC {{ loan.amount }}
             </td>
             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                 {{ loan.status }}
-              </span>
+              <!--                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">-->
+              <!--                 {{ loan.status }}-->
+              <!--              </span>-->
+              <LoanStatus :status="loan.status"/>
             </td>
             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
               {{ loan.purpose }}
@@ -117,7 +112,7 @@ import {ChevronDownIcon} from '@heroicons/vue/20/solid'
                   <MenuItems
                       class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                     <div class="py-1">
-                      <router-link :to="{name: 'loan.edit', params: {id: loan.id}}" >
+                      <router-link :to="{name: 'loan.edit', params: {id: loan.id}}">
                         <MenuItem v-slot="{ active }">
                           <a href="#" class='bg-blue-100 text-gray-700 block px-4 py-2 text-sm'>
                             <div class="flex ">

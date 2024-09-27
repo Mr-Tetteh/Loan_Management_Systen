@@ -11,13 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('loans', function (Blueprint $table) {
-            $table->id();
-            $table->foreignIdFor(\App\Models\User::class);
-            $table->double('amount');
-            $table->longText('purpose');
-            $table->string('status')->default('pending');
-            $table->timestamps();
+        Schema::table('loans', function (Blueprint $table) {
+            $table->decimal('monthly_payment')->nullable()->after('amount');
         });
     }
 
@@ -26,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('loans');
+        Schema::table('loans', function (Blueprint $table) {
+            //
+        });
     }
 };

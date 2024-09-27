@@ -19,13 +19,14 @@ class UserResource extends JsonResource
             'id' => $this->id,
             'first_name' => $this->first_name,
             'last_name' => $this->last_name,
-            'other_name' => $this->other_names,
+            'other_names' => $this->other_names,
             'email' => $this->email,
             'phone' => $this->phone,
             'country' => $this->country,
             'user_type' => $this->user_type,
             'date_of_birth' => $this->date_of_birth,
             'salary' => $this->salary,
+            'nationality' => $this->nationality,
             'national_id' => $this->national_id,
             'created_at' => $this->created_at->diffForHumans()
 

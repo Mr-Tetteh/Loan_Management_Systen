@@ -8,6 +8,7 @@ use App\Http\Requests\StoreLoanRequest;
 use App\Http\Requests\UpdateLoanRequest;
 use App\Http\Resources\LoanResource;
 use App\Models\Loan;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Request;
@@ -50,10 +51,22 @@ class LoanController extends Controller
     public function store(StoreLoanRequest $request)
     {
 
+        $user = Auth::user()->id;
+        if (Loan::all()->where('user_id', $user)->first()) {
+            return response()->json(['message' => 'Please Pay your previous Loan to make you eligible for a new loan.'], 400);
+        }elseif ($request->monthly_payment < 500){
+            return response()->json(['message' => 'Minimum payment for a month is GHC 500.'], 400);
+        }elseif ($request->monthly_payment > $request->amount){
+            return response()->json(['message' => 'Monthly payment can not be greater than loan amount'], 400);
+        }
+//        elseif ($request->amount > $user->salary){
+//            return response()->json(['message' => 'You can not request a loan greater than your Gross salary'], 400);
+//        }
 
         $loan = Loan::create([
             'user_id' => Auth::id(),
             'amount' => $request->amount,
+            'monthly_payment' => $request->monthly_payment,
             'purpose' => $request->purpose,
         ]);
 
@@ -91,8 +104,14 @@ class LoanController extends Controller
 //        $loan->update($request->validated());
         $loan->update([
            'status' => $request->status,
-            'purpose'=> $request->purpose,
-            'amount'=> $request->amount,
+            'amount_remaining' => $request->amount_remaining
+        ]);
+        return new LoanResource($loan);
+    }
+    public function payment(UpdateLoanRequest $request, Loan $loan)
+    {
+        $loan->update([
+           'amount_remaining' => $request->amount_remaining
         ]);
         return new LoanResource($loan);
     }

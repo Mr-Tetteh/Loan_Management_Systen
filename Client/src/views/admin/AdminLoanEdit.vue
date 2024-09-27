@@ -28,7 +28,7 @@ const editloan =  async () => {
 
   <div class="p-4 sm:ml-64">
     <div class="p-4 rounded-lg">
-      <h2 class="justify-center text-3xl px-96">Edit Loan</h2>
+      <h2 class="justify-center text-3xl px-96">Edit Loan & Monthly Deductions</h2>
       <div class="mt-6 bg-white clear-end rounded-lg">
         <form  @submit.prevent="editloan">
           <div class="space-y-12">
@@ -131,6 +131,16 @@ const editloan =  async () => {
                       <option value="approved">Approve</option>
                       <option value="rejected">Reject</option>
                     </select>
+
+                  </div>
+                </div>
+
+
+                <div class="sm:col-span-2">
+                  <label for="country" class="block text-sm font-medium leading-6 text-gray-900">Monthly Deductions</label>
+                  <div class="mt-2">
+                    <input v-model="loan.amount_remaining" id="country" name="country" autocomplete="country-name"
+                            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
 
                   </div>
                 </div>

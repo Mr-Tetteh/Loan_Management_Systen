@@ -24,7 +24,7 @@ export default function useSignup() {
         const config = {
             headers : {Authorization: `Bearer ${token}`}
         }
-        let res = await axios.get('http://127.0.0.1:8000/api/all_users', config)
+        let res = await axios.get('http://127.0.0.1:8000/api/Admin_all_users', config)
         users.value = res.data.data
     }
 
@@ -42,7 +42,8 @@ export default function useSignup() {
 
     const confirm_password = ref('')
 
-    return {admin,
+    return {
+        admin,
         confirm_password,
 
         users,

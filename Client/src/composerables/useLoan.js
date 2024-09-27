@@ -12,7 +12,7 @@ export default function useLoan() {
     const get_loans = async () => {
         const token = localStorage.getItem('AUTH_TOKEN')
         const config = {
-            headers : {Authorization: `Bearer ${token}`}
+            headers: {Authorization: `Bearer ${token}`}
         }
         let res = await axios.get('http://127.0.0.1:8000/api/loans', config)
         loans.value = res.data.data
@@ -21,7 +21,7 @@ export default function useLoan() {
     const get_loan = async () => {
         const token = localStorage.getItem('AUTH_TOKEN')
         const config = {
-            headers : {Authorization: `Bearer ${token}`}
+            headers: {Authorization: `Bearer ${token}`}
         }
         let res = await axios.get('http://127.0.0.1:8000/api/loan', config)
         userloan.value = res.data.data
@@ -30,40 +30,53 @@ export default function useLoan() {
     const get_loan_update = async (id) => {
         const token = localStorage.getItem('AUTH_TOKEN')
         const config = {
-            headers : {Authorization: `Bearer ${token}`}
+            headers: {Authorization: `Bearer ${token}`}
         }
         let res = await axios.get(`http://127.0.0.1:8000/api/loans/${id}`, config)
         loan.value = res.data.data
     }
 
 
-
     const storeloan = async (loan) => {
         const token = localStorage.getItem('AUTH_TOKEN')
         const config = {
-            headers : {Authorization: `Bearer ${token}`}
+            headers: {Authorization: `Bearer ${token}`}
         }
         try {
             let response = await axios.post('http://127.0.0.1:8000/api/loans', loan, config)
             await router.push('/all_loans')
         } catch (err) {
-            console.log('error')
+            alert(err.response.data.message)
         }
 
         // console.log(loan)
     }
-
 
     const updateloan = async (id) => {
         // console.log(id)
         // console.log(post.value)
         const token = localStorage.getItem('AUTH_TOKEN')
         const config = {
-            headers : {Authorization: `Bearer ${token}`}
+            headers: {Authorization: `Bearer ${token}`}
         }
         try {
             let res = await axios.patch(`http://127.0.0.1:8000/api/loans/${id}`, loan.value, config)
             await router.push('../../admin_loan')
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+    const payloan = async (id) => {
+        // console.log(id)
+        // console.log(post.value)
+        const token = localStorage.getItem('AUTH_TOKEN')
+        const config = {
+            headers: {Authorization: `Bearer ${token}`}
+        }
+        try {
+            let res = await axios.patch(`http://127.0.0.1:8000/api/loans/${id}`, loan.value, config)
+            await router.push('../../all_loans')
         } catch (err) {
             console.log(err)
         }
@@ -79,30 +92,25 @@ export default function useLoan() {
     const destoryloan = async (id) => {
         const token = localStorage.getItem('AUTH_TOKEN')
         const config = {
-            headers : {Authorization: `Bearer ${token}`}
+            headers: {Authorization: `Bearer ${token}`}
         }
-           await axios.delete(`http://127.0.0.1:8000/api/loans/${id}`, config)
-            loans.value.splice(loans.value.indexOf(id), 1)
+        await axios.delete(`http://127.0.0.1:8000/api/loans/${id}`, config)
+        loans.value.splice(loans.value.indexOf(id), 1)
 
         // console.log(loan)
     }
 
 
-
     return {
         get_loans,
         loans,
-
         loan,
         storeloan,
-
         userloan,
         get_loan,
-
         updateloan,
-
         get_loan_update,
-
+        payloan,
         deleteloan
 
     }

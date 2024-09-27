@@ -27,9 +27,11 @@ class LoanResource extends JsonResource
             'purpose' => $this->purpose,
             'phone' => $this->user->phone,
             'country' => $this->user->country,
+            'amount_remaining' => $this->amount_remaining,
+            'monthly_payment' => $this->monthly_payment,
             'salary' => $this->user->salary,
             'national_id' => $this->user->national_id,
-            'created_at' => $this->created_at->diffForHumans(),
+            'created_at' => $this->created_at->format('jS F, Y'),
 
         ];
     }

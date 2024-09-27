@@ -3,6 +3,7 @@
 import Header from "@/layouts/admin/Header.vue";
 import useAdminSignup from "@/composerables/useAdminSignup.js";
 import {onMounted} from "vue";
+import TableHeader from "@/components/TableHeader.vue";
 
 const {users, get_users} =useAdminSignup()
 
@@ -32,25 +33,19 @@ onMounted(get_users)
           <table class="min-w-full  rounded-3xl shadow divide-y divide-gray-200">
             <thead>
             <tr>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">First Name</th>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Last Name</th>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Other Names
-              </th>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Telephone
-                Number
-              </th>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Country</th>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date of Birth
-              </th>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Salary</th>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">National_id
-              </th>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nationality
-              </th>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">User Type</th>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Created AT</th>
+              <TableHeader title="First Name"/>
+              <TableHeader title="Last Name"/>
+              <TableHeader title="Other Names"/>
+              <TableHeader title="Email"/>
+              <TableHeader title="Telephone Number"/>
+              <TableHeader title="Country"/>
+              <TableHeader title="Date Of Birth"/>
+              <TableHeader title="Salary"/>
+              <TableHeader title="Nation_id"/>
+              <TableHeader title="Nationality"/>
+              <TableHeader title="User Type"/>
+              <TableHeader title="Actions"/>
+              <TableHeader title="Created At"/>
             </tr>
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
@@ -80,7 +75,7 @@ onMounted(get_users)
               </td>
 
               <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                GHC {{user.salary}}}
+                GHC {{user.salary}}
               </td>
               <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                 {{ user.national_id }}

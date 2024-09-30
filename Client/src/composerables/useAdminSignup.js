@@ -3,6 +3,7 @@ import axios from "axios";
 import router from "@/router/index.js";
 
 export default function useSignup() {
+    const user = ref ([]);
     const users = ref([]);
 
     const admin = ref({
@@ -27,6 +28,17 @@ export default function useSignup() {
         let res = await axios.get('http://127.0.0.1:8000/api/Admin_all_users', config)
         users.value = res.data.data
     }
+
+    const get_user = async (id) => {
+        const token = localStorage.getItem('AUTH_TOKEN')
+        const config = {
+            headers : {Authorization: `Bearer ${token}`}
+        }
+        let res = await axios.get(`http://127.0.0.1:8000/api/users/${id}`,   config)
+        user.value = res.data.data
+    }
+
+
 
     const logout = async () =>{
         const token = localStorage.getItem('AUTH_TOKEN')
@@ -54,6 +66,9 @@ export default function useSignup() {
     return {
         admin,
         confirm_password,
+
+        user,
+        get_user,
 
         destoryuser,
 

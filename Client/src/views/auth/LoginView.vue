@@ -14,12 +14,14 @@ const login = async () => {
   const response = await axios.post('http://127.0.0.1:8000/api/login', login_user.value)
   const token = response.data.authorisation.token
   localStorage.setItem("AUTH_TOKEN", token)
+  localStorage.setItem("USER_ROLE", response.data.user.user_type)
   await router.push('/loan')
 }
 
 
 </script>
 <template>
+  <Header/>
   <div class="bg-fuchsia-100 grid grid-cols-1 lg:grid-cols-2 min-h-screen items-center px-6 py-12 lg:px-8">
     <!-- Left Column: Form -->
     <div class="px-6 py-12 lg:px-8">

@@ -20,7 +20,7 @@ const router = createRouter({
     routes: [
         {
             path: '/',
-            name: '/home',
+            name: 'home',
             component: HomeView
         },
         {
@@ -42,12 +42,20 @@ const router = createRouter({
         {
             path: '/loan',
             name: 'loan',
-            component: LoanView
+            component: LoanView,
+            meta: {
+                requiresAuth: true,
+
+            },
         },
         {
             path: '/all_loans',
             name: 'loans',
-            component: AllLoansView
+            component: AllLoansView,
+            meta: {
+                requiresAuth: true,
+
+            },
         },
 
 
@@ -56,52 +64,101 @@ const router = createRouter({
         {
             path: '/admin_home',
             name: 'admin_home',
-            component: AdminHomeView
+            component: AdminHomeView,
+            meta: {
+                requiresAuth: true,
+                roles: ['ADMIN']
+            },
+
         },
         {
             path: '/admin_loan',
             name: 'admin_loan',
-            component: AdminLoanView
+            component: AdminLoanView,
+            meta: {
+                requiresAuth: true,
+                roles: ['ADMIN']
+            },
         },
         {
             path: '/admin_user',
             name: 'admin_user',
-            component: AdminUserView
+            component: AdminUserView,
+            meta: {
+                requiresAuth: true,
+                roles: ['ADMIN']
+            },
         },
         {
             path: '/admin_add_user',
             name: 'admin_add_user',
-            component: AdminAddUserView
+            component: AdminAddUserView,
+            meta: {
+                requiresAuth: true,
+                roles: ['ADMIN']
+            },
         },
         {
             path: '/loan/:id/edit',
             name: 'loan.edit',
             component: AdminLoanEdit,
-            props:true
+            props:true,
+            meta: {
+                requiresAuth: true,
+                roles: ['ADMIN']
+            },
         },
 
         {
             path: '/user/:id/edit',
             name: 'user.edit',
             component: AdminUserEdit,
-            props:true
+            props:true,
+            meta: {
+                requiresAuth: true,
+                roles: ['ADMIN']
+            },
         },
 
         {
             path: '/loan/:id/detail',
             name: 'loan.detail',
             component: AdminLoanDetails,
-            props:true
+            props:true,
+            meta: {
+                requiresAuth: true,
+                roles: ['ADMIN']
+            },
         },
         {
             path: '/user/:id/detail',
             name: 'user.detail',
             component: AdminUserDetails,
-            props:true
+            props:true,
+            meta: {
+                requiresAuth: true,
+                roles: ['ADMIN']
+            },
         },
 
 
     ]
 })
 
+router.beforeEach((to, from, next) => {
+    const isAuthenticated = !!localStorage.getItem("AUTH_TOKEN")
+    const userRole = localStorage.getItem("USER_ROLE")
+
+    if (to.meta.requiresAuth && !isAuthenticated) {
+        next({ name: "login", query: { redirect: to.fullPath } });
+    } else if (to.meta.roles && Array.isArray(to.meta.roles) && userRole) {
+        if (to.meta.roles.includes(userRole.toUpperCase())) {
+            next();
+        } else {
+            next({ name: "home" });
+        }
+    } else {
+        next();
+    }
+});
 export default router

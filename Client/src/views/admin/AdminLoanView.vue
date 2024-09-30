@@ -7,19 +7,9 @@ import Header from "@/layouts/admin/Header.vue";
 const {loans, get_loans, deleteloan} = useLoan()
 
 
-// const props = defineProps({
-//   id:{
-//     type: String,
-//     required: true
-//   }
-// })
+
 onMounted(get_loans)
 
-// updateloan, get_loan}
-// get_loan(props.id)
-// const approve = async () => {
-//   await updateloan(props.id)
-// }
 
 
 import {Menu, MenuButton, MenuItem, MenuItems} from '@headlessui/vue'

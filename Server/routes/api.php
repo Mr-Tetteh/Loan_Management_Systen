@@ -20,6 +20,8 @@ Route::middleware('auth:sanctum')->group(function () {
     //All Users
     Route::get('all_users', [UserController::class, 'register']);
     Route::get('Admin_all_users', [UserController::class, 'index']);
+    Route::delete('users/{user}', [UserController::class, 'destroy']);
+
 
 
 
@@ -36,7 +38,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
 
     //loans
-    Route::get('loans', [LoanController::class, 'allloans']);
+    Route::get('loans', [LoanController::class, 'all_loans']);
 
     // Loan request route
 

@@ -41,7 +41,14 @@ class UserController extends Controller
 
     public function register(Request $request)
     {
-        $user =  \App\Models\User::create([
+        if (User::all()->where('email', $request->email)->first()
+        ) {
+            return response()->json([
+                "message" => "User already exists!",
+            ]);
+        }
+
+        $user = \App\Models\User::create([
             'first_name' => $request->input('first_name'),
             'last_name' => $request->input('last_name'),
             'other_names' => $request->input('other_names'),
@@ -61,7 +68,7 @@ class UserController extends Controller
 
     public function admin_register(Request $request)
     {
-        $user =  \App\Models\User::create([
+        $user = \App\Models\User::create([
             'first_name' => $request->input('first_name'),
             'last_name' => $request->input('last_name'),
             'other_names' => $request->input('other_names'),
@@ -125,8 +132,6 @@ class UserController extends Controller
     }
 
 
-
-
     public function user()
     {
         return Auth::user();
@@ -139,6 +144,12 @@ class UserController extends Controller
         return response()->json([
             'message' => 'Logout'
         ]);
+    }
+
+    public function destroy(User $user)
+    {
+        $user->delete();
+
     }
 
 

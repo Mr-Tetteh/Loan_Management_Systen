@@ -27,7 +27,7 @@ class LoanController extends Controller
         return LoanResource::collection(Loan::where('user_id', auth()->id())->get());
     }
 
-    public function allloans()
+    public function all_loans()
     {
         return LoanResource::collection(Loan::all());
 

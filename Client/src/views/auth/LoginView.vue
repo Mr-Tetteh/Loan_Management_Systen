@@ -20,7 +20,7 @@ const login = async () => {
 
 </script>
 <template>
-  <div class="grid grid-cols-1 lg:grid-cols-2 min-h-screen items-center px-6 py-12 lg:px-8">
+  <div class="bg-fuchsia-100 grid grid-cols-1 lg:grid-cols-2 min-h-screen items-center px-6 py-12 lg:px-8">
     <!-- Left Column: Form -->
     <div class="px-6 py-12 lg:px-8">
       <div class="sm:mx-auto sm:w-full sm:max-w-sm">

@@ -59,7 +59,7 @@ class UserController extends Controller
         ) {
             return response()->json([
                 "message" => "User already exists!",
-            ]);
+            ],  422);
         }
 
         $user = \App\Models\User::create([

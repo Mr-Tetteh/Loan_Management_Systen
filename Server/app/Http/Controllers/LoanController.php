@@ -27,6 +27,11 @@ class LoanController extends Controller
         return LoanResource::collection(Loan::where('user_id', auth()->id())->get());
     }
 
+    public function loanss(Loan $loan)
+    {
+        return LoanResource::collection(Loan::all());
+    }
+
     public function all_loans()
     {
         return LoanResource::collection(Loan::all());
@@ -54,9 +59,9 @@ class LoanController extends Controller
         $user = Auth::user()->id;
         if (Loan::all()->where('user_id', $user)->first()) {
             return response()->json(['message' => 'Please Pay your previous Loan to make you eligible for a new loan.'], 400);
-        }elseif ($request->monthly_payment < 500){
+        } elseif ($request->monthly_payment < 500) {
             return response()->json(['message' => 'Minimum payment for a month is GHC 500.'], 400);
-        }elseif ($request->monthly_payment > $request->amount){
+        } elseif ($request->monthly_payment > $request->amount) {
             return response()->json(['message' => 'Monthly payment can not be greater than loan amount'], 400);
         }
 //        elseif ($request->amount > $user->salary){
@@ -103,15 +108,16 @@ class LoanController extends Controller
 //        ]);
 //        $loan->update($request->validated());
         $loan->update([
-           'status' => $request->status,
+            'status' => $request->status,
             'amount_remaining' => $request->amount_remaining
         ]);
         return new LoanResource($loan);
     }
+
     public function payment(UpdateLoanRequest $request, Loan $loan)
     {
         $loan->update([
-           'amount_remaining' => $request->amount_remaining
+            'amount_remaining' => $request->amount_remaining
         ]);
         return new LoanResource($loan);
     }

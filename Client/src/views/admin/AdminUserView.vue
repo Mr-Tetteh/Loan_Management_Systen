@@ -60,7 +60,7 @@ function openModal() {
           </tr>
           </thead>
           <tbody class="bg-white divide-y divide-gray-200">
-          <tr v-for="user in users" :key="users.id">
+          <tr v-for="user in users" :key="user.id">
             <td class="px-6 py-4 whitespace-nowrap flex items-center">
               <div>
                 <div class="text-sm font-medium text-gray-900">{{ user.first_name }} {{ user.other_names }}
@@ -143,7 +143,7 @@ function openModal() {
 
                       <MenuItem v-slot="{ active }">
                         <button @click="destoryuser(user.id)" class='bg-red-200 text-gray-900  px-4 py-2 text-sm'>
-                          <div class="flex ">
+                          <div class="flex">
                             <div>
                               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                    stroke-width="1.5" stroke="currentColor" class="size-5">
@@ -163,7 +163,7 @@ function openModal() {
               </Menu>
 
             </td>
-            <AdminUserDetails :id="user.id" :is-open="isOpen" :close-modal="closeModal"/>
+            <AdminUserDetails v-if="isOpen" :id="user.id" :is-open="isOpen" :close-modal="closeModal"/>
 
           </tr>
           </tbody>

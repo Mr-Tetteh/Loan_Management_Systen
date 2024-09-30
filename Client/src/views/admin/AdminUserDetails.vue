@@ -32,7 +32,7 @@ const {user, get_user} = useAdminSignup()
 onMounted( () => get_user(props.id))
 </script>
 <template>
-  <div class="fixed inset-0 flex items-center justify-center">
+  <div class="fixed inset-0 flex items-center justify-center ">
 
   </div>
   <TransitionRoot appear :show="isOpen" as="template">
@@ -49,7 +49,7 @@ onMounted( () => get_user(props.id))
         <div class="fixed inset-0 bg-black/25"/>
       </TransitionChild>
 
-      <div class="fixed inset-0 overflow-y-auto">
+      <div class="fixed inset-0 overflow-y-auto  ">
         <div
             class="flex min-h-full items-center justify-center p-4 text-center"
         >

@@ -15,15 +15,14 @@ const login = async () => {
   const token = response.data.authorisation.token
   localStorage.setItem("AUTH_TOKEN", token)
   localStorage.setItem("USER_ROLE", response.data.user.user_type)
+  localStorage.setItem("USER_NAME", response.data.user.first_name)
   await router.push('/loan')
 }
 
 
 </script>
 <template>
-  <Header/>
-  <div class="bg-fuchsia-100 grid grid-cols-1 lg:grid-cols-2 min-h-screen items-center px-6 py-12 lg:px-8">
-    <!-- Left Column: Form -->
+  <div class="bg-fuchsia-100 grid grid-cols-1 lg:grid-cols-2 min-h-screen items-center px-6 lg:px-8 shadow-2xl">
     <div class="px-6 py-12 lg:px-8">
       <div class="sm:mx-auto sm:w-full sm:max-w-sm">
         <img class="mx-auto h-10 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"

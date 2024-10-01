@@ -1,8 +1,10 @@
 <script setup>
 
 import useAdminSignup from "@/composerables/useAdminSignup.js";
+import useSession from "@/composerables/useSession.js";
 
 const {logout} = useAdminSignup()
+const {username} = useSession()
 </script>
 
 <template>
@@ -14,8 +16,8 @@ const {logout} = useAdminSignup()
     </svg>
   </button>
 
-  <aside id="default-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0 rounded-3xl" aria-label="Sidebar">
-    <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
+  <aside id="default-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0 rounded-3xl overflow-y-hidden" aria-label="Sidebar">
+    <div class="h-full px-3 py-4 bg-gray-50 dark:bg-gray-800 overflow-y-hidden">
       <ul class="space-y-2 font-medium">
         <li>
           <router-link to="admin_home">
@@ -87,11 +89,12 @@ const {logout} = useAdminSignup()
             <span class="flex-1 ms-3 whitespace-nowrap">Logout</span>
           </a>
         </li>
-
-
-
-
       </ul>
+      <div class="mt-32 sm:mt-40 md:mt-48 lg:mt-56 py-16 sm:py-24 md:py-32 lg:py-40">
+        <h3 class="text-white" v-if="username">Name:</h3>
+        <span class="text-white">{{ username }}</span>
+      </div>
+
     </div>
   </aside>
 

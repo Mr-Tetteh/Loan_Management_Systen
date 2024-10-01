@@ -69,6 +69,8 @@ export default function useSignup() {
 
         let res = await axios.post('http://127.0.0.1:8000/api/logout', {},config)
         localStorage.removeItem("AUTH_TOKEN")
+        localStorage.removeItem("USER_ROLE")
+        localStorage.removeItem("USER_NAME")
         await router.push('/login')
 
     }

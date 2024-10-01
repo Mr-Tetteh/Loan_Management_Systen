@@ -57,7 +57,6 @@ import Footer from "@/layouts/user/Footer.vue";
 
   </div>
 
-  <Footer/>
 </template>
 
 <style scoped>

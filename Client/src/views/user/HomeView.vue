@@ -50,7 +50,7 @@ import Footer from "@/layouts/user/Footer.vue";
       </div>
     </div>
 
-    <Footer/>
+
 
 
 </template>

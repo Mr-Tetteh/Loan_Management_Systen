@@ -67,7 +67,7 @@ const router = createRouter({
             component: AdminHomeView,
             meta: {
                 requiresAuth: true,
-                roles: ['ADMIN']
+                roles: ['Admin']
             },
 
         },
@@ -77,7 +77,7 @@ const router = createRouter({
             component: AdminLoanView,
             meta: {
                 requiresAuth: true,
-                roles: ['ADMIN']
+                roles: ['Admin']
             },
         },
         {
@@ -86,7 +86,7 @@ const router = createRouter({
             component: AdminUserView,
             meta: {
                 requiresAuth: true,
-                roles: ['ADMIN']
+                roles: ['Admin']
             },
         },
         {
@@ -95,7 +95,7 @@ const router = createRouter({
             component: AdminAddUserView,
             meta: {
                 requiresAuth: true,
-                roles: ['ADMIN']
+                roles: ['Admin']
             },
         },
         {
@@ -105,7 +105,7 @@ const router = createRouter({
             props:true,
             meta: {
                 requiresAuth: true,
-                roles: ['ADMIN']
+                roles: ['Admin']
             },
         },
 
@@ -116,7 +116,7 @@ const router = createRouter({
             props:true,
             meta: {
                 requiresAuth: true,
-                roles: ['ADMIN']
+                roles: ['Admin']
             },
         },
 
@@ -127,7 +127,7 @@ const router = createRouter({
             props:true,
             meta: {
                 requiresAuth: true,
-                roles: ['ADMIN']
+                roles: ['Admin']
             },
         },
         {
@@ -137,7 +137,7 @@ const router = createRouter({
             props:true,
             meta: {
                 requiresAuth: true,
-                roles: ['ADMIN']
+                roles: ['Admin']
             },
         },
 
@@ -152,7 +152,7 @@ router.beforeEach((to, from, next) => {
     if (to.meta.requiresAuth && !isAuthenticated) {
         next({ name: "login", query: { redirect: to.fullPath } });
     } else if (to.meta.roles && Array.isArray(to.meta.roles) && userRole) {
-        if (to.meta.roles.includes(userRole.toUpperCase())) {
+        if (to.meta.roles.includes(userRole)) {
             next();
         } else {
             next({ name: "home" });

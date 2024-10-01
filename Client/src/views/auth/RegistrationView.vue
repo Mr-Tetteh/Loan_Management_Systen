@@ -27,7 +27,6 @@ try{
 </script>
 
 <template>
-  <Header/>
   <div class="bg-fuchsia-100 grid grid-cols-1 lg:grid-cols-2 min-h-screen items-center px-6 lg:px-8 shadow-2xl">
     <div>
       <img class="rounded-2xl" src="../../../Registering.jpg" alt="">

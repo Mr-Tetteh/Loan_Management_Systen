@@ -21,34 +21,33 @@ onMounted(get_loan)
   <!--  <div class="p-4 sm:ml-64">-->
   <!--    <div class="p-4 rounded-lg">-->
   <div class="mt-6 bg-white clear-end rounded-lg ">
-    <table class="min-w-full rounded-3xl shadow divide-y divide-gray-200">
+    <table class="lg:ml-72 w-full rounded-3xl shadow divide-y divide-gray-200">
       <thead>
       <tr>
-        <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Loan Amount</th>
-        <TableHeader title="Amount Remaining"/>
-        <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-        <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Purpose of Loan</th>
-        <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Created AT</th>
+        <th class="px-3 py-2 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Loan Amount</th>
+        <th class="px-3 py-2 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Amount Remaining</th>
+        <th class="px-3 py-2 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+        <th class="px-3 py-2 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Purpose of Loan</th>
+        <th class="px-3 py-2 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Created AT</th>
       </tr>
       </thead>
       <tbody class="bg-white divide-y divide-gray-200">
       <tr v-for="(loan) in userloan" :key="loan.id" class="hover:bg-blue-300">
-        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+        <td class="px-3 py-2 whitespace-nowrap text-right text-sm font-medium">
           GHC {{ loan.amount }}
         </td>
-        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-          GHC {{ loan.amount - loan.amount_remaining  }}
+        <td class="px-3 py-2 whitespace-nowrap text-right text-sm font-medium">
+          GHC {{ loan.amount - loan.amount_remaining }}
         </td>
-        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+        <td class="px-3 py-2 whitespace-nowrap text-right text-sm font-medium">
           <LoanStatus :status="loan.status"/>
         </td>
-        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-         <p>{{ loan.purpose }} </p>
+        <td class="px-3 py-2 whitespace-nowrap text-right text-sm font-medium">
+          <p>{{ loan.purpose }}</p>
         </td>
-        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+        <td class="px-3 py-2 whitespace-nowrap text-right text-sm font-medium">
           {{ loan.created_at }}
         </td>
-
       </tr>
       </tbody>
     </table>
@@ -59,7 +58,7 @@ onMounted(get_loan)
   <!--    </div>-->
 
 
-  <Footer/>
+
 </template>
 
 <style scoped>

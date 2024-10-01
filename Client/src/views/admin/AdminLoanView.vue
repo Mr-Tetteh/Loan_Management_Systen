@@ -1,4 +1,10 @@
 <script setup>
+
+import {Menu, MenuButton, MenuItem, MenuItems} from '@headlessui/vue'
+import {ChevronDownIcon} from '@heroicons/vue/20/solid'
+import LoanStatus from "@/components/LoanStatus.vue";
+import TableHeader from "@/components/TableHeader.vue";
+import AdminLoanDetails from "@/views/admin/AdminLoanDetails.vue";
 import useLoan from "@/composerables/useLoan.js";
 import {ref, onMounted} from "vue";
 import axios from "axios";
@@ -6,16 +12,17 @@ import Header from "@/layouts/admin/Header.vue";
 
 const {loans, get_loans, deleteloan} = useLoan()
 
-
-
 onMounted(get_loans)
 
+const isOpen = ref(false)
+function closeModal(){
+  isOpen.value = false
+}
 
+function openModal(){
+  isOpen.value = true
+}
 
-import {Menu, MenuButton, MenuItem, MenuItems} from '@headlessui/vue'
-import {ChevronDownIcon} from '@heroicons/vue/20/solid'
-import LoanStatus from "@/components/LoanStatus.vue";
-import TableHeader from "@/components/TableHeader.vue";
 </script>
 
 <template>
@@ -99,8 +106,7 @@ import TableHeader from "@/components/TableHeader.vue";
                         </MenuItem>
                       </router-link>
 
-                      <router-link :to="{name: 'loan.detail', params: {id: loan.id}}">
-                        <MenuItem v-slot="{ active }">
+                        <MenuItem @click="openModal" v-slot="{ active }">
                           <a href="#" class='bg-emerald-200 text-gray-700 block px-4 py-2 text-sm'>
                             <div class="flex ">
                               <div>
@@ -114,7 +120,7 @@ import TableHeader from "@/components/TableHeader.vue";
                             </div>
                           </a>
                         </MenuItem>
-                      </router-link>
+<!--                      </router-link>-->
 
 
                       <MenuItem v-slot="{ active }">
@@ -138,8 +144,7 @@ import TableHeader from "@/components/TableHeader.vue";
                 </transition>
               </Menu>
             </td>
-
-
+            <AdminLoanDetails v-if="isOpen"  :id="loan.id"  :is-open="isOpen" :close-modal="closeModal" />
           </tr>
           </tbody>
         </table>

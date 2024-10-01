@@ -123,8 +123,6 @@ function openModal() {
                       </router-link>
 
                       <MenuItem @click="openModal" v-slot="{ active }">
-
-
                         <a href="#" class='bg-emerald-200 text-gray-700 block px-4 py-2 text-sm'>
                           <div class="flex ">
                             <div>

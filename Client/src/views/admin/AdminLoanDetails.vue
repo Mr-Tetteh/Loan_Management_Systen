@@ -1,4 +1,5 @@
 <script setup>
+import useLoan from "@/composerables/useLoan.js";
 import {onMounted, ref} from 'vue'
 import {
   TransitionRoot,
@@ -7,21 +8,20 @@ import {
   DialogPanel,
   DialogTitle,
 } from '@headlessui/vue'
-import useLoan from "@/composerables/useLoan.js";
 
-const isOpen = ref(true)
 
-function closeModal() {
-  isOpen.value = false
-}
-
-function openModal() {
-  isOpen.value = true
-}
 
 const props = defineProps({
   id: {
     type: String,
+    required: true
+  },
+  closeModal: {
+    type: Function,
+    required:true
+  },
+  isOpen: {
+    type: Boolean,
     required: true
   }
 })
@@ -75,45 +75,57 @@ onMounted(() => get_loan_update(props.id))
                   class="text-lg font-medium leading-6 text-gray-900"
               >
                 Payment successful
-                {{ props }}}
               </DialogTitle>
-              <div class="mt-2">
-                <table class="table border-solid">
-                  <tr>
-                     <td class="border-dashed border-4 border-sky-300 col-span-2 gap-2"><b>Full Name:</b>  {{ loan.first_name }}
-                        {{ loan.other_names }} {{ loan.last_name }}
-                      </td>
-                      <td class="border-dashed border-4 border-sky-300 col-span-2"><b> Email:</b> {{ loan.email }}</td>
-                  </tr>
+              <div class="mt-2 w-full overflow-auto">
+                <p class="text-sm text-gray-500">
+                  <table border="10px" class="w-full table-auto">
+                    <tr>
+                      <th class="p-5 text-left">First Name: </th>
+                      <td class="p-5" colspan="2">{{ loan.first_name }}</td>
+                      <th class="p-5 text-left">Last Name: </th>
+                      <td class="p-5" colspan="2">{{ loan.last_name }}</td>
+                      <th class="p-5 text-left">Other Names: </th>
+                      <td class="p-5" colspan="2">{{loan.other_names}}</td>
+                    </tr>
 
-                  <tr>
-                    <td class="border-dashed border-4 border-sky-300 gap-2"><b>Phone Number:</b>  {{ loan.phone }}
-                    </td>
-                    <td class="border-dashed border-4 border-sky-300 col-span-3"><b> Purpose:</b> {{ loan.purpose }}</td>
-                  </tr>
+                    <tr>
+                      <th class="p-5 text-left">Email: </th>
+                      <td class="p-5" colspan="2">{{loan.email}}</td>
+                      <th class="p-5 text-left">Phone: </th>
+                      <td class="p-5" colspan="2">{{ loan.phone }}</td>
+                    </tr>
 
-                  <tr>
-                    <td class="border-dashed border-4 border-sky-300  gap-2"><b>Amount Requested:</b> GHC {{ loan.amount }}
-                    </td>
-                    <td class="border-dashed border-4 border-sky-300 "><b>Amount Remaining:</b> GHC {{ loan.amount - loan.amount_remaining}}</td>
-                  </tr>
+                    <tr>
+                      <th class="p-5 text-left">Country: </th>
+                      <td class="p-5">{{ loan.country }}</td>
+                      <th class="p-5 text-left">Salary: </th>
+                      <td class="p-5">GHC {{ loan.salary }}</td>
+                      <th class="p-5 text-left">Loan Amount: </th>
+                      <td class="p-5">GHC {{ loan.amount }}</td>
+                      <th class="p-5 text-left">Monthly Payment: </th>
+                      <td class="p-5">GHC {{ loan.amount }}</td>
+                    </tr>
+                    <tr>
+                      <th class="p-5 text-left">Amount Remaining: </th>
+                      <td class="p-5">GHC {{ loan.amount - loan.amount_remaining }}</td>
+                      <th class="p-5 text-left">Purpose : </th>
+                      <td class="p-5">GHC {{ loan.purpose }}</td>
+                      <th class="p-5 text-left">Loan Status : </th>
+                      <td class="p-5">GHC {{ loan.status }}</td>
+                    </tr>
 
-                  <tr>
-                    <td class="border-dashed border-4 border-sky-300 gap-2"><b>Salary:</b>  {{ loan.salary }}
-                    </td>
-                    <td class="border-dashed border-4 border-sky-300"><b> Loan Status:</b> {{ loan.status }}</td>
-                  </tr>
-
-                  <tr>
-                    <td class="border-dashed border-4 border-sky-300  gap-2"><b>Country:</b>  {{ loan.country }}
-                    </td>
-                    <td class="border-dashed border-4 border-sky-300 "><b> Nationality:</b> {{loan.nationality}}</td>
-                  </tr>
-                  <tr>
-                    <td class="border-dashed border-4 border-sky-300 col-span-2"><b> National ID:</b> {{loan.national_id }}</td>
-                  </tr>
-
-                </table>
+                    <tr>
+                      <th class="p-5 text-left">National ID: </th>
+                      <td class="p-5">{{loan.national_id}}</td>
+                      <th class="p-5 text-left">User Type: </th>
+                      <td class="p-5">{{ loan.user_type}}</td>
+                      <th class="p-5 text-left">Nationality: </th>
+                      <td class="p-5">{{ loan.nationality }}</td>
+                      <th class="p-5 text-left">Date: </th>
+                      <td class="p-5">{{loan.created_at}}</td>
+                    </tr>
+                  </table>
+                </p>
               </div>
 
               <div class="mt-4">
@@ -132,5 +144,16 @@ onMounted(() => get_loan_update(props.id))
     </Dialog>
   </TransitionRoot>
 </template>
+
+<style scoped>
+.container {
+  max-width: 1024px;
+}
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+</style>
 
 

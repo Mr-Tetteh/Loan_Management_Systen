@@ -63,7 +63,7 @@ onMounted( () => get_user(props.id))
               leave-to="opacity-0 scale-95"
           >
             <DialogPanel
-                class="max-w-screen-2xl transform rounded-2xl bg-white p-6 my-10 text-left shadow-xl transition-all w-full"
+                class="max-w-screen-2xl transform rounded-2xl bg-white p-6 my-10 text-left shadow-xl transition-all w-full ml-52"
             >
               <DialogTitle as="h3" class="text-lg font-medium leading-6 text-gray-900">
                 Details of <span class="text-sky-300">{{user.first_name}} {{user.other_names}} {{user.last_name}} </span>
@@ -96,7 +96,7 @@ onMounted( () => get_user(props.id))
 
                     <tr>
                       <th class="p-5 text-left">National ID: </th>
-                      <td class="p-5">{{user.salary}}</td>
+                      <td class="p-5">{{user.national_id}}</td>
                       <th class="p-5 text-left">User Type: </th>
                       <td class="p-5">{{ user.user_type}}</td>
                       <th class="p-5 text-left">Nationality: </th>

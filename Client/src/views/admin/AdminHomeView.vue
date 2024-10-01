@@ -1,11 +1,19 @@
 <script setup>
 
 import Header from "@/layouts/admin/Header.vue";
+import useAdminSignup from "@/composerables/useAdminSignup.js";
+import {onMounted} from "vue";
+
+const {user, auth_user} = useAdminSignup()
+//
+//
+onMounted(auth_user)
 </script>
 
 
 <template>
   <Header/>
+  {{ user.first_name }}
   <div class="p-4 sm:ml-64">
     <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
       <div class="grid grid-cols-3 gap-4 mb-4">

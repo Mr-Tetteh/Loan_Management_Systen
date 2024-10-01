@@ -22,7 +22,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('Admin_all_users', [UserController::class, 'index']);
     Route::delete('users/{user}', [UserController::class, 'destroy']);
     Route::get('users/{user}', [UserController::class, 'show']);
-    Route::put('users/{user}', [UserController::class, 'update']);
+    Route::patch('users/{user}', [UserController::class, 'update']);
+    Route::get('users', [UserController::class, 'user']);
 
 
 

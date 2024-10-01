@@ -11,7 +11,10 @@ const props = defineProps({
     required: true
   }
 })
+const editUser = async () => {
+  await update_user(props.id)
 
+}
 onMounted(() => get_user(props.id))
 </script>
 
@@ -19,7 +22,7 @@ onMounted(() => get_user(props.id))
   <div class="p-4 sm:ml-64">
     <div class="p-4 rounded-lg">
       <div class="mt-6 bg-white clear-end rounded-lg shadow shadow-cyan-600 p-10">
-        <form @submit.prevent="editloan">
+        <form @submit.prevent="editUser">
           <div class="space-y-12">
             <h2 class="justify-center text-3xl px-96">Edit User Status </h2>
             <div class="border-b border-gray-900/10 pb-12">
@@ -29,7 +32,8 @@ onMounted(() => get_user(props.id))
                   <div class="mt-2">
                     <input v-model="user.first_name" type="text" name="first-name" id="first-name"
                            autocomplete="given-name"
-                           class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" disabled/>
+                           class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                           disabled/>
                   </div>
                 </div>
 
@@ -38,7 +42,8 @@ onMounted(() => get_user(props.id))
                   <div class="mt-2">
                     <input v-model="user.last_name" type="text" name="last-name" id="last-name"
                            autocomplete="family-name"
-                           class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" disabled/>
+                           class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                           disabled/>
                   </div>
                 </div>
 
@@ -46,7 +51,8 @@ onMounted(() => get_user(props.id))
                   <label for="other-name" class="block text-sm font-medium leading-6 text-gray-900">Other name</label>
                   <div class="mt-2">
                     <input v-model="user.other_names" type="text" id="other-name" autocomplete="family-name"
-                           class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" disabled/>
+                           class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                           disabled/>
                   </div>
                 </div>
 
@@ -54,7 +60,8 @@ onMounted(() => get_user(props.id))
                   <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email Address</label>
                   <div class="mt-2">
                     <input v-model="user.email" type="email" name="email" id="last-name" autocomplete="family-name"
-                           class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" disabled/>
+                           class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                           disabled/>
                   </div>
                 </div>
 
@@ -63,7 +70,8 @@ onMounted(() => get_user(props.id))
                   <label for="region" class="block text-sm font-medium leading-6 text-gray-900">Telephone Number</label>
                   <div class="mt-2">
                     <input v-model="user.phone" type="text" name="region" id="region" autocomplete="address-level1"
-                           class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" disabled/>
+                           class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                           disabled/>
                   </div>
                 </div>
 
@@ -73,7 +81,8 @@ onMounted(() => get_user(props.id))
                   <div class="mt-2">
                     <input v-model="user.country" type="text" name="postal-code" id="postal-code"
                            autocomplete="postal-code"
-                           class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" disabled/>
+                           class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                           disabled/>
                   </div>
                 </div>
 
@@ -83,7 +92,8 @@ onMounted(() => get_user(props.id))
                   </label>
                   <div class="mt-2">
                     <input v-model="user.salary" type="text" id="postal-code" autocomplete="postal-code"
-                           class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" disabled/>
+                           class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                           disabled/>
                   </div>
                 </div>
 
@@ -93,7 +103,8 @@ onMounted(() => get_user(props.id))
                   </label>
                   <div class="mt-2">
                     <input v-model="user.nationality" type="text" id="postal-code" autocomplete="postal-code"
-                           class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" disabled/>
+                           class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                           disabled/>
                   </div>
                 </div>
 
@@ -102,7 +113,8 @@ onMounted(() => get_user(props.id))
                   </label>
                   <div class="mt-2">
                     <input v-model="user.national_id" type="text" id="national_id" autocomplete="postal-code"
-                           class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" disabled/>
+                           class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    />
                   </div>
                 </div>
 
@@ -111,7 +123,8 @@ onMounted(() => get_user(props.id))
                   </label>
                   <div class="mt-2">
                     <input v-model="user.date_of_birth" type="text" id="national_id" autocomplete="postal-code"
-                           class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" disabled/>
+                           class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                           disabled/>
                   </div>
                 </div>
 
@@ -121,8 +134,8 @@ onMounted(() => get_user(props.id))
                   <div class="mt-2">
                     <select v-model="user.status" id="country" name="country" autocomplete="country-name"
                             class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
-                      <option value="User">User</option>
-                      <option value="Admin">Admin</option>
+                      <option value="USER">User</option>
+                      <option value="ADMIN">Admin</option>
                     </select>
                   </div>
                 </div>
@@ -130,15 +143,15 @@ onMounted(() => get_user(props.id))
               </div>
             </div>
           </div>
-      <div class="mt-6 flex items-center justify-end gap-x-6">
-        <button type="submit"
-                class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-          Save
-        </button>
+          <div class="mt-6 flex items-center justify-end gap-x-6">
+            <button type="submit"
+                    class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+              Save
+            </button>
+          </div>
+        </form>
       </div>
-      </form>
     </div>
-  </div>
   </div>
 </template>
 

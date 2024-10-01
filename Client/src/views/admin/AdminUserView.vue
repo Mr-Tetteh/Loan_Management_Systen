@@ -59,8 +59,8 @@ function openModal() {
             <TableHeader title="Actions"/>
           </tr>
           </thead>
-          <tbody class="bg-white divide-y divide-gray-200">
-          <tr v-for="user in users" :key="user.id">
+          <tbody v-for="user in users" :key="user.id" class="bg-white divide-y divide-gray-200">
+          <tr >
             <td class="px-6 py-4 whitespace-nowrap flex items-center">
               <div>
                 <div class="text-sm font-medium text-gray-900">{{ user.first_name }} {{ user.other_names }}
@@ -123,6 +123,8 @@ function openModal() {
                       </router-link>
 
                       <MenuItem @click="openModal" v-slot="{ active }">
+
+
                         <a href="#" class='bg-emerald-200 text-gray-700 block px-4 py-2 text-sm'>
                           <div class="flex ">
                             <div>
@@ -156,21 +158,22 @@ function openModal() {
                           </div>
                         </button>
                       </MenuItem>
-
                     </div>
                   </MenuItems>
                 </transition>
               </Menu>
-
             </td>
-            <AdminUserDetails v-if="isOpen" :id="user.id" :is-open="isOpen" :close-modal="closeModal"/>
-
           </tr>
+          <AdminUserDetails v-if="isOpen" :id="(user.id)" :is-open="isOpen" :close-modal="closeModal"/>
+
+
           </tbody>
+
         </table>
       </div>
     </div>
   </div>
+
 </template>
 
 <style scoped>

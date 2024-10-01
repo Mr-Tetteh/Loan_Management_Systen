@@ -28,6 +28,18 @@ export default function useSignup() {
         let res = await axios.get('http://127.0.0.1:8000/api/Admin_all_users', config)
         users.value = res.data.data
     }
+    const update_user = async (id) => {
+        const token = localStorage.getItem('AUTH_TOKEN')
+        const config = {
+            headers: {Authorization: `Bearer ${token}`}
+        }
+        try{
+            let res = await  axios.patch(`http://127.0.0.1:8000/api/users/${id}`, user.value, config)
+            await router.push('../../admin_user')
+        }catch (err){
+            console.log(err)
+        }
+    }
 
     const get_user = async (id) => {
         const token = localStorage.getItem('AUTH_TOKEN')
@@ -38,6 +50,15 @@ export default function useSignup() {
         user.value = res.data.data
     }
 
+    const auth_user = async () => {
+        const token = localStorage.getItem('AUTH_TOKEN')
+        const config = {
+            headers: {Authorization: `Bearer ${token}`}
+        }
+        let res = await axios.get(`http://127.0.0.1:8000/api/users`, config)
+        user.value  = res.data.data
+
+    }
 
 
     const logout = async () =>{
@@ -66,15 +87,13 @@ export default function useSignup() {
     return {
         admin,
         confirm_password,
-
         user,
         get_user,
-
         destoryuser,
-
+        update_user,
         users,
         get_users,
-
+        auth_user,
         logout
     }
 }

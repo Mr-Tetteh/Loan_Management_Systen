@@ -42,7 +42,7 @@ const {logout} = useAdminSignup()
               <router-link to="/contact"><span class="flex-1 ms-7 whitespace-nowrap">Contact</span></router-link>
               <router-link v-if="isLoggedIn" to="/loan"><span class="flex-1 ms-7 whitespace-nowrap">Request Loan</span></router-link>
               <router-link v-if="isLoggedIn" to="/all_loans"><span class="flex-1 ms-7 whitespace-nowrap">Your Loan</span></router-link>
-              <router-link v-if="userType === 'ADMIN'" to="/admin_home"><span class="flex-1 ms-7 whitespace-nowrap">Admin</span></router-link>
+              <router-link v-if="userType === 'Admin'" to="/admin_home"><span class="flex-1 ms-7 whitespace-nowrap">Admin</span></router-link>
               <router-link v-if="!isLoggedIn" to="/login"><span class="flex-1 ms-7 whitespace-nowrap">Login</span></router-link>
               <router-link v-if="isLoggedIn" @click="logout"  to="/login"><span class="flex-1 ms-7 whitespace-nowrap">Logout</span></router-link>
               <router-link v-if="!isLoggedIn" to="/register"><span class="flex-1 ms-7 whitespace-nowrap">Register</span></router-link>

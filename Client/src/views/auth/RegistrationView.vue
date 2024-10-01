@@ -2,6 +2,7 @@
 import useSignup from "@/composerables/useSignup.js";
 import axios from "axios";
 import {useRouter} from "vue-router";
+import Header from "@/layouts/user/Header.vue";
 
 
 const {user, confirm_password} = useSignup()
@@ -26,8 +27,8 @@ try{
 </script>
 
 <template>
+  <Header/>
   <div class="bg-fuchsia-100 grid grid-cols-1 lg:grid-cols-2 min-h-screen items-center px-6 lg:px-8 shadow-2xl">
-
     <div>
       <img class="rounded-2xl" src="../../../Registering.jpg" alt="">
     </div>

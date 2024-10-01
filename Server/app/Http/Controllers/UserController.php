@@ -33,7 +33,10 @@ class UserController extends Controller
 
     public function update(Request $request, User $user)
     {
-        $user->update($request->validated());
+        $user->update([
+            'national_id' => $request->national_id,
+            'user_type' => $request->user_type
+        ]);
         return new UserResource($user);
     }
 

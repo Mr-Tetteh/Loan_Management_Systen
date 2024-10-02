@@ -21,8 +21,6 @@ export default {
   }
 };
 </script>
-
-
 <template>
   <div>
     <button @click="toggleSidebar"

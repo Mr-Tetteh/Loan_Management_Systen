@@ -162,7 +162,8 @@ function openModal() {
               </Menu>
             </td>
           </tr>
-          <AdminUserDetails v-if="isOpen" :id="(user.id)" :is-open="isOpen" :close-modal="closeModal"/>
+
+          <AdminUserDetails v-if="isOpen"  :id="user.id" :is-open="isOpen" :close-modal="closeModal"/>
 
 
           </tbody>

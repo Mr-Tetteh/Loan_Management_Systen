@@ -13,6 +13,7 @@ import AdminLoanEdit from "@/views/admin/AdminLoanEdit.vue";
 import AdminLoanDetails from "@/views/admin/AdminLoanDetails.vue";
 import AdminUserDetails from "@/views/admin/AdminUserDetails.vue";
 import AdminUserEdit from "@/views/admin/AdminUserEdit.vue";
+import AdminPayLoan from "@/views/admin/AdminPayLoan.vue";
 
 
 const router = createRouter({
@@ -89,6 +90,7 @@ const router = createRouter({
                 roles: ['Admin']
             },
         },
+
         {
             path: '/admin_add_user',
             name: 'admin_add_user',
@@ -130,6 +132,7 @@ const router = createRouter({
                 roles: ['Admin']
             },
         },
+
         {
             path: '/user/:id/detail',
             name: 'user.detail',
@@ -139,6 +142,17 @@ const router = createRouter({
                 requiresAuth: true,
                 roles: ['Admin']
             },
+        },
+
+        {
+            path: '/payment/:id/pay',
+            name: 'payment.payment',
+            component: AdminPayLoan,
+            props: true,
+            meta: {
+                requiresAuth: true,
+                roles: ['Admin']
+            }
         },
 
 

@@ -22,7 +22,11 @@ class StorePaymentsRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'amount_to_pay' => 'required|numeric',
+            'user_id' => 'required|integer|',
+            'loan_id' => 'required|integer|',
+            'date' => 'required|date',
+
         ];
     }
 }

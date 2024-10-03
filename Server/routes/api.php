@@ -35,9 +35,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::delete('loans/{loan}', [LoanController::class, 'destroy']);
     Route::patch('loans/{loan}', [LoanController::class, 'update'])->middleware(Cors::class);
 
-//    Route::patch('pay_loans/{loan}', [LoanController::class, 'payment'])->middleware(Cors::class);
 
-
+Route::post('pay_loans', [\App\Http\Controllers\PaymentsController::class, 'store'])->middleware(Cors::class);
 
 
     //loans

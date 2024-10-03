@@ -17,8 +17,10 @@ class PaymentsResource extends JsonResource
 //        return parent::toArray($request);
         return [
             "id" => $this->id,
-            "loan_id" => $this->loan->loan_id,
+            "user_id" => $this->user->id,
+            "loan_id" => $this->loan->id,
             "amount_to_pay" => $this->amount_to_pay,
+            "date" => $this->date,
             "created_at" => $this->created_at,
         ];
     }

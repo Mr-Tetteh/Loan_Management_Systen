@@ -4,7 +4,7 @@ import router from "@/router/index.js";
 
 
 export default function useLoan() {
-    const loan = ref([])
+    const loan = ref(null)
     const loans = ref([])
     const userloan = ref([])
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePaymentsRequest;
 use App\Http\Requests\UpdatePaymentsRequest;
+use App\Http\Resources\PaymentsResource;
 use App\Models\Payments;
 
 class PaymentsController extends Controller
@@ -29,7 +30,8 @@ class PaymentsController extends Controller
      */
     public function store(StorePaymentsRequest $request)
     {
-        //
+       $payment =  Payments::create($request->all());
+    return new PaymentsResource($payment);
     }
 
     /**

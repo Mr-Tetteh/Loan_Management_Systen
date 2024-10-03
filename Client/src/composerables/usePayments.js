@@ -12,8 +12,8 @@ export default function usePayments(){
             headers: {Authorization: `Bearer ${token}`}
         }
         try{
-            let res = await axios.post('http://127.0.0.1:8000/api/payments', payment, config)
-            await router.push('/all_loans')
+            let res = await axios.post('http://127.0.0.1:8000/api/pay_loans', payment, config)
+            await router.push('/admin_loan')
         }catch (err){
             alert(err.response.data.message)
         }

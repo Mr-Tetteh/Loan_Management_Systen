@@ -14,14 +14,10 @@ const {users, destoryuser, get_users} = useAdminSignup()
 
 onMounted(get_users)
 
-const isOpen = ref(false)
+const isOpen = ref(null)
 
 function closeModal() {
-  isOpen.value = false
-}
-
-function openModal() {
-  isOpen.value = true
+  isOpen.value = null
 }
 
 
@@ -122,7 +118,7 @@ function openModal() {
                         </MenuItem>
                       </router-link>
 
-                      <MenuItem @click="openModal" v-slot="{ active }">
+                      <MenuItem @click="isOpen = user" v-slot="{ active }">
                         <a href="#" class='bg-emerald-200 text-gray-700 block px-4 py-2 text-sm'>
                           <div class="flex ">
                             <div>
@@ -162,14 +158,11 @@ function openModal() {
               </Menu>
             </td>
           </tr>
-
-          <AdminUserDetails v-if="isOpen"  :id="user.id" :is-open="isOpen" :close-modal="closeModal"/>
-
-
           </tbody>
-
         </table>
       </div>
+      <AdminUserDetails v-if="isOpen"  :user="isOpen" :close-modal="closeModal"/>
+
     </div>
   </div>
 

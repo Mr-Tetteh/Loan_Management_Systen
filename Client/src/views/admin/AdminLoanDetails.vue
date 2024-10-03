@@ -16,6 +16,7 @@ const props = defineProps({
     type: Object,
     required: true
   },
+
   closeModal: {
     type: Function,
     required:true

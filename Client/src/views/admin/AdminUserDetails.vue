@@ -11,31 +11,23 @@ import {
 
 
 const props = defineProps({
-  id:{
-    type: Number,
+  user:{
+    type: Object,
     required: true
   },
   closeModal: {
     type: Function,
     required: true
   },
-  isOpen:{
-    type:Boolean,
-    required: true
-  }
-
-
 
 })
-const {user, get_user} = useAdminSignup()
 
-onMounted( () => get_user(props.id))
 </script>
 <template>
   <div class="fixed inset-0 flex items-center justify-center ">
 
   </div>
-  <TransitionRoot appear :show="isOpen" as="template">
+  <TransitionRoot appear :show="!!user" as="template">
     <Dialog as="div" @close="closeModal" class="relative z-10">
       <TransitionChild
           as="template"

@@ -35,7 +35,6 @@ function closeModal(){
             <TableHeader title="Telephone Number"/>
             <TableHeader title="Loan Amount"/>
             <TableHeader title="Created At"/>
-
             <TableHeader title="Actions"/>
           </tr>
           </thead>

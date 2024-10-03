@@ -12,22 +12,16 @@ import {
 
 
 const props = defineProps({
-  id: {
-    type: String,
+  loan: {
+    type: Object,
     required: true
   },
   closeModal: {
     type: Function,
     required:true
   },
-  isOpen: {
-    type: Boolean,
-    required: true
-  }
 })
-const {loan, get_loan_update} = useLoan()
 
-onMounted(() => get_loan_update(props.id))
 </script>
 
 <template>
@@ -40,7 +34,7 @@ onMounted(() => get_loan_update(props.id))
       Open dialog
     </button>
   </div>
-  <TransitionRoot appear :show="isOpen" as="template">
+  <TransitionRoot appear :show="!!loan" as="template">
     <Dialog as="div" @close="closeModal" class="relative z-10">
       <TransitionChild
           as="template"

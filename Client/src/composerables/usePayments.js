@@ -1,0 +1,27 @@
+import {ref} from "vue";
+import axios from "axios";
+import router from "@/router/index.js";
+
+export default function usePayments(){
+    const payments = ref([])
+    const payment = ref([])
+
+    const storepayments = async (payment) => {
+        const token = localStorage.getItem('AUTH_TOKEN')
+        const config = {
+            headers: {Authorization: `Bearer ${token}`}
+        }
+        try{
+            let res = await axios.post('http://127.0.0.1:8000/api/payments', payment, config)
+            await router.push('/all_loans')
+        }catch (err){
+            alert(err.response.data.message)
+        }
+    }
+
+    return{
+        storepayments,
+        payment,
+        payments
+    }
+}

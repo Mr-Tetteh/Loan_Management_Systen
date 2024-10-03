@@ -5,9 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9aea767f-8c38-4fc5-96e9-77c6004700e4" name="Changes" comment="update">
+      <change afterPath="$PROJECT_DIR$/Client/src/composerables/usePayments.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/src/views/admin/AdminLoanPayment.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/views/admin/AdminAddUserView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/views/admin/AdminAddUserView.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/views/admin/AdminUserView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/views/admin/AdminUserView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/composerables/useLoan.js" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/composerables/useLoan.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/views/admin/AdminLoanDetails.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/views/admin/AdminLoanDetails.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/views/admin/AdminLoanView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/views/admin/AdminLoanView.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,8 +25,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
-        <option value="JavaScript File" />
         <option value="Vue Composition API Component" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -216,7 +219,7 @@
       <workItem from="1726740032594" duration="10754000" />
       <workItem from="1727049003410" duration="6730000" />
       <workItem from="1727264790549" duration="159094000" />
-      <workItem from="1727815598188" duration="4055000" />
+      <workItem from="1727815598188" duration="42854000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <option name="closed" value="true" />
@@ -252,8 +255,18 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/Server/routes/api.php</url>
-          <line>32</line>
-          <option name="timeStamp" value="8" />
+          <line>20</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/Server/routes/api.php</url>
+          <line>33</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/Server/app/Http/Controllers/LoanController.php</url>
+          <line>75</line>
+          <option name="timeStamp" value="13" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

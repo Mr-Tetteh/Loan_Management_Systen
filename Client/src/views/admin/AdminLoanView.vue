@@ -14,14 +14,11 @@ const {loans, get_loans, deleteloan} = useLoan()
 
 onMounted(get_loans)
 
-const isOpen = ref(false)
+const isOpen = ref(null)
 function closeModal(){
-  isOpen.value = false
+  isOpen.value = null
 }
 
-function openModal(){
-  isOpen.value = true
-}
 
 </script>
 
@@ -106,7 +103,7 @@ function openModal(){
                         </MenuItem>
                       </router-link>
 
-                        <MenuItem @click="openModal" v-slot="{ active }">
+                        <MenuItem @click="isOpen = loan" v-slot="{ active }">
                           <a href="#" class='bg-emerald-200 text-gray-700 block px-4 py-2 text-sm'>
                             <div class="flex ">
                               <div>
@@ -144,11 +141,11 @@ function openModal(){
                 </transition>
               </Menu>
             </td>
-            <AdminLoanDetails v-if="isOpen"  :id="loan.id"  :is-open="isOpen" :close-modal="closeModal" />
           </tr>
           </tbody>
         </table>
       </div>
+      <AdminLoanDetails v-if="isOpen"  :loan="isOpen"  :close-modal="closeModal" />
 
     </div>
   </div>

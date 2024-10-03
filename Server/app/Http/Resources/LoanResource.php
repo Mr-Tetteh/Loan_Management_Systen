@@ -17,22 +17,21 @@ class LoanResource extends JsonResource
 //        return parent::toArray($request);
         return [
             "id" => $this->id,
-            'user_id' => $this->user->user_id,
-            'first_name' => $this->user->first_name,
-            'last_name' => $this->user->last_name,
-            'other_names' => $this->user->other_names,
-            'email' => $this->user->email,
+            'user_id' => $this->user?->id,
+            'first_name' => $this->user?->first_name,
+            'last_name' => $this->user?->last_name,
+            'other_names' => $this->user?->other_names,
+            'email' => $this->user?->email,
             'amount' => $this->amount,
             'status' => $this->status,
             'purpose' => $this->purpose,
-            'phone' => $this->user->phone,
-            'country' => $this->user->country,
+            'phone' => $this->user?->phone,
+            'country' => $this->user?->country,
             'amount_remaining' => $this->amount_remaining,
             'monthly_payment' => $this->monthly_payment,
-            'salary' => $this->user->salary,
-            'national_id' => $this->user->national_id,
+            'salary' => $this->user?->salary,
+            'national_id' => $this->user?->national_id,
             'created_at' => $this->created_at->format('jS F, Y'),
-
         ];
     }
 }

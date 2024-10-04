@@ -5,30 +5,25 @@ import usePayments from "@/composerables/usePayments.js";
 import {onMounted} from "vue";
 import {ChevronDownIcon} from "@heroicons/vue/20/solid/index.js";
 import TableHeader from "@/components/TableHeader.vue";
+import LoanStatus from "@/components/LoanStatus.vue";
 
 
 const {payments, all_loan_payments} = usePayments()
-
-const props = defineProps({
-  id: {
-    type: Number,
-    required: true,
-  }
-})
-onMounted(() => all_loan_payments(props.id))
+onMounted(all_loan_payments)
 </script>
 
 <template>
+  <Header/>
   <div class="p-4 sm:ml-64">
     <div class="p-4 rounded-lg">
       <div class="mt-6 bg-white clear-end rounded-lg shadow shadow-cyan-600 p-10">
-        {{ props.id }}
         <table class="min-w-full  rounded-3xl shadow divide-y divide-gray-200">
           <thead>
           <tr>
             <TableHeader title="Full Name"/>
             <TableHeader title="Email"/>
             <TableHeader title="Loan Amount"/>
+            <TableHeader title="Loan Status"/>
             <TableHeader title="Monthly Payment"/>
             <TableHeader title="Amount Paid For the month"/>
             <TableHeader title="Amount Remaining"/>
@@ -39,34 +34,37 @@ onMounted(() => all_loan_payments(props.id))
           </tr>
           </thead>
           <tbody class="bg-white divide-y divide-gray-200">
-          <tr>
+          <tr  v-for="(payment) in payments" :key="payment.id">
             <td class="px-6 py-4 whitespace-nowrap flex items-center">
               <div>
                 <div class="text-sm font-medium text-gray-900">
-                  Daniel Nii A
+                  {{ payment.first_name }} {{payment.other_names}} {{payment.last_name}}
                 </div>
               </div>
             </td>
             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-              danielstay73@gmail.com
+              {{ payment.email }}
 
             </td>
             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-              20000
+              {{ payment.amount }}
+            </td>
+            <td class="px-3 py-2 whitespace-nowrap text-right text-sm font-medium">
+              <LoanStatus :status="payment.status"/>
             </td>
             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-              700
-            </td>
-
-            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-              700
-            </td>
-            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-              1000
+              {{ payment.monthly_payment }}
             </td>
 
             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-              20-12-12
+              {{ payment.amount_to_pay }}
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+              {{ payment.amount - payment.amount_to_pay }}
+            </td>
+
+            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+              {{payment.date}}
             </td>
 
             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">

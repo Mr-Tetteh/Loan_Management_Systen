@@ -19,12 +19,12 @@ export default function usePayments() {
         }
     }
 
-    const all_loan_payments = async (id) => {
+    const all_loan_payments = async () => {
         const token = localStorage.getItem('AUTH_TOKEN')
         const config = {
             headers: {Authorization: `Bearer ${token}`}
         }
-        let res = await axios.get(`http://127.0.0.1:8000/api/loan_payments${id}`, config)
+        let res = await axios.get(`http://127.0.0.1:8000/api/loan_payments`, config)
         payments.value = res.data.data
 
     }

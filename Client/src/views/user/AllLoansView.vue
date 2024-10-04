@@ -47,7 +47,7 @@ onMounted(get_loan)
           <p>{{ loan.purpose }}</p>
         </td>
         <td class="px-3 py-2 whitespace-nowrap text-right text-sm font-medium">
-          <p><router-link :to="{name: 'user_loan.details',  params: {id: loan.id}}">
+          <p><router-link :to="{name: 'user_loan.details'}">
             <span class="bg-emerald-200 p-2 rounded">View loan Details</span>
           </router-link></p>
         </td>
@@ -58,10 +58,6 @@ onMounted(get_loan)
       </tbody>
     </table>
   </div>
-  <!--    </div>-->
-  <!--  </div>-->
-
-  <!--    </div>-->
 
 
 

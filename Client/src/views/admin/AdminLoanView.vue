@@ -11,7 +11,6 @@ import axios from "axios";
 import Header from "@/layouts/admin/Header.vue";
 
 const {loans, get_loans, deleteloan} = useLoan()
-
 onMounted(get_loans)
 
 const isOpen = ref(null)

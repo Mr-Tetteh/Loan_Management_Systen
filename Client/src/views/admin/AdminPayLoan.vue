@@ -34,7 +34,6 @@ const pay = async (loan) =>{
   <div class="p-4 sm:ml-64">
     <div class="p-4 rounded-lg">
       <div class="mt-6 bg-white clear-end rounded-lg shadow shadow-cyan-600 p-10">
-{{props}}
         <form v-if="loan" @submit.prevent="pay(loan)">
           <div class="space-y-12">
             <h2 class="justify-center text-3xl px-96">Monthly Deductions</h2>

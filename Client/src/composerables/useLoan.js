@@ -14,7 +14,7 @@ export default function useLoan() {
         const config = {
             headers: {Authorization: `Bearer ${token}`}
         }
-        let res = await axios.get('http://127.0.0.1:8000/api/amdin_all_loans', config)
+        let res = await axios.get('http://127.0.0.1:8000/api/admin_all_loans', config)
         loans.value = res.data.data
     }
 

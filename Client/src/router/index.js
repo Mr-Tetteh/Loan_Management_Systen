@@ -60,7 +60,7 @@ const router = createRouter({
 
         },
         {
-            path: '/user_loan/:id/detail',
+            path: '/user_loan',
             name: 'user_loan.details',
             component: LoanDetails,
             meta: {

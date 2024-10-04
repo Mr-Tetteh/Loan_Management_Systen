@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -28,8 +29,8 @@ class PaymentsResource extends JsonResource
             "monthly_payment" => $this->loan->monthly_payment,
             "loan_id" => $this->loan->id,
             "amount_to_pay" => $this->amount_to_pay,
-            "date" => $this->date,
-            "created_at" => $this->created_at->format('jS F, Y'),
+            "date" => Carbon::make($this->date)->format('jS F Y'),
+            "created_at" => $this->created_at,
         ];
     }
 }

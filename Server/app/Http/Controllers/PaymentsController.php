@@ -33,8 +33,8 @@ class PaymentsController extends Controller
      */
     public function store(StorePaymentsRequest $request)
     {
-       $payment =  Payments::create($request->all());
-    return new PaymentsResource($payment);
+        $payment = Payments::create($request->all());
+        return new PaymentsResource($payment);
     }
 
     /**

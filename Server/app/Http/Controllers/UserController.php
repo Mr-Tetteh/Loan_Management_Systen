@@ -62,7 +62,7 @@ class UserController extends Controller
         ) {
             return response()->json([
                 "message" => "User already exists!",
-            ],  422);
+            ], 422);
         }
 
         $user = \App\Models\User::create([
@@ -85,6 +85,13 @@ class UserController extends Controller
 
     public function admin_register(Request $request)
     {
+        if (User::all()->where('email', $request->email)->first()
+        ) {
+            return response()->json([
+                "message" => "User already exists!",
+            ], 422);
+        }
+
         $user = \App\Models\User::create([
             'first_name' => $request->input('first_name'),
             'last_name' => $request->input('last_name'),
@@ -100,11 +107,11 @@ class UserController extends Controller
             'nationality' => $request->input('nationality')
         ]);
         return new UserResource($user);
-
     }
 
 
-    public function login(Request $request)
+    public
+    function login(Request $request)
     {
 //        DB::beginTransaction();
         try {
@@ -149,13 +156,15 @@ class UserController extends Controller
     }
 
 
-    public function user()
+    public
+    function user()
     {
         return Auth::user();
     }
 
 
-    public function logout()
+    public
+    function logout()
     {
         Auth::user()->currentAccessToken()->delete();
         return response()->json([
@@ -163,7 +172,8 @@ class UserController extends Controller
         ]);
     }
 
-    public function destroy(User $user)
+    public
+    function destroy(User $user)
     {
         $user->delete();
 

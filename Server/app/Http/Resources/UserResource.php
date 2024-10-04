@@ -28,7 +28,7 @@ class UserResource extends JsonResource
             'salary' => $this->salary,
             'nationality' => $this->nationality,
             'national_id' => $this->national_id,
-            'created_at' => $this->created_at->format('Y-m-d H:i:s'),
+            'created_at' => $this->created_at->format('jS F Y'),
 
         ];
     }

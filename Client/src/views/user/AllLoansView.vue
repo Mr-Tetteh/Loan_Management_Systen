@@ -28,6 +28,7 @@ onMounted(get_loan)
         <th class="px-3 py-2 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Amount Remaining</th>
         <th class="px-3 py-2 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
         <th class="px-3 py-2 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Purpose of Loan</th>
+        <th class="px-3 py-2 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Loan Details </th>
         <th class="px-3 py-2 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Created AT</th>
       </tr>
       </thead>
@@ -44,6 +45,11 @@ onMounted(get_loan)
         </td>
         <td class="px-3 py-2 whitespace-nowrap text-right text-sm font-medium">
           <p>{{ loan.purpose }}</p>
+        </td>
+        <td class="px-3 py-2 whitespace-nowrap text-right text-sm font-medium">
+          <p><router-link :to="{name: 'user_loan.details',  params: {id: loan.id}}">
+            <span class="bg-emerald-200 p-2 rounded">View loan Details</span>
+          </router-link></p>
         </td>
         <td class="px-3 py-2 whitespace-nowrap text-right text-sm font-medium">
           {{ loan.created_at }}

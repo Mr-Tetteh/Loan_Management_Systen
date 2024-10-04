@@ -60,9 +60,9 @@ class LoanController extends Controller
 
         $user = Auth::user();
 //        if (Loan::where('user_id', $user)->where('is_paid', false )->first()) {
-//        if (Loan::where('user_id', $user->id)->first()) {
-//            return response()->json(['message' => 'Please Pay your previous Loan to make you eligible for a new loan.'], 400);
-         if ($request->monthly_payment < 500) {
+        if (Loan::where('user_id', $user->id)->first()) {
+            return response()->json(['message' => 'Please Pay your previous Loan to make you eligible for a new loan.'], 400);
+         }else if ($request->monthly_payment < 500) {
             return response()->json(['message' => 'Minimum payment for a month is GHC 500.'], 400);
         } elseif ($request->monthly_payment > $request->amount) {
             return response()->json(['message' => 'Monthly payment can not be greater than loan amount'], 400);

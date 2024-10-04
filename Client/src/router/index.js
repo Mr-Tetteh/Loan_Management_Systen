@@ -14,6 +14,7 @@ import AdminLoanDetails from "@/views/admin/AdminLoanDetails.vue";
 import AdminUserDetails from "@/views/admin/AdminUserDetails.vue";
 import AdminUserEdit from "@/views/admin/AdminUserEdit.vue";
 import AdminPayLoan from "@/views/admin/AdminPayLoan.vue";
+import LoanDetails from "@/views/user/LoanDetails.vue";
 
 
 const router = createRouter({
@@ -55,10 +56,18 @@ const router = createRouter({
             component: AllLoansView,
             meta: {
                 requiresAuth: true,
-
             },
-        },
 
+        },
+        {
+            path: '/user_loan/:id/detail',
+            name: 'user_loan.details',
+            component: LoanDetails,
+            meta: {
+                requiresAuth: true,
+            },
+
+        },
 
 
 // Admin paths

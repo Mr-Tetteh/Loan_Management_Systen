@@ -6,6 +6,7 @@ use App\Http\Requests\StorePaymentsRequest;
 use App\Http\Requests\UpdatePaymentsRequest;
 use App\Http\Resources\PaymentsResource;
 use App\Models\Payments;
+use Illuminate\Support\Facades\Auth;
 
 class PaymentsController extends Controller
 {
@@ -14,7 +15,8 @@ class PaymentsController extends Controller
      */
     public function index()
     {
-        //
+//        return PaymentsResource::collection(Payments::where('loan_id', Auth::user()->loan_id )->get());
+
     }
 
     /**
@@ -39,7 +41,7 @@ class PaymentsController extends Controller
      */
     public function show(Payments $payments)
     {
-        //
+        return new PaymentsResource($payments);
     }
 
     /**

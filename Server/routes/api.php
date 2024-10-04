@@ -36,6 +36,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::patch('loans/{loan}', [LoanController::class, 'update'])->middleware(Cors::class);
 
 
+Route::get('loan_payments{payment}', [\App\Http\Controllers\PaymentsController::class, 'show' ]);
 Route::post('pay_loans', [\App\Http\Controllers\PaymentsController::class, 'store'])->middleware(Cors::class);
 
 

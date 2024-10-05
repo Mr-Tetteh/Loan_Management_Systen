@@ -23,6 +23,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('users/{user}', [UserController::class, 'show']);
     Route::patch('users/{user}', [UserController::class, 'update']);
     Route::get('users', [UserController::class, 'user']);
+    Route::get('deleted', [UserController::class, 'deleted_users']);
 
 
 
@@ -36,7 +37,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::patch('loans/{loan}', [LoanController::class, 'update'])->middleware(Cors::class);
 
 
-Route::get('loan_payments', [\App\Http\Controllers\PaymentsController::class, 'index' ]);
+
+    Route::get('loan_payments', [\App\Http\Controllers\PaymentsController::class, 'index' ]);
 Route::post('pay_loans', [\App\Http\Controllers\PaymentsController::class, 'store'])->middleware(Cors::class);
 
 

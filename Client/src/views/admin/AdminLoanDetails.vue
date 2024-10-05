@@ -104,20 +104,18 @@ const props = defineProps({
                       <th class="p-5 text-left">Amount Remaining: </th>
                       <td class="p-5">GHC {{ loan.amount - loan.amount_remaining }}</td>
                       <th class="p-5 text-left">Purpose : </th>
-                      <td class="p-5">GHC {{ loan.purpose }}</td>
+                      <td colspan="3" class="p-5"> {{ loan.purpose }}</td>
                       <th class="p-5 text-left">Loan Status : </th>
-                      <td class="p-5">GHC {{ loan.status }}</td>
+                      <td class="p-5"> {{ loan.status }}</td>
                     </tr>
 
                     <tr>
                       <th class="p-5 text-left">National ID: </th>
-                      <td class="p-5">{{loan.national_id}}</td>
-                      <th class="p-5 text-left">User Type: </th>
-                      <td class="p-5">{{ loan.user_type}}</td>
+                      <td colspan="2" class="p-5">{{loan.national_id}}</td>
                       <th class="p-5 text-left">Nationality: </th>
                       <td class="p-5">{{ loan.nationality }}</td>
                       <th class="p-5 text-left">Date: </th>
-                      <td class="p-5">{{loan.created_at}}</td>
+                      <td colspan="2" class="p-5">{{loan.created_at}}</td>
                     </tr>
                   </table>
                 </p>

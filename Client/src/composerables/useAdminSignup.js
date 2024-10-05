@@ -28,6 +28,15 @@ export default function useSignup() {
         let res = await axios.get('http://127.0.0.1:8000/api/Admin_all_users', config)
         users.value = res.data.data
     }
+
+    const get_deleted_users = async () => {
+        const token = localStorage.getItem('AUTH_TOKEN')
+        const config = {
+            headers : {Authorization: `Bearer ${token}`}
+        }
+        let res = await axios.get('http://127.0.0.1:8000/api/deleted', config)
+        users.value = res.data.data
+    }
     const update_user = async (id) => {
         const token = localStorage.getItem('AUTH_TOKEN')
         const config = {
@@ -46,7 +55,7 @@ export default function useSignup() {
         const config = {
             headers : {Authorization: `Bearer ${token}`}
         }
-        let res = await axios.get(`http://127.0.0.1:8000/api/users/${id}`,   config)
+        let res = await axios.get(`http://127.0.0.1:8000/api/users/${id}`, config)
         user.value = res.data.data
     }
 
@@ -93,6 +102,7 @@ export default function useSignup() {
         get_user,
         destoryuser,
         update_user,
+        get_deleted_users,
         users,
         get_users,
         auth_user,

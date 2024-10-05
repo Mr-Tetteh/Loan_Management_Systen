@@ -77,20 +77,22 @@ const props = defineProps({
                       <td class="p-5" colspan="2">{{user.email}}</td>
                       <th class="p-5 text-left">Phone: </th>
                       <td class="p-5" colspan="2">{{ user.phone }}</td>
-                    </tr>
-
-                    <tr>
                       <th class="p-5 text-left">Country: </th>
                       <td class="p-5">{{ user.country }}</td>
-                      <th class="p-5 text-left">Salary: </th>
-                      <td class="p-5">GHC {{ user.salary }}</td>
                     </tr>
 
                     <tr>
+
+                      <th class="p-5 text-left">Salary: </th>
+                      <td class="p-5">GHC {{ user.salary }}</td>
                       <th class="p-5 text-left">National ID: </th>
-                      <td class="p-5">{{user.national_id}}</td>
+                      <td colspan="3" class="p-5">{{user.national_id}}</td>
                       <th class="p-5 text-left">User Type: </th>
                       <td class="p-5">{{ user.user_type}}</td>
+                    </tr>
+
+                    <tr>
+
                       <th class="p-5 text-left">Nationality: </th>
                       <td class="p-5">{{ user.nationality }}</td>
                       <th class="p-5 text-left">Date Joined: </th>

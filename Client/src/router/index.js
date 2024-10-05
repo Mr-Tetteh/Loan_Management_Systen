@@ -15,6 +15,7 @@ import AdminUserDetails from "@/views/admin/AdminUserDetails.vue";
 import AdminUserEdit from "@/views/admin/AdminUserEdit.vue";
 import AdminPayLoan from "@/views/admin/AdminPayLoan.vue";
 import LoanDetails from "@/views/user/LoanDetails.vue";
+import AdminDeletedUsers from "@/views/admin/AdminDeletedUsers.vue";
 
 
 const router = createRouter({
@@ -129,7 +130,9 @@ const router = createRouter({
                 requiresAuth: true,
                 roles: ['Admin']
             },
+
         },
+
 
         {
             path: '/loan/:id/detail',
@@ -158,6 +161,16 @@ const router = createRouter({
             name: 'payment.payment',
             component: AdminPayLoan,
             props: true,
+            meta: {
+                requiresAuth: true,
+                roles: ['Admin']
+            }
+        },
+
+        {
+            path: '/deleted_users',
+            name: 'deleted.users',
+            component: AdminDeletedUsers,
             meta: {
                 requiresAuth: true,
                 roles: ['Admin']

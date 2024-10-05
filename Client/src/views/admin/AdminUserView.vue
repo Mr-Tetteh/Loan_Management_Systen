@@ -39,8 +39,17 @@ function closeModal() {
       <div class="mt-6 bg-white clear-end rounded-lg">
         <router-link to="admin_add_user">
           <button
-              class="bg-purple-600 text-white rounded hover:bg-purple-700 sm: m-5">
+              class="bg-purple-600 text-white rounded hover:bg-purple-700 sm: m-5 p-3">
             Add User
+          </button>
+        </router-link>
+
+
+
+        <router-link to="deleted_users">
+          <button
+              class="bg-cyan-500 text-white rounded hover:bg-purple-700 sm: m-5 float-end p-3">
+           All Deleted Users
           </button>
         </router-link>
         <table class="min-w-full  rounded-3xl shadow divide-y divide-gray-200">
@@ -77,7 +86,7 @@ function closeModal() {
             </td>
 
             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-              20-12-12
+              {{user.created_at}}
             </td>
 
 

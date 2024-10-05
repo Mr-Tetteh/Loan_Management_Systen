@@ -11,17 +11,17 @@ const router = useRouter()
 
 const register = async () => {
 
-try{
-  if (confirm_password.value !== user.value.password) {
-    alert("Passwords do not match")
-    return
-  }
+  try {
+    if (confirm_password.value !== user.value.password) {
+      alert("Passwords do not match")
+      return
+    }
 
-  let response = await axios.post('http://127.0.0.1:8000/api/register', user.value)
-  await router.push('/login')
-} catch (err) {
-  alert(err.response.data.message)
-}
+    let response = await axios.post('http://127.0.0.1:8000/api/register', user.value)
+    await router.push('/login')
+  } catch (err) {
+    alert(err.response.data.message)
+  }
 
 }
 </script>

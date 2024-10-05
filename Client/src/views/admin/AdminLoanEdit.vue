@@ -1,11 +1,8 @@
 <script setup>
 import useLoan from "@/composerables/useLoan.js";
-
-const {loan, get_loan_update, updateloan} = useLoan()
-
-
 import {onMounted} from 'vue'
 
+const {loan, get_loan_update, updateloan} = useLoan()
 
 
 const props = defineProps({
@@ -15,11 +12,11 @@ const props = defineProps({
   }
 })
 
-onMounted(() => get_loan_update(props.id))
-
 const editloan =  async () => {
   await updateloan(props.id)
 }
+
+onMounted(() => get_loan_update(props.id))
 
 </script>
 
@@ -34,13 +31,14 @@ const editloan =  async () => {
             <h2 class="justify-center text-3xl px-96">Edit Loan & Monthly Deductions</h2>
 
             <div class="border-b border-gray-900/10 pb-12">
-
               <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                 <div class="sm:col-span-3">
                   <label for="first-name" class="block text-sm font-medium leading-6 text-gray-900">First name</label>
                   <div class="mt-2">
-                    <input  v-model="loan.first_name" type="text" name="first-name" id="first-name" autocomplete="given-name"
-                           class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" disabled/>
+                    <input v-model="loan.first_name" type="text" name="first-name" id="first-name"
+                           autocomplete="given-name"
+                           class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                           disabled/>
                   </div>
                 </div>
 

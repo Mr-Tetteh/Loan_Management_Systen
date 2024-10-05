@@ -22,6 +22,12 @@ class UserController extends Controller
     }
 
 
+    public function deleted_users()
+    {
+        return UserResource::collection(User::onlyTrashed()->latest()->get());
+    }
+
+
     /**
      * Show the form for creating a new resource.
      */

@@ -16,6 +16,8 @@ onMounted(all_loan_payments)
   <Header/>
   <div class="p-4 sm:ml-64">
     <div class="p-4 rounded-lg">
+      <p class="text-3xl text-center">Here is a list of all your loan payments</p>
+
       <div class="mt-6 bg-white clear-end rounded-lg shadow shadow-cyan-600 p-10">
         <table class="min-w-full  rounded-3xl shadow divide-y divide-gray-200">
           <thead>
@@ -60,7 +62,7 @@ onMounted(all_loan_payments)
               {{ payment.amount_to_pay }}
             </td>
             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-              {{ payment.amount - payment.amount_to_pay }}
+              {{ payment.amount + payment.amount_to_pay }}
             </td>
 
             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">

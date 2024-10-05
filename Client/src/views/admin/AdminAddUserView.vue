@@ -7,18 +7,25 @@ import {useRouter} from "vue-router";
 const {admin, confirm_password} = useAdminSignup()
 const router = useRouter()
 const register = async () => {
-  const token = localStorage.getItem('AUTH_TOKEN')
-  const config = {
-    headers: {Authorization: `Bearer ${token}`}
-  }
+  try {
+    if (confirm_password.value !== admin.value.password) {
+      return alert("Passwords do not match")
 
-  if (confirm_password.value !== admin.value.password) {
-    alert("Passwords do not match")
-    return
+    }
+
+    const token = localStorage.getItem('AUTH_TOKEN')
+    const config = {
+      headers: {Authorization: `Bearer ${token}`}
+    }
+    let response = await axios.post('http://127.0.0.1:8000/api/admin_register', admin.value, config)
+    await router.push('/admin_user')
+  } catch (err) {
+    alert(err.response.data.message)
   }
-  const response = await axios.post('http://127.0.0.1:8000/api/admin_register', admin.value, config)
-  await router.push('/admin_user')
 }
+//   const response = await axios.post('http://127.0.0.1:8000/api/admin_register', admin.value, config)
+//   await router.push('/admin_user')
+// }
 </script>
 
 <template>

@@ -24,6 +24,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::patch('users/{user}', [UserController::class, 'update']);
     Route::get('users', [UserController::class, 'user']);
     Route::get('deleted', [UserController::class, 'deleted_users']);
+    Route::get('restore/{user}', [UserController::class, 'restore']);
+
 
 
 

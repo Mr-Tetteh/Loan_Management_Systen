@@ -26,6 +26,13 @@ class UserController extends Controller
     {
         return UserResource::collection(User::onlyTrashed()->latest()->get());
     }
+    public function restore($id)
+    {
+        $user = User::onlyTrashed()->findOrFail($id);
+        $user->restore();
+
+        return response()->json(['message' => 'User restored successfully.']);
+    }
 
 
     /**
@@ -178,8 +185,7 @@ class UserController extends Controller
         ]);
     }
 
-    public
-    function destroy(User $user)
+    public function destroy(User $user)
     {
         $user->delete();
 

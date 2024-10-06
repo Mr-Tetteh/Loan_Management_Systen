@@ -68,6 +68,15 @@ export default function useSignup() {
         user.value  = res.data.data
 
     }
+    const restoreuser = async (id) =>{
+        const token = localStorage.getItem('AUTH_TOKEN')
+        const config = {
+            headers: {Authorization: `Bearer ${token}`}
+        }
+        await axios.get(`http://127.0.0.1:8000/api/restore/${id}`, config)
+        users.value.splice(users.value.indexOf(id), 1)
+
+    }
 
 
     const logout = async () =>{
@@ -84,6 +93,9 @@ export default function useSignup() {
 
     }
 
+
+
+
     const confirm_password = ref('')
 
     const destoryuser = async (id) =>{
@@ -95,6 +107,8 @@ export default function useSignup() {
         users.value.splice(users.value.indexOf(id), 1)
 
     }
+
+
     return {
         admin,
         confirm_password,
@@ -103,6 +117,7 @@ export default function useSignup() {
         destoryuser,
         update_user,
         get_deleted_users,
+        restoreuser,
         users,
         get_users,
         auth_user,

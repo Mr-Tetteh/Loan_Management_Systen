@@ -5,6 +5,7 @@ import router from "@/router/index.js";
 export default function useSignup() {
     const user = ref ([]);
     const users = ref([]);
+    const number = ref(0)
 
     const admin = ref({
         first_name: "",
@@ -29,6 +30,18 @@ export default function useSignup() {
         users.value = res.data.data
     }
 
+    const number_of_users = async () => {
+        const token = localStorage.getItem('AUTH_TOKEN');
+        const config = {
+            headers: { Authorization: `Bearer ${token}` }
+        };
+        try {
+            let res = await axios.get('http://127.0.0.1:8000/api/total', config);
+            number.value = res.data.total;
+        } catch (error) {
+            console.error("Error fetching total number of users:", error);
+        }
+    };
     const get_deleted_users = async () => {
         const token = localStorage.getItem('AUTH_TOKEN')
         const config = {
@@ -118,9 +131,11 @@ export default function useSignup() {
         update_user,
         get_deleted_users,
         restoreuser,
+        number_of_users,
         users,
         get_users,
         auth_user,
-        logout
+        logout,
+        number
     }
 }

@@ -27,6 +27,16 @@ class LoanController extends Controller
         return LoanResource::collection(Loan::where('user_id', auth()->id())->get());
     }
 
+
+    public function pendingLoans(){
+        $totalPendingLoans = Loan::where('status', 'pending')->count();
+        return response()->json(['total' => $totalPendingLoans]);
+    }
+
+    public function approvedLoans(){
+        $totalApprovedLoans = Loan::where('status', 'approved')->count();
+        return response()->json(['total' => $totalApprovedLoans]);    }
+
     public function loanss(Loan $loan)
     {
         return LoanResource::collection(Loan::with('user')->get());

@@ -7,6 +7,8 @@ export default function useLoan() {
     const loan = ref(null)
     const loans = ref([])
     const userloan = ref([])
+    const number_of_approve = ref(0)
+    const number_of_pending = ref(0)
 
 
     const get_loans = async () => {
@@ -17,6 +19,33 @@ export default function useLoan() {
         let res = await axios.get('http://127.0.0.1:8000/api/admin_all_loans', config)
         loans.value = res.data.data
     }
+
+    const numb_of_approve_loans = async () => {
+        const token = localStorage.getItem('AUTH_TOKEN');
+        const config = {
+            headers: { Authorization: `Bearer ${token}` }
+        };
+        try {
+            let res = await axios.get('http://127.0.0.1:8000/api/approved', config);
+            number_of_approve.value = res.data.total;
+        } catch (error) {
+            console.error("Error fetching total number of users:", error);
+        }
+    };
+
+
+    const numb_of_pending_loans = async () => {
+        const token = localStorage.getItem('AUTH_TOKEN');
+        const config = {
+            headers: { Authorization: `Bearer ${token}` }
+        };
+        try {
+            let res = await axios.get('http://127.0.0.1:8000/api/pending', config);
+            number_of_pending.value = res.data.total;
+        } catch (error) {
+            console.error("Error fetching total number of users:", error);
+        }
+    };
 
     const get_loan = async () => {
         const token = localStorage.getItem('AUTH_TOKEN')
@@ -111,7 +140,13 @@ export default function useLoan() {
         updateloan,
         get_loan_update,
         payloan,
-        deleteloan
+        deleteloan,
+
+        number_of_approve,
+        numb_of_approve_loans,
+
+        number_of_pending,
+        numb_of_pending_loans,
 
     }
 }

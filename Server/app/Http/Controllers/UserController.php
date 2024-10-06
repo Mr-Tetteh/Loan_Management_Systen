@@ -20,7 +20,10 @@ class UserController extends Controller
     {
         return UserResource::collection(User::all());
     }
-
+    public function total_number_of_users()
+    {
+        return response()->json(['total' => User::count()]);
+    }
 
     public function deleted_users()
     {

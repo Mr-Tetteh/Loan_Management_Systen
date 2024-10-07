@@ -6,10 +6,14 @@ import {onMounted} from "vue";
 import {ChevronDownIcon} from "@heroicons/vue/20/solid/index.js";
 import TableHeader from "@/components/TableHeader.vue";
 import LoanStatus from "@/components/LoanStatus.vue";
+import router from "@/router/index.js";
 
 
 const {payments, all_loan_payments} = usePayments()
 onMounted(all_loan_payments)
+
+
+
 </script>
 
 <template>
@@ -70,7 +74,9 @@ onMounted(all_loan_payments)
             </td>
 
             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-              Actions
+              <router-link :to="{name: 'loan.invoice', params:{id: payment.id}}">
+                <p class="rounded-2xl bg-blue-500 p-2">Detail </p>
+              </router-link>
             </td>
 
 

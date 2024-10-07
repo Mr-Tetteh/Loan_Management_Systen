@@ -16,6 +16,7 @@ const login = async () => {
   localStorage.setItem("AUTH_TOKEN", token)
   localStorage.setItem("USER_ROLE", response.data.user.user_type)
   localStorage.setItem("USER_NAME", response.data.user.first_name)
+  localStorage.setItem("USER_ID", response.data.user.id)
   await router.push('/loan')
 }
 

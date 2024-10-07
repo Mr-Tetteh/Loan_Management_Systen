@@ -29,9 +29,20 @@ export default function usePayments() {
 
     }
 
+    const get_payment = async (id) => {
+        const token = localStorage.getItem('AUTH_TOKEN')
+        const config = {
+            headers: {Authorization: `Bearer ${token}`}
+        }
+        let res = await axios.get(`http://127.0.0.1:8000/api/payments/${id}`, config)
+        payment.value = res.data.data
+
+    }
+
     return {
         storepayments,
         all_loan_payments,
+        get_payment,
         payment,
         payments
     }

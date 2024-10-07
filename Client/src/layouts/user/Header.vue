@@ -5,11 +5,13 @@ import {Bars3Icon, BellIcon, XMarkIcon} from '@heroicons/vue/24/outline'
 import {useRouter} from "vue-router";
 import useSession from "@/composerables/useSession.js";
 import useAdminSignup from "@/composerables/useAdminSignup.js"
-const {userType, isLoggedIn, username} = useSession()
+const {userType, isLoggedIn, username, id} = useSession()
 const {logout} = useAdminSignup()
 
 </script>
 <script>
+import router from "@/router/index.js";
+
 export default {
   data() {
     return {
@@ -30,6 +32,9 @@ export default {
   },
 };
 
+const onShow = (id) =>{
+  router.push('./user_profile/'+id)
+}
 </script>
 
 <template>
@@ -116,6 +121,18 @@ export default {
           </li>
 
           <li>
+<!--            <router-link :to="{name: 'user.profile', params: {id: {id} }}"  v-if="isLoggedIn">-->
+              <a href="#" @click="onShow(id)" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                </svg>
+
+                <span class="flex-1 ms-3 whitespace-nowrap">Profile</span>
+              </a>
+<!--            </router-link>-->
+          </li>
+
+          <li>
             <router-link to="register" v-if="!isLoggedIn">
               <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
@@ -137,7 +154,7 @@ export default {
 
         <div class="mt-5 sm:mt-40 md:mt-32 lg:mt-32 py-16 sm:py-24 md:py-32 lg:py-40">
           <h3 class="text-white" v-if="username">Name:</h3>
-          <span class="text-white">{{ username }}</span>
+          <span class="text-white"> {{id}} {{ username }}</span>
         </div>
       </div>
     </aside>

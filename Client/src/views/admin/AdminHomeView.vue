@@ -4,52 +4,56 @@ import Header from "@/layouts/admin/Header.vue";
 import useAdminSignup from "@/composerables/useAdminSignup.js";
 import {onMounted} from "vue";
 import useLoan from "@/composerables/useLoan.js";
-
+import {watch} from "vue";
 
 const {user, number, number_of_users} = useAdminSignup();
 const {number_of_pending, number_of_approve, numb_of_pending_loans, numb_of_approve_loans,} = useLoan()
 
 onMounted(number_of_users(), numb_of_pending_loans(), numb_of_approve_loans())
 
+const name = 'GooglePieChart'
+
+const loadGoogleCharts = () => {
+  const script = document.createElement('script');
+  script.src = 'https://www.gstatic.com/charts/loader.js';
+  script.onload = () => {
+    google.charts.load('current', {packages: ['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+  };
+  document.body.appendChild(script);
+
+}
+
+const drawChart = () => {
+  const data = google.visualization.arrayToDataTable([
+    ['Task', 'Hours per Day'],
+    ['Total Number Of Users', number.value],
+    ['Total Number of approved', number_of_approve.value],
+    ['Total Number of approved', number_of_pending.value]
+  ])
+
+  const options = {
+    title: 'Graphical Representation',
+    width: 900,
+    height: 500,
+  };
+
+  const chart = new google.visualization.PieChart(document.getElementById('piechart'));
+  chart.draw(data, options);
+
+}
+
+
+watch([number,number_of_pending,number_of_approve], async () => {
+  console.log(number.value)
+  if (number.value && number_of_approve.value && number_of_pending.value){
+    loadGoogleCharts()
+  }
+})
+
 </script>
 
-<script>
-export default {
-  name: 'GooglePieChart',
-  mounted() {
-    this.loadGoogleCharts();
-  },
-  methods: {
-    loadGoogleCharts() {
-      const script = document.createElement('script');
-      script.src = 'https://www.gstatic.com/charts/loader.js';
-      script.onload = () => {
-        google.charts.load('current', {packages: ['corechart']});
-        google.charts.setOnLoadCallback(this.drawChart);
-      };
-      document.body.appendChild(script);
-    },
-    drawChart() {
-      const data = google.visualization.arrayToDataTable([
-        ['Task', 'Hours per Day'],
-        ['Total Number Of pending Loans', 4],
-        ['Total Number of approved', 5],
-        ['Total Number of approved', 6]
-      ])
 
-
-      const options = {
-        title: 'Graphical Representation',
-        width: 900,
-        height: 500,
-      };
-
-      const chart = new google.visualization.PieChart(document.getElementById('piechart'));
-      chart.draw(data, options);
-    },
-  },
-};
-</script>
 
 
 <template>

@@ -66,7 +66,7 @@ onMounted(all_loan_payments)
               {{ payment.amount_to_pay }}
             </td>
             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-              {{ payment.amount + payment.amount_to_pay }}
+              {{ Number(payment.amount) - Number(payment.amount_to_pay) }}
             </td>
 
             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">

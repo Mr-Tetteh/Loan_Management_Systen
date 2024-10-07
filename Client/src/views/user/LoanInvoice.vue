@@ -95,7 +95,7 @@ const print = () =>{
         <p>Buy ipad</p>
         <p>20000</p>
         <p>GHC 700</p>
-        <p>GHC 4000</p>
+        <p>GHC {{ payment.amount_to_pay }}</p>
         <p>0244544661</p>
         <p>20-3-24</p>
       </div>

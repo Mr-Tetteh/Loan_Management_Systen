@@ -40,10 +40,12 @@ class PaymentsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Payments $payments)
+    public function show(Payments $payment)
     {
-        return new PaymentsResource($payments);
+        return new PaymentsResource($payment);
     }
+
+
 
     /**
      * Show the form for editing the specified resource.

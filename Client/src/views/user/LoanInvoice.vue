@@ -2,6 +2,7 @@
 import {onMounted, ref} from "vue";
 import usePayments from "@/composerables/usePayments.js";
 import router from "@/router/index.js";
+import {timestamp} from "@antfu/utils";
 
 const {payment, get_payment} = usePayments()
 const props =  defineProps({
@@ -16,6 +17,9 @@ const print = () =>{
   window.print()
   router.push('/user_loan').catch(() => {})
 }
+
+const currentDateTime = ref(new Date().toLocaleString())
+
 </script>
 
 <template>
@@ -25,12 +29,11 @@ const print = () =>{
     <div class="flex justify-between items-center mb-4 bg-blue-100 p-4 rounded-lg">
       <h2 class="text-2xl font-semibold text-blue-800">Invoice</h2>
     </div>
-{{props}}
+
     <!-- Invoice Info Section -->
     <div class="flex justify-between items-center border-b pb-4 mb-4 bg-blue-50 p-4 rounded-lg">
       <div>
-        <h1 class="text-xl font-bold text-blue-700 mr-2">#1043</h1>
-        <p class="text-gray-600">July 17, 2020 at 3:28 am</p>
+        <p class="text-gray-600">{{currentDateTime}}</p>
       </div>
       <ul class="flex space-x-4">
         <li>
@@ -50,28 +53,10 @@ const print = () =>{
     </div>
 
     <!-- Invoice Details -->
-    <div class="flex justify-between border-b pb-4 mb-4 bg-blue-50 p-4 rounded-lg">
+    <div class="flex justify-center border-b pb-4 mb-4 bg-blue-50 p-4 rounded-lg">
       <div>
         <h2 class="text-xl font-semibold text-blue-700">Invoice To:</h2>
-        <p class="text-gray-600">{{payment.first_name}}</p>
-      </div>
-      <div class="space-y-2 text-blue-700">
-        <div class="flex justify-between items-center">
-          <p>Invoice#</p>
-          <span class="font-bold">#1200</span>
-        </div>
-        <div class="flex justify-between items-center">
-          <p>Date</p>
-          <span>12/12/2022</span>
-        </div>
-        <div class="flex justify-between items-center">
-          <p>Due Date</p>
-          <span>12/12/2022</span>
-        </div>
-        <div class="flex justify-between items-center">
-          <p>Reference</p>
-          <span>1045</span>
-        </div>
+        <p class="text-gray-600">{{payment.first_name}} {{payment.other_names}} {{payment.last_name}}</p>
       </div>
     </div>
 
@@ -91,13 +76,13 @@ const print = () =>{
       <!-- Items -->
       <div class="flex justify-between border-b py-2 text-gray-700">
         <p>1</p>
-        <p>Daniel Nii Ayitey Tetteh</p>
-        <p>Buy ipad</p>
-        <p>20000</p>
-        <p>GHC 700</p>
+        <p>{{ payment.first_name }}   {{payment.other_names}}   {{payment.last_name}}</p>
+        <p>{{payment.purpose}}</p>
+        <p>GHC {{payment.amount}}</p>
         <p>GHC {{ payment.amount_to_pay }}</p>
-        <p>0244544661</p>
-        <p>20-3-24</p>
+        <p>GHC 1000</p>
+        <p>{{ payment.phone }}</p>
+        <p>{{payment.date}}</p>
       </div>
     </div>
 
@@ -107,7 +92,7 @@ const print = () =>{
       <div class="space-y-2 mb-10">
         <div class="flex justify-between items-center text-blue-700">
           <p>Amount Paid</p>
-          <span class="font-bold">$1200</span>
+          <span class="font-bold">GHC {{payment.amount_to_pay}}</span>
         </div>
         <div class="flex justify-between items-center text-blue-700">
           <p>Amount Remaining</p>

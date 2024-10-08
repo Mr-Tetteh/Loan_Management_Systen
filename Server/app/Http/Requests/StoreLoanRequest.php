@@ -22,8 +22,9 @@ class StoreLoanRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'purpose'=> 'required',
-            'amount' => 'required',
+            'amount' => 'required|numeric',
+            'monthly_payment' => 'required|numeric',
+            'purpose' => 'required|string',
         ];
     }
 }

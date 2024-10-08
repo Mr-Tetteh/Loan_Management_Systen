@@ -8,6 +8,7 @@ import {ChevronDownIcon} from "@heroicons/vue/20/solid/index.js";
 import {Menu, MenuButton, MenuItem, MenuItems} from "@headlessui/vue";
 import AdminLoanDetails from "@/views/admin/AdminLoanDetails.vue";
 import AdminUserDetails from "@/views/admin/AdminUserDetails.vue";
+import UserType from "@/components/UserType.vue";
 
 
 const {users, destoryuser, get_users} = useAdminSignup()
@@ -79,9 +80,7 @@ function closeModal() {
               {{ user.phone }}
             </td>
             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-              {{ user.user_type }}
-              </span>
+        <UserType :user-type="user.user_type"/>
             </td>
 
             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">

@@ -10,7 +10,8 @@ import Header from "@/layouts/user/Header.vue";
 const {loan,storeloan} = useLoan()
 const form = reactive({
   purpose:'',
-  amount: ''
+  amount: '',
+  monthly_payment: '',
 })
 // const router = useRouter()
 
@@ -32,7 +33,7 @@ const getloan = async () => {
       <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">To Get a Loan fill the form below </h2>
       <!--      <p class="mt-2 text-lg leading-8 text-gray-600">Aute magna irure deserunt veniam aliqua magna enim voluptate.</p>-->
     </div>
-    <form class="mx-auto mt-16 max-w-xl sm:mt-20" @submit.prevent="getloan">
+    \<form class="mx-auto mt-16 max-w-xl sm:mt-20" @submit.prevent="getloan">
       <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
         <div>
           <label for="purpose_for_loan" class="block text-sm font-semibold leading-6 text-gray-900">Purpose for
@@ -54,8 +55,8 @@ const getloan = async () => {
         <div>
           <label for="amount" class="block text-sm font-semibold leading-6 text-gray-900">Monthly Payment</label>
           <div class="mt-2.5">
-            <input v-model="form.monthly_payment" type="number" name="monthly" id="amount"
-                   class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
+            <input v-model="form.monthly_payment" type="number" name="monthly" id="amount" class="block w-full rounded-md"/>
+
           </div>
         </div>
       </div>

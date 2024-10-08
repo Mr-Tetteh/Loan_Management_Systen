@@ -37,6 +37,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::patch('loans/{loan}', [LoanController::class, 'update'])->middleware(Cors::class);
     Route::get('approved', [LoanController::class, 'approvedLoans']);
     Route::get('pending', [LoanController::class, 'pendingLoans']);
+    Route::get('rejected', [LoanController::class, 'rejectedLoans']);
 
 
     Route::get('loan_payments', [\App\Http\Controllers\PaymentsController::class, 'index']);

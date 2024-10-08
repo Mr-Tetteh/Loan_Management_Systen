@@ -37,6 +37,13 @@ class LoanController extends Controller
         $totalApprovedLoans = Loan::where('status', 'approved')->count();
         return response()->json(['total' => $totalApprovedLoans]);    }
 
+    public function rejectedLoans()
+    {
+        $totalRejectedLoans = Loan::where('status', 'rejected')->count();
+        return response()->json(['total' => $totalRejectedLoans]);
+
+    }
+
     public function loanss(Loan $loan)
     {
         return LoanResource::collection(Loan::with('user')->get());
@@ -68,6 +75,7 @@ class LoanController extends Controller
     public function store(StoreLoanRequest $request)
     {
 
+
         $user = Auth::user();
 //        if (Loan::where('user_id', $user)->where('is_paid', false )->first()) {
         if (Loan::where('user_id', $user->id)->first()) {
@@ -79,13 +87,13 @@ class LoanController extends Controller
         } elseif ($request->amount > $user->salary){
             return response()->json(['message' => 'You can not request a loan greater than your Gross salary'], 400);
         }
-
         $loan = Loan::create([
             'user_id' => Auth::id(),
             'amount' => $request->amount,
             'monthly_payment' => $request->monthly_payment,
             'purpose' => $request->purpose,
         ]);
+
 
         return new LoanResource($loan);
 

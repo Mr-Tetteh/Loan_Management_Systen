@@ -7,9 +7,9 @@ import useLoan from "@/composerables/useLoan.js";
 import {watch} from "vue";
 
 const {user, number, number_of_users} = useAdminSignup();
-const {number_of_pending, number_of_approve, numb_of_pending_loans, numb_of_approve_loans,} = useLoan()
+const {number_of_pending, number_of_approve, number_of_rejected, numb_of_pending_loans, numb_of_approve_loans, numb_of_rejected_loans} = useLoan()
 
-onMounted(number_of_users(), numb_of_pending_loans(), numb_of_approve_loans())
+onMounted(number_of_users(), numb_of_pending_loans(), numb_of_approve_loans(), numb_of_rejected_loans())
 
 const name = 'GooglePieChart'
 
@@ -29,7 +29,9 @@ const drawChart = () => {
     ['Task', 'Hours per Day'],
     ['Total Number Of Users', number.value],
     ['Total Number of approved', number_of_approve.value],
-    ['Total Number of approved', number_of_pending.value]
+    ['Total Number of approved', number_of_pending.value],
+    ['Total Number of rejected', number_of_rejected.value]
+
   ])
 
   const options = {
@@ -95,6 +97,16 @@ watch([number,number_of_pending,number_of_approve], async () => {
             <span class="text-2xl">{{ number }}</span>
           </p>
         </div>
+
+      </div>
+
+      <div class="bg-red-300 flex flex-col justify-center items-center min-h-[100px] p-4">
+        <p class="text-2xl text-center">Total Number of Rejected Loans</p>
+        <br>
+        <p class="flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="60"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M367.2 412.5L99.5 144.8C77.1 176.1 64 214.5 64 256c0 106 86 192 192 192c41.5 0 79.9-13.1 111.2-35.5zm45.3-45.3C434.9 335.9 448 297.5 448 256c0-106-86-192-192-192c-41.5 0-79.9 13.1-111.2 35.5L412.5 367.2zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256z"/></svg>
+          <span class="text-2xl">{{ number_of_rejected }}</span>
+        </p>
       </div>
       <div class="flex items-center justify-center h-48 mb-52 rounded bg-gray-50">
         <div id="piechart" style="width: 900px; height: 500px;" class="mt-52 py-32"></div>

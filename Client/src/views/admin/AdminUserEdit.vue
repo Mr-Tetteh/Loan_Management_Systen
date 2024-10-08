@@ -2,6 +2,7 @@
 
 import useAdminSignup from "@/composerables/useAdminSignup.js";
 import {onMounted} from "vue";
+import Header from "@/layouts/admin/Header.vue";
 
 const {user, update_user, get_user} = useAdminSignup()
 
@@ -19,6 +20,7 @@ onMounted(() => get_user(props.id))
 </script>
 
 <template>
+  <Header/>
   <div class="p-4 sm:ml-64">
     <div class="p-4 rounded-lg">
       <div class="mt-6 bg-white clear-end rounded-lg shadow shadow-cyan-600 p-10">

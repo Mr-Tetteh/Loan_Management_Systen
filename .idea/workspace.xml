@@ -5,12 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9aea767f-8c38-4fc5-96e9-77c6004700e4" name="Changes" comment="update">
+      <change afterPath="$PROJECT_DIR$/Client/src/components/UserType.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/views/admin/AdminLoanEdit.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/views/admin/AdminLoanEdit.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/views/admin/AdminLoanPayment.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/views/admin/AdminLoanPayment.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/views/admin/AdminPayLoan.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/views/admin/AdminPayLoan.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/composerables/useLoan.js" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/composerables/useLoan.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/views/admin/AdminHomeView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/views/admin/AdminHomeView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/views/admin/AdminLoanView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/views/admin/AdminLoanView.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/src/views/admin/AdminUserEdit.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/views/admin/AdminUserEdit.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/views/auth/LoginView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/views/auth/LoginView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/views/admin/AdminUserView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/views/admin/AdminUserView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/views/user/LoanView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/views/user/LoanView.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -221,7 +223,7 @@
       <workItem from="1727049003410" duration="6730000" />
       <workItem from="1727264790549" duration="159094000" />
       <workItem from="1727815598188" duration="90810000" />
-      <workItem from="1728175853471" duration="57851000" />
+      <workItem from="1728175853471" duration="69495000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <option name="closed" value="true" />
@@ -251,23 +253,5 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="update" />
     <option name="LAST_COMMIT_MESSAGE" value="update" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/Client/src/composerables/useAdminSignup.js</url>
-          <line>70</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/Client/src/composerables/useLoan.js</url>
-          <line>58</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

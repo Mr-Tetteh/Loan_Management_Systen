@@ -9,6 +9,7 @@ export default function useLoan() {
     const userloan = ref([])
     const number_of_approve = ref(0)
     const number_of_pending = ref(0)
+    const number_of_rejected = ref(0)
 
 
     const get_loans = async () => {
@@ -33,6 +34,18 @@ export default function useLoan() {
         }
     };
 
+    const numb_of_rejected_loans = async () => {
+        const token = localStorage.getItem('AUTH_TOKEN');
+        const config = {
+            headers: { Authorization: `Bearer ${token}` }
+        };
+        try {
+            let res = await axios.get('http://127.0.0.1:8000/api/rejected', config);
+            number_of_rejected.value = res.data.total;
+        } catch (error) {
+            console.error("Error fetching total number of users:", error);
+        }
+    };
 
     const numb_of_pending_loans = async () => {
         const token = localStorage.getItem('AUTH_TOKEN');
@@ -147,6 +160,9 @@ export default function useLoan() {
 
         number_of_pending,
         numb_of_pending_loans,
+
+        numb_of_rejected_loans,
+        number_of_rejected
 
     }
 }

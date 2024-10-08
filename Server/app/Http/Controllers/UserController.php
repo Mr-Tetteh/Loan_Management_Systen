@@ -137,7 +137,7 @@ class UserController extends Controller
             if (!$user || !Hash::check($request['password'], $user->password)) {
 //                return ApiResponse::unauthorizedError('Invalid credentials');
                 return response()->json([
-                    'error' => 'invalid'
+                    'message' => 'Sorry, Invalid Credentials.'
                 ], 401);
             }
 

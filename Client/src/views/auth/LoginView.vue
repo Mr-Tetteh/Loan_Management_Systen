@@ -10,14 +10,18 @@ const login = async () => {
   // if (password.value !== login_user.value.password){
   //   alert("Invalid credentials")
   // }
-  // await axios.post('http://127.0.0.1:8000/api/login', {email: 'danielstay73@gmail.com', password: '123456789'})
-  const response = await axios.post('http://127.0.0.1:8000/api/login', login_user.value)
-  const token = response.data.authorisation.token
-  localStorage.setItem("AUTH_TOKEN", token)
-  localStorage.setItem("USER_ROLE", response.data.user.user_type)
-  localStorage.setItem("USER_NAME", response.data.user.first_name)
-  localStorage.setItem("USER_ID", response.data.user.id)
-  await router.push('/loan')
+  try{
+    const response = await axios.post('http://127.0.0.1:8000/api/login', login_user.value)
+    const token = response.data.authorisation.token
+    localStorage.setItem("AUTH_TOKEN", token)
+    localStorage.setItem("USER_ROLE", response.data.user.user_type)
+    localStorage.setItem("USER_NAME", response.data.user.first_name)
+    localStorage.setItem("USER_ID", response.data.user.id)
+    await router.push('/loan')
+  }catch (err){
+    alert(err.response.data.message)
+  }
+
 }
 
 

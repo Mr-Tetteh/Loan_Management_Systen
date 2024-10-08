@@ -36,7 +36,7 @@ const pay = async (loan) =>{
       <div class="mt-6 bg-white clear-end rounded-lg shadow shadow-cyan-600 p-10">
         <form v-if="loan" @submit.prevent="pay(loan)">
           <div class="space-y-12">
-            <h2 class="justify-center text-3xl px-96">Monthly Deductions</h2>
+            <h2 class="justify-center text-3xl px-96">Monthly Deduction</h2>
 
             <div class="border-b border-gray-900/10 pb-12">
 
@@ -139,6 +139,16 @@ const pay = async (loan) =>{
                   </div>
                 </div>
 
+                <div class="sm:col-span-2">
+                  <label for="loan_amount" class="block text-sm font-medium leading-6 text-gray-900">Monthly Payment
+                  </label>
+                  <div class="mt-2">
+                    <input v-model="loan.monthly_payment" type="text" id="national_id" autocomplete="postal-code"
+                           class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                           disabled/>
+                  </div>
+                </div>
+
 
                 <div class="sm:col-span-2">
                   <label for="country" class="block text-sm font-medium leading-6 text-gray-900">Loan status</label>
@@ -167,22 +177,15 @@ const pay = async (loan) =>{
 
                 <div class="sm:col-span-2">
                   <label for="country" class="block text-sm font-medium leading-6 text-gray-900">Enter
-                    Deductions</label>
+                    Deduction</label>
                   <div class="mt-2">
-                    <input v-model="form.amount_to_pay" id="country" name="country" autocomplete="country-name"
+                    <input v-model="form.amount_to_pay" id="country" name="country" autocomplete="country-name" type="number"
                            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6" placeholder="Enter Amount here">
                   </div>
                 </div>
               </div>
             </div>
 
-          </div>
-          <div class="sm:col-span-2">
-            <div class="mt-2">
-              <input v-model="loan.id" type="text" id="loan_id" autocomplete="postal-code"
-                     class="hidden block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-              />
-            </div>
           </div>
           <div class="mt-6 flex items-center justify-end gap-x-6">
             <button type="submit"

@@ -27,6 +27,7 @@ function closeModal() {
   <div class="p-4 sm:ml-64">
     <div class="p-4 rounded-lg">
       <div class="mt-6 bg-white clear-end rounded-lg">
+        <h2 class="text-2xl ml-96 px-52 pb-10">List of all Loans</h2>
         <table class="min-w-full  rounded-3xl shadow divide-y divide-gray-200">
           <thead>
           <tr>
@@ -67,7 +68,7 @@ function closeModal() {
               {{ loan.created_at }}
             </td>
 
-            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+            <td v-if="loan.status === 'approved'  || loan.status ==='pending'" class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
               <Menu as="div" class="relative inline-block text-left">
                 <div>
                   <MenuButton

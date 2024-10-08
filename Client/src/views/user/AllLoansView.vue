@@ -26,6 +26,7 @@ onMounted(get_loan)
       <tr>
         <th class="px-3 py-2 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Loan Amount</th>
         <th class="px-3 py-2 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Amount Remaining</th>
+        <th class="px-3 py-2 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Monthly Payment</th>
         <th class="px-3 py-2 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
         <th class="px-3 py-2 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Purpose of Loan</th>
         <th class="px-3 py-2 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Loan Details </th>
@@ -37,8 +38,12 @@ onMounted(get_loan)
         <td class="px-3 py-2 whitespace-nowrap text-right text-sm font-medium">
           GHC {{ loan.amount }}
         </td>
+
         <td class="px-3 py-2 whitespace-nowrap text-right text-sm font-medium">
           GHC {{ loan.amount - loan.amount_remaining }}
+        </td>
+        <td class="px-3 py-2 whitespace-nowrap text-right text-sm font-medium">
+          GHC {{ loan.monthly_payment }}
         </td>
         <td class="px-3 py-2 whitespace-nowrap text-right text-sm font-medium">
           <LoanStatus :status="loan.status"/>

@@ -54,7 +54,7 @@ const onShow = (id) => {
       <div class="h-full px-3 py-4 overflow-y-auto bg-blue-950">
         <ul class="space-y-10 font-medium mt-10">
 
-          <li>
+          <li v-if="userType === 'Admin' &&isLoggedIn">
             <router-link to="admin_home">
               <a href="#"
                  class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
@@ -103,7 +103,7 @@ const onShow = (id) => {
 
           <!--Loans-->
 
-          <li>
+          <li v-if="userType === 'Admin' &&isLoggedIn">
             <div  class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white">
               <Menu as="div" class="relative inline-block text-left">
                 <div>
@@ -239,7 +239,7 @@ const onShow = (id) => {
           <li>
             <!--            <router-link :to="{name: 'user.profile', params: {id: {id} }}"  v-if="isLoggedIn">-->
             <a href="#" @click="onShow(id)"
-               class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+               class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group" v-if="isLoggedIn">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                    stroke="currentColor" class="size-6">
                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -268,7 +268,7 @@ const onShow = (id) => {
 
 
           <li>
-            <router-link to="/admin_user">
+            <router-link to="/admin_user" v-if="userType === 'Admin' &&isLoggedIn">
               <a href="#"
                  class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                 <svg
@@ -284,7 +284,7 @@ const onShow = (id) => {
 
 
           <li>
-            <router-link to="admin_add_user">
+            <router-link to="admin_add_user" v-if="userType === 'Admin' &&isLoggedIn">
               <a href="#"
                  class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -313,7 +313,7 @@ const onShow = (id) => {
 
         <div class="mt-5 sm:mt-40 md:mt-32 lg:mt-32 py-16 sm:py-24 md:py-32 lg:py-40">
           <h3 class="text-white" v-if="username">Name:</h3>
-          <span class="text-white"> {{ id }} {{ username }}</span>
+          <span class="text-white"> {{ username }}</span>
         </div>
       </div>
     </aside>

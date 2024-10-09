@@ -16,6 +16,8 @@ import Footer from "@/layouts/user/Footer.vue";
         </div>
         <div class="mx-auto max-w-2xl py-10 sm:py-20 lg:py-20">
           <div class="text-center">
+            <img class="mx-auto h-32 w-auto rounded-full" src="../../../tsclogo.png">
+
             <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Welcome to Trinity Loan Management
               System</h1>
             <p class="mt-6 text-lg leading-8 text-gray-600"> Managing loans can be a complex and time-consuming process,

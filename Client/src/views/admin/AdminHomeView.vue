@@ -63,7 +63,7 @@ watch([number,number_of_pending,number_of_approve], async () => {
     <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-4">
         <div class="bg-amber-300 flex flex-col justify-center items-center min-h-[100px] p-4">
-          <p class="text-2xl text-center">Total Number of Pending Loans</p>
+          <router-link to="admin_pending_loan"> <p class="text-2xl text-center">Total Number of Pending Loans</p></router-link>
           <br>
           <p class="flex items-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="60" viewBox="0 0 384 512">
@@ -75,7 +75,7 @@ watch([number,number_of_pending,number_of_approve], async () => {
         </div>
         <div class="bg-emerald-300 flex flex-col justify-center items-center min-h-[100px] p-4">
 <!--          <router-link to=""-->
-          <p class="text-2xl text-center">Total Number of Approved Loans</p>
+          <router-link to="admin_active_loan"><p class="text-2xl text-center">Total Number of Approved Loans</p></router-link>
           <br>
           <p class="flex items-center">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -86,7 +86,7 @@ watch([number,number_of_pending,number_of_approve], async () => {
           </p>
         </div>
         <div class="bg-blue-300 flex flex-col justify-center items-center min-h-[100px] p-4">
-          <p class="text-2xl text-center">Total Number of Users</p>
+          <router-link to="admin_user"> <p class="text-2xl text-center">Total Number of Users</p></router-link>
           <br>
           <p class="flex items-center">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"

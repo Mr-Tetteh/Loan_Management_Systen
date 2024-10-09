@@ -18,7 +18,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return UserResource::collection(User::all());
+        return UserResource::collection(User::latest()->get());
     }
     public function total_number_of_users()
     {

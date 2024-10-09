@@ -79,4 +79,5 @@ const getloan = async () => {
 
 <style scoped>
 
+
 </style>

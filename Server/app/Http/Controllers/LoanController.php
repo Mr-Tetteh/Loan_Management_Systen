@@ -46,19 +46,19 @@ class LoanController extends Controller
 
     public function loanss(Loan $loan)
     {
-        return LoanResource::collection(Loan::with('user')->get());
+        return LoanResource::collection(Loan::with('user')->latest()->get());
     }
 
     public function activeLoans(Loan $loan)
     {
-        $active  = Loan::with('user')->where('isPaid', false)->where('status', 'approved')->get();
+        $active  = Loan::with('user')->where('isPaid', false)->where('status', 'approved')->latest()->get();
         return LoanResource::collection($active);
     }
 
 
     public function all_loans()
     {
-        return LoanResource::collection(Loan::with('user')->get());
+        return LoanResource::collection(Loan::with('user')->latest()->get());
 
 //        return LoanResource::collection(Loan::all());
 

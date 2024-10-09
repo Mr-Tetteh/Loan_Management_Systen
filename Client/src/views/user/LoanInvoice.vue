@@ -45,10 +45,10 @@ const currentDateTime = ref(new Date().toLocaleString())
     </div>
 
     <!-- Logo and Invoice Title -->
-    <div class="flex justify-between items-center py-4 border-b mb-4 bg-yellow-600 p-4 rounded-lg">
-      <div>
-        <img src="#" alt="Logo" class="w-48 mb-4">
-        <p class="text-gray-600 ml-96 px-96 text-xl font-bold">INVOICE</p>
+    <div class="flex flex-col md:flex-row justify-center items-center py-4 border-b mb-4 bg-yellow-600 p-4 rounded-lg">
+      <div class="flex flex-col items-center md:items-start">
+        <img src="../../../tsclogo.png" alt="Logo"  width="70px" class="rounded-2xl">
+        <p class="text-gray-600  text-xl font-bold">Receipt</p>
       </div>
     </div>
 
@@ -60,31 +60,37 @@ const currentDateTime = ref(new Date().toLocaleString())
       </div>
     </div>
 
-    <!-- Item Table -->
-    <div class="w-full border-b py-4 mb-4 bg-white p-4 rounded-lg">
-      <div class="flex justify-between font-bold text-gray-600 border-b pb-2">
-        <p>#</p>
-        <p>Name </p>
-        <p>Purpose of Loan</p>
-        <p>Loan Amount</p>
-        <p>Amount Paid</p>
-        <p>Amount Remaining</p>
-        <p>Phone</p>
-        <p>Date</p>
-      </div>
-
-      <!-- Items -->
-      <div class="flex justify-between border-b py-2 text-gray-700">
-        <p>1</p>
-        <p>{{ payment.first_name }}   {{payment.other_names}}   {{payment.last_name}}</p>
-        <p>{{payment.purpose}}</p>
-        <p>GHC {{payment.amount}}</p>
-        <p>GHC {{ payment.amount_to_pay }}</p>
-        <p>GHC {{payment.amount_remaining }}</p>
-        <p>{{ payment.phone }}</p>
-        <p>{{payment.date}}</p>
+    <div class="w-full border-b mb-4 bg-white p-4 rounded-lg">
+      <div class="overflow-x-auto">
+        <table border="10px" class="min-w-full table-auto">
+          <thead>
+          <tr class="font-bold text-gray-600 border-b">
+            <th class="p-5 text-left">#</th>
+            <th class="p-5 text-left">Name</th>
+            <th class="p-5 text-left">Purpose of Loan</th>
+            <th class="p-5 text-left">Loan Amount</th>
+            <th class="p-5 text-left">Amount Paid</th>
+            <th class="p-5 text-left">Amount Remaining</th>
+            <th class="p-5 text-left">Phone</th>
+            <th class="p-5 text-left">Date</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr class="border-b text-gray-700">
+            <td class="p-5 text-left">1</td>
+            <td class="p-5 text-left">{{ payment.first_name }} {{ payment.other_names }} {{ payment.last_name }}</td>
+            <td class="p-5 text-left">{{ payment.purpose }}</td>
+            <td class="p-5 text-left">GHC {{ payment.amount }}</td>
+            <td class="p-5 text-left">GHC {{ payment.amount_to_pay }}</td>
+            <td class="p-5 text-left">GHC {{ payment.amount_remaining }}</td>
+            <td class="p-5 text-left">{{ payment.phone }}</td>
+            <td class="p-5 text-left">{{ payment.date }}</td>
+          </tr>
+          </tbody>
+        </table>
       </div>
     </div>
+
 
     <!-- Subtotal and Thank You Section -->
     <div class="flex justify-between items-center py-4 border-b mb-10 bg-blue-50 p-4 rounded-lg">
@@ -100,21 +106,6 @@ const currentDateTime = ref(new Date().toLocaleString())
         </div>
       </div>
     </div>
-
-<!--    &lt;!&ndash; Grand Total and Terms Section &ndash;&gt;-->
-<!--    <div class="flex justify-between items-center py-4 bg-blue-100 p-4 rounded-lg">-->
-<!--      <div>-->
-<!--        <h2 class="text-xl font-semibold text-blue-800">Terms and Conditions</h2>-->
-<!--        <p class="text-gray-600">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>-->
-<!--      </div>-->
-<!--      <div>-->
-<!--        <div class="flex justify-between items-center text-blue-800 font-bold text-xl">-->
-<!--          <p>Grand Total</p>-->
-<!--          <span>$1100</span>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-
     <!-- Footer Section -->
 
   </div>
@@ -122,5 +113,13 @@ const currentDateTime = ref(new Date().toLocaleString())
   <br><br><br></template>
 
 <style scoped>
+
+.container {
+  max-width: 1024px;
+}
+
+table, th, td {
+  border-collapse: collapse;
+}
 
 </style>

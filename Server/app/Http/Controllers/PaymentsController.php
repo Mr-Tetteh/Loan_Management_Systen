@@ -18,10 +18,9 @@ class PaymentsController extends Controller
     public function index()
     {
         $user = Auth::user();
-        return PaymentsResource::collection(Payments::where('user_id', $user->id)->get());
+        return PaymentsResource::collection(Payments::where('user_id', $user->id)->latest()->get());
 
     }
-
     /**
      * Show the form for creating a new resource.
      */
@@ -29,7 +28,6 @@ class PaymentsController extends Controller
     {
         //
     }
-
     /**
      * Store a newly created resource in storage.
      */

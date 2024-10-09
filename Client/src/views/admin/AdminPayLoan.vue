@@ -33,6 +33,7 @@ const pay = async (loan) =>{
   <Header/>
   <div class="p-4 sm:ml-64">
     <div class="p-4 rounded-lg">
+      {{props}}
       <div class="mt-6 bg-white clear-end rounded-lg shadow shadow-cyan-600 p-10">
         <form v-if="loan" @submit.prevent="pay(loan)">
           <div class="space-y-12">
@@ -109,6 +110,15 @@ const pay = async (loan) =>{
                   </div>
                 </div>
 
+                <div class="sm:col-span-2">
+                  <label for="postal-code" class="block text-sm font-medium leading-6 text-gray-900">National ID
+                  </label>
+                  <div class="mt-2">
+                    <input v-model="loan.national_id" type="text" id="national_id" autocomplete="postal-code"
+                           class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                           disabled/>
+                  </div>
+                </div>
 
                 <div class="sm:col-span-2">
                   <label for="salary" class="block text-sm font-medium leading-6 text-gray-900">Salary
@@ -120,15 +130,6 @@ const pay = async (loan) =>{
                   </div>
                 </div>
 
-                <div class="sm:col-span-2">
-                  <label for="postal-code" class="block text-sm font-medium leading-6 text-gray-900">National ID
-                  </label>
-                  <div class="mt-2">
-                    <input v-model="loan.national_id" type="text" id="national_id" autocomplete="postal-code"
-                           class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                           disabled/>
-                  </div>
-                </div>
                 <div class="sm:col-span-2">
                   <label for="loan_amount" class="block text-sm font-medium leading-6 text-gray-900">Loan Amount
                   </label>
@@ -182,12 +183,6 @@ const pay = async (loan) =>{
                   <div class="mt-2">
                     <input v-model="form.amount_to_pay" id="country" name="country" autocomplete="country-name" type="number"
                            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6" placeholder="Enter Amount here">
-                  </div>
-                </div>
-                <div class="sm:col-span-2">
-                  <div class="mt-2">
-                    <input v-model="loan.user_id" id="country" name="country" type="number" autocomplete="country-name"
-                           class="hidden block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6" placeholder="Enter month of payment here">
                   </div>
                 </div>
               </div>

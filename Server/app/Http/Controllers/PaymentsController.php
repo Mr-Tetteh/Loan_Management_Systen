@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StorePaymentsRequest;
 use App\Http\Requests\UpdatePaymentsRequest;
 use App\Http\Resources\PaymentsResource;
+use App\Models\Loan;
 use App\Models\Payments;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class PaymentsController extends Controller
 {
@@ -33,9 +35,33 @@ class PaymentsController extends Controller
      */
     public function store(StorePaymentsRequest $request)
     {
-        $payment = Payments::create($request->all());
-        return new PaymentsResource($payment);
+        logger($request->all());
+//        $loan = Loan::where('user_id', $request->user_id)->where('isPaid', false)->first();
+        $loan = Loan::find($request->loan_id);
+        if(!$loan){
+            return response()->json([
+                'message' => 'Loan not found'
+            ] ,400);
+        }
+
+        $loan = $loan->load('payments');
+        $total_currently_pay = $loan->payments->sum('amount_to_pay');
+        $total_pay = $total_currently_pay + $request['amount_to_pay'];
+
+        $payment = Payments::create([
+            'user_id' => $loan->user_id,
+            'loan_id' => $loan->id,
+            'amount_to_pay' => $request->amount_to_pay,
+            'variable_loan_amount' => $loan->amount - $request->amount_to_pay,
+            'date' => $request->date,
+            'amount_remaining' => $loan->amount - $total_pay,
+
+        ]);
+        $loan->amount_paid = $total_pay;
+        $loan->save();
+        return new PaymentsResource($payment->load(['user', 'loan']));
     }
+
 
     /**
      * Display the specified resource.
@@ -44,7 +70,6 @@ class PaymentsController extends Controller
     {
         return new PaymentsResource($payment);
     }
-
 
 
     /**

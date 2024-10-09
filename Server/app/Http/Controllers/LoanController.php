@@ -49,6 +49,13 @@ class LoanController extends Controller
         return LoanResource::collection(Loan::with('user')->get());
     }
 
+    public function activeLoans(Loan $loan)
+    {
+        $active  = Loan::with('user')->where('isPaid', false)->where('status', 'approved')->get();
+        return LoanResource::collection($active);
+    }
+
+
     public function all_loans()
     {
         return LoanResource::collection(Loan::with('user')->get());
@@ -74,8 +81,6 @@ class LoanController extends Controller
      */
     public function store(StoreLoanRequest $request)
     {
-
-
         $user = Auth::user();
 //        if (Loan::where('user_id', $user)->where('is_paid', false )->first()) {
         if (Loan::where('user_id', $user->id)->first()) {

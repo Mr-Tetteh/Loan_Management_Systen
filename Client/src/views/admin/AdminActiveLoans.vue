@@ -10,8 +10,8 @@ import {ref, onMounted} from "vue";
 import axios from "axios";
 import Header from "@/layouts/admin/Header.vue";
 
-const {loans, get_loans, deleteloan} = useLoan()
-onMounted(get_loans)
+const {loans, get_active_loans, deleteloan} = useLoan()
+onMounted(get_active_loans)
 
 const isOpen = ref(null)
 
@@ -27,8 +27,7 @@ function closeModal() {
   <div class="p-4 sm:ml-64">
     <div class="p-4 rounded-lg">
       <div class="mt-6 bg-white clear-end rounded-lg">
-        <h2 class="text-2xl ml-96 px-52 pb-10">List of all Loans</h2>
-        <router-link to="admin_active_loan"><span class="bg-blue-500 p-3">Active Loans</span></router-link>
+        <h2 class="text-2xl ml-96 px-52 pb-10">List of all Active Loans</h2>
         <table class="min-w-full  rounded-3xl shadow divide-y divide-gray-200">
           <thead>
           <tr>
@@ -53,8 +52,8 @@ function closeModal() {
               {{ loan.email }}
             </td>
             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-               <LoanStatus :status="loan.status" />
-              </td>
+              <LoanStatus :status="loan.status" />
+            </td>
             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
               GHC {{ loan.amount }}
             </td>

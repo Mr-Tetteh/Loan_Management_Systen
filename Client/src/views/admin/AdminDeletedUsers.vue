@@ -1,5 +1,5 @@
 <script setup>
-import Header from "@/layouts/admin/Header.vue";
+import Header from "@/layouts/user/Header.vue";
 import {ChevronDownIcon} from "@heroicons/vue/20/solid/index.js";
 import {Menu, MenuButton, MenuItem, MenuItems} from "@headlessui/vue";
 import TableHeader from "@/components/TableHeader.vue";

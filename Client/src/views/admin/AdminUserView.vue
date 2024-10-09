@@ -1,6 +1,6 @@
 <script setup>
 
-import Header from "@/layouts/admin/Header.vue";
+import Header from "@/layouts/user/Header.vue";
 import useAdminSignup from "@/composerables/useAdminSignup.js";
 import {onMounted, ref} from "vue";
 import TableHeader from "@/components/TableHeader.vue";

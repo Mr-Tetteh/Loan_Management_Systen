@@ -20,6 +20,7 @@ import UserProfile from "@/views/user/UserProfile.vue";
 import LoanInvoice from "@/views/user/LoanInvoice.vue";
 import AdminActiveLoans from "@/views/admin/AdminActiveLoans.vue";
 import AdminCompeleteLoans from "@/views/admin/AdminCompeleteLoans.vue";
+import AdminPendingLoans from "@/views/admin/AdminPendingLoans.vue";
 
 
 const router = createRouter({
@@ -129,6 +130,15 @@ const router = createRouter({
             path: '/admin_completed_loan',
             name: 'admin_completed_loan',
             component: AdminCompeleteLoans,
+            meta: {
+                requiresAuth: true,
+                roles: ['Admin']
+            },
+        },
+        {
+            path: '/admin_pending_loan',
+            name: 'admin_pending_loan',
+            component: AdminPendingLoans,
             meta: {
                 requiresAuth: true,
                 roles: ['Admin']

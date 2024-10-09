@@ -2,7 +2,7 @@
 
 import useAdminSignup from "@/composerables/useAdminSignup.js";
 import {onMounted} from "vue";
-import Header from "@/layouts/admin/Header.vue";
+import Header from "@/layouts/user/Header.vue";
 
 const {user, update_user, get_user} = useAdminSignup()
 

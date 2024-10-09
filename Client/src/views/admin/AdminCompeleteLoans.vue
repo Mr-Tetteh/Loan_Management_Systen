@@ -8,7 +8,7 @@ import AdminLoanDetails from "@/views/admin/AdminLoanDetails.vue";
 import useLoan from "@/composerables/useLoan.js";
 import {ref, onMounted} from "vue";
 import axios from "axios";
-import Header from "@/layouts/admin/Header.vue";
+import Header from "@/layouts/user/Header.vue";
 
 const {loans, get_active_loans, deleteloan} = useLoan()
 onMounted(get_active_loans)

@@ -64,6 +64,14 @@ class LoanController extends Controller
         return LoanResource::collection($compeleted);
     }
 
+    public function LoansPending(Loan $loan)
+    {
+        $pending = Loan::with('user')->where('isPaid', false)->where('status', 'pending')->latest()->get();
+        return LoanResource::collection($pending);
+    }
+
+
+
     public function all_loans()
     {
         return LoanResource::collection(Loan::with('user')->latest()->get());

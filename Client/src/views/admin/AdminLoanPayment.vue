@@ -5,7 +5,7 @@ const {loan, get_loan_update, updateloan} = useLoan()
 const {payment, storepayments} = usePayments()
 import {onMounted, reactive, ref} from 'vue'
 import usePayments from "@/composerables/usePayments.js";
-import Header from "@/layouts/admin/Header.vue";
+import Header from "@/layouts/user/Header.vue";
 const props = defineProps({
   id: {
     type: String,

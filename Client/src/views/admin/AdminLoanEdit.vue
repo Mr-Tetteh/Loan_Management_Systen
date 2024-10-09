@@ -1,7 +1,7 @@
 <script setup>
 import useLoan from "@/composerables/useLoan.js";
 import {onMounted} from 'vue'
-import Header from "@/layouts/admin/Header.vue";
+import Header from "@/layouts/user/Header.vue";
 
 const {loan, get_loan_update, updateloan} = useLoan()
 

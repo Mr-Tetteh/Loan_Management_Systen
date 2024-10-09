@@ -17,7 +17,12 @@ const login = async () => {
     localStorage.setItem("USER_ROLE", response.data.user.user_type)
     localStorage.setItem("USER_NAME", response.data.user.first_name)
     localStorage.setItem("USER_ID", response.data.user.id)
-    await router.push('/loan')
+    if(response.data.user.user_type.toUpperCase() === 'ADMIN') {
+      await router.push('/admin_home')
+
+    }else {
+      await router.push('/loan')
+  }
   }catch (err){
     alert(err.response.data.message)
   }

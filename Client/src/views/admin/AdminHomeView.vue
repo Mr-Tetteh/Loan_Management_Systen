@@ -74,6 +74,7 @@ watch([number,number_of_pending,number_of_approve], async () => {
           </p>
         </div>
         <div class="bg-emerald-300 flex flex-col justify-center items-center min-h-[100px] p-4">
+<!--          <router-link to=""-->
           <p class="text-2xl text-center">Total Number of Approved Loans</p>
           <br>
           <p class="flex items-center">

@@ -34,6 +34,7 @@ class PaymentsController extends Controller
     public function store(StorePaymentsRequest $request)
     {
         $loan = Loan::find($request->loan_id);
+        $pay = Payments::find($request->id);
         if(!$loan){
             return response()->json([
                 'message' => 'Loan not found'
@@ -52,6 +53,7 @@ class PaymentsController extends Controller
             'amount_remaining' => $loan->amount - $total_pay,
 
         ]);
+        $loan->isPaid = $loan->amount - $total_pay == 0;
         $loan->amount_paid = $total_pay;
         $loan->save();
         return new PaymentsResource($payment->load(['user', 'loan']));

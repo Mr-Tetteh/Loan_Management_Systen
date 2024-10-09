@@ -28,14 +28,17 @@ class LoanController extends Controller
     }
 
 
-    public function pendingLoans(){
+    public function pendingLoans()
+    {
         $totalPendingLoans = Loan::where('status', 'pending')->count();
         return response()->json(['total' => $totalPendingLoans]);
     }
 
-    public function approvedLoans(){
+    public function approvedLoans()
+    {
         $totalApprovedLoans = Loan::where('status', 'approved')->count();
-        return response()->json(['total' => $totalApprovedLoans]);    }
+        return response()->json(['total' => $totalApprovedLoans]);
+    }
 
     public function rejectedLoans()
     {
@@ -51,10 +54,15 @@ class LoanController extends Controller
 
     public function activeLoans(Loan $loan)
     {
-        $active  = Loan::with('user')->where('isPaid', false)->where('status', 'approved')->latest()->get();
+        $active = Loan::with('user')->where('isPaid', false)->where('status', 'approved')->latest()->get();
         return LoanResource::collection($active);
     }
 
+    public function compeletedLoans(Loan $loan)
+    {
+        $compeleted = Loan::with('user')->where('isPaid', true)->where('status', 'completed')->latest()->get();
+        return LoanResource::collection($compeleted);
+    }
 
     public function all_loans()
     {
@@ -82,14 +90,15 @@ class LoanController extends Controller
     public function store(StoreLoanRequest $request)
     {
         $user = Auth::user();
-//        if (Loan::where('user_id', $user)->where('is_paid', false )->first()) {
-        if (Loan::where('user_id', $user->id)->first()) {
+//        $loan_pay = Loan::find($request->$user->id)->where('isPaid', false)->first();
+        if (Loan::where('user_id', $user->id)->where('isPaid', false )->first()) {
+//        if (Loan::where('user_id', $user->id)->first()) {
             return response()->json(['message' => 'Please Pay your previous Loan to make you eligible for a new loan.'], 400);
-         }else if ($request->monthly_payment < 500) {
+        } else if ($request->monthly_payment < 500) {
             return response()->json(['message' => 'Minimum payment for a month is GHC 500.'], 400);
         } elseif ($request->monthly_payment > $request->amount) {
             return response()->json(['message' => 'Monthly payment can not be greater than loan amount'], 400);
-        } elseif ($request->amount > $user->salary){
+        } elseif ($request->amount > $user->salary) {
             return response()->json(['message' => 'You can not request a loan greater than your Gross salary'], 400);
         }
         $loan = Loan::create([

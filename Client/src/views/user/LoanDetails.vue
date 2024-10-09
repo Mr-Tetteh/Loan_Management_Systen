@@ -34,8 +34,6 @@ onMounted(all_loan_payments)
             <TableHeader title="Amount Paid For the month"/>
             <TableHeader title="Amount Remaining"/>
             <TableHeader title="Date"/>
-
-
             <TableHeader title="Actions"/>
           </tr>
           </thead>
@@ -66,7 +64,7 @@ onMounted(all_loan_payments)
               {{ payment.amount_to_pay }}
             </td>
             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-              {{ Number(payment.amount) - Number(payment.amount_to_pay) }}
+              {{payment.amount_remaining }}
             </td>
 
             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">

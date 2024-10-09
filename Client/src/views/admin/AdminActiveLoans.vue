@@ -27,7 +27,10 @@ function closeModal() {
   <div class="p-4 sm:ml-64">
     <div class="p-4 rounded-lg">
       <div class="mt-6 bg-white clear-end rounded-lg">
-        <h2 class="text-2xl ml-96 px-52 pb-10">List of all Active Loans</h2>
+        <div class="ml-96 px-52 pb-10">
+        <h2 class="text-2xl mb-5">List of all Active Loans</h2>
+        <router-link to="admin_loan"><span class="bg-blue-500 p-2 ">View All Loans Records</span></router-link>
+        </div>
         <table class="min-w-full  rounded-3xl shadow divide-y divide-gray-200">
           <thead>
           <tr>

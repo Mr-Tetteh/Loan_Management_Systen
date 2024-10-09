@@ -80,7 +80,7 @@ const currentDateTime = ref(new Date().toLocaleString())
         <p>{{payment.purpose}}</p>
         <p>GHC {{payment.amount}}</p>
         <p>GHC {{ payment.amount_to_pay }}</p>
-        <p>GHC 1000</p>
+        <p>GHC {{payment.amount_remaining }}</p>
         <p>{{ payment.phone }}</p>
         <p>{{payment.date}}</p>
       </div>
@@ -96,7 +96,7 @@ const currentDateTime = ref(new Date().toLocaleString())
         </div>
         <div class="flex justify-between items-center text-blue-700">
           <p>Amount Remaining</p>
-          <span>$100</span>
+          <span class="ml-2">  GHC {{payment.amount_remaining}}</span>
         </div>
       </div>
     </div>

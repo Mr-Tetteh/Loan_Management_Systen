@@ -52,7 +52,6 @@ class PaymentsController extends Controller
             'user_id' => $loan->user_id,
             'loan_id' => $loan->id,
             'amount_to_pay' => $request->amount_to_pay,
-            'variable_loan_amount' => $loan->amount - $request->amount_to_pay,
             'date' => $request->date,
             'amount_remaining' => $loan->amount - $total_pay,
 

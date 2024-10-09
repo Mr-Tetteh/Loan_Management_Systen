@@ -33,8 +33,6 @@ class PaymentsController extends Controller
      */
     public function store(StorePaymentsRequest $request)
     {
-        logger($request->all());
-//        $loan = Loan::where('user_id', $request->user_id)->where('isPaid', false)->first();
         $loan = Loan::find($request->loan_id);
         if(!$loan){
             return response()->json([

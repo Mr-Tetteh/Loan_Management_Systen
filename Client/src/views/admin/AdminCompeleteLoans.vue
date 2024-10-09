@@ -27,12 +27,9 @@ function closeModal() {
   <div class="p-4 sm:ml-64">
     <div class="p-4 rounded-lg">
       <div class="mt-6 bg-white clear-end rounded-lg">
-        <div class="lg:ml-96 lg:px-52 lg:pb-10">
-          <h2 class="text-2xl mb-5">List of all Active Loans</h2>
+        <div class="ml-96 px-52 pb-10">
+          <h2 class="text-2xl mb-5"> Completed Loans</h2>
           <router-link to="admin_loan"><span class="bg-blue-500 p-2 ">View All Loans Records</span></router-link>
-          <br><br>
-          <router-link to="admin_completed_loan"><span class="bg-amber-500 p-2 ">View All completed Loans Records</span>
-          </router-link>
         </div>
         <table class="min-w-full  rounded-3xl shadow divide-y divide-gray-200">
           <thead>
@@ -58,7 +55,7 @@ function closeModal() {
               {{ loan.email }}
             </td>
             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-              <LoanStatus :status="loan.status"/>
+              <LoanStatus :status="loan.status" />
             </td>
             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
               GHC {{ loan.amount }}
@@ -74,7 +71,7 @@ function closeModal() {
               {{ loan.created_at }}
             </td>
 
-            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+            <td  class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
               <Menu as="div" class="relative inline-block text-left">
                 <div>
                   <MenuButton

@@ -1,6 +1,7 @@
 <script setup>
 import useLoan from "@/composerables/useLoan.js";
 import {onMounted} from 'vue'
+import Header from "@/layouts/admin/Header.vue";
 
 const {loan, get_loan_update, updateloan} = useLoan()
 
@@ -22,7 +23,7 @@ onMounted(() => get_loan_update(props.id))
 
 
 <template>
-
+<Header/>
   <div v-if="loan" class="p-4 sm:ml-64">
     <div class="p-4 rounded-lg">
       <div class="mt-6 bg-white clear-end rounded-lg shadow shadow-cyan-600 p-10">
@@ -70,8 +71,9 @@ onMounted(() => get_loan_update(props.id))
                 <div class="sm:col-span-2 sm:col-start-1">
                   <label for="city" class="block text-sm font-medium leading-6 text-gray-900">Purpose</label>
                   <div class="mt-2">
-                    <input v-model="loan.purpose" type="text" name="city" id="city" autocomplete="address-level2"
-                           class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" disabled/>
+                    <textarea v-model="loan.purpose" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" disabled>
+                    </textarea>
+
                   </div>
                 </div>
 
@@ -94,6 +96,14 @@ onMounted(() => get_loan_update(props.id))
 
 
                 <div class="sm:col-span-2">
+                  <label for="postal-code" class="block text-sm font-medium leading-6 text-gray-900">National ID
+                  </label>
+                  <div class="mt-2">
+                    <input v-model="loan.national_id" type="text"  id="national_id" autocomplete="postal-code"
+                           class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" disabled/>
+                  </div>
+                </div>
+                <div class="sm:col-span-2">
                   <label for="salary" class="block text-sm font-medium leading-6 text-gray-900">Salary
                   </label>
                   <div class="mt-2">
@@ -102,14 +112,6 @@ onMounted(() => get_loan_update(props.id))
                   </div>
                 </div>
 
-                <div class="sm:col-span-2">
-                  <label for="postal-code" class="block text-sm font-medium leading-6 text-gray-900">National ID
-                  </label>
-                  <div class="mt-2">
-                    <input v-model="loan.national_id" type="text"  id="national_id" autocomplete="postal-code"
-                           class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" disabled/>
-                  </div>
-                </div>
                 <div class="sm:col-span-2">
                   <label for="loan_amount" class="block text-sm font-medium leading-6 text-gray-900">Loan Amount
                   </label>

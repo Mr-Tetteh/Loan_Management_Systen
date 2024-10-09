@@ -69,7 +69,7 @@ const props = defineProps({
                   as="h3"
                   class="text-lg font-medium leading-6 text-gray-900"
               >
-                Payment successful
+                Loan Details
               </DialogTitle>
               <div class="mt-2 w-full overflow-auto">
                 <p class="text-sm text-gray-500">
@@ -102,7 +102,7 @@ const props = defineProps({
                     </tr>
                     <tr>
                       <th class="p-5 text-left">Amount Remaining: </th>
-                      <td class="p-5">GHC {{ loan.amount - loan.amount_remaining }}</td>
+                      <td class="p-5">GHC {{ loan.amount_paid}}</td>
                       <th class="p-5 text-left">Purpose : </th>
                       <td colspan="3" class="p-5"> {{ loan.purpose }}</td>
                       <th class="p-5 text-left">Loan Status : </th>

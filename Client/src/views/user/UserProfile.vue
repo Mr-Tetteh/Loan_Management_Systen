@@ -21,13 +21,14 @@ onMounted(() => get_user(props.id))
 </script>
 
 <template>
-  <Header/>
-  <div class="p-4 sm:ml-64">
+
     <div class="p-4 rounded-lg">
       <div class="mt-6 bg-white clear-end rounded-lg shadow shadow-cyan-600 p-10">
+        <div class="lg:px-96 lg:ml-52 ">
+        <h2 class=" text-3xl ">Your Profile</h2>
+        </div>
         <form @submit.prevent="editUser">
           <div class="space-y-12">
-            <h2 class="justify-center text-3xl px-96">Your Profile</h2>
             <div class="border-b border-gray-900/10 pb-12">
               <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                 <div class="sm:col-span-3">
@@ -142,18 +143,17 @@ onMounted(() => get_user(props.id))
         </form>
       </div>
     </div>
-  </div>
 
 
   <form action="">
-  <div class="p-4 sm:ml-64">
     <div class="p-4 rounded-lg">
       <div class="mt-6 bg-white clear-end rounded-lg shadow shadow-cyan-600 p-10">
+        <div class="lg:px-96 lg:ml-52 ">
 
-        <h3 class="text-3xl ml-96 px-32">
+        <h3 class="text-3xl  mb-10">
           Update Your password
         </h3>
-
+        </div>
         <div class="sm:col-span-2">
 
           <label for="region" class="block text-sm font-medium leading-6 text-gray-900">Enter Old Password</label>
@@ -190,7 +190,6 @@ onMounted(() => get_user(props.id))
         </div>
       </div>
     </div>
-  </div>
   </form>
 </template>
 

@@ -45,6 +45,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('approved', [LoanController::class, 'approvedLoans']);
     Route::get('pending', [LoanController::class, 'pendingLoans']);
     Route::get('rejected', [LoanController::class, 'rejectedLoans']);
+    Route::get('compeleted_loans_count', [LoanController::class, 'compeleteLoans']);
+
+
 
 
     Route::get('loan_payments', [\App\Http\Controllers\PaymentsController::class, 'index']);

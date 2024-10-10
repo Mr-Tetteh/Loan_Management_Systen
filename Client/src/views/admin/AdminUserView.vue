@@ -25,17 +25,7 @@ function closeModal() {
 </script>
 
 <template>
-  <Header/>
 
-  <!--  <div class="p-4 mr-80">-->
-  <!--    <div class="p-4 rounded-lg">-->
-  <!--      <div class="container mx-auto my-8">-->
-  <!--        <div class="flex justify-between items-center">-->
-  <!--          <h2 class="text-3xl font-semibold">Users</h2>-->
-  <!--        </div>-->
-  <!--        <div class="mt-6 bg-white clear-end rounded-lg">-->
-
-  <div class="p-4 sm:ml-64">
     <div class="p-4 rounded-lg">
       <div class="mt-6 bg-white clear-end rounded-lg">
         <router-link to="admin_add_user">
@@ -155,7 +145,6 @@ function closeModal() {
       <AdminUserDetails v-if="isOpen"  :user="isOpen" :close-modal="closeModal"/>
 
     </div>
-  </div>
 
 </template>
 

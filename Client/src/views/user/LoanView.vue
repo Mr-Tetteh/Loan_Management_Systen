@@ -21,7 +21,7 @@ const getloan = async () => {
 </script>
 
 <template>
-  <Header/>
+
   <div class="isolate bg-white px-6 py-24 sm:py-32 lg:px-8">
     <div class="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]"
          aria-hidden="true">
@@ -33,7 +33,7 @@ const getloan = async () => {
       <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">To Get a Loan fill the form below </h2>
       <!--      <p class="mt-2 text-lg leading-8 text-gray-600">Aute magna irure deserunt veniam aliqua magna enim voluptate.</p>-->
     </div>
-    \<form class="mx-auto mt-16 max-w-xl sm:mt-20" @submit.prevent="getloan">
+    <form class="mx-auto mt-16 max-w-xl sm:mt-20" @submit.prevent="getloan">
       <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
         <div>
           <label for="purpose_for_loan" class="block text-sm font-semibold leading-6 text-gray-900">Purpose for

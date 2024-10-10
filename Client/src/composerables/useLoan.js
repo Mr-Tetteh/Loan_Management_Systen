@@ -3,13 +3,14 @@ import axios from "axios";
 import router from "@/router/index.js";
 
 
-export default function useLoan() {
+const useLoan = () => {
     const loan = ref(null)
     const loans = ref([])
     const userloan = ref([])
     const number_of_approve = ref(0)
     const number_of_pending = ref(0)
     const number_of_rejected = ref(0)
+    const number_of_compeleted = ref(0)
 
 
     const get_loans = async () => {
@@ -102,6 +103,19 @@ export default function useLoan() {
         try {
             let res = await axios.get('http://127.0.0.1:8000/api/pending', config);
             number_of_pending.value = res.data.total;
+        } catch (error) {
+            console.error("Error fetching total number of users:", error);
+        }
+    };
+
+    const numb_of_compeleted_loans = async () => {
+        const token = localStorage.getItem('AUTH_TOKEN');
+        const config = {
+            headers: { Authorization: `Bearer ${token}` }
+        };
+        try {
+            let res = await axios.get('http://127.0.0.1:8000/api/compeleted_loans_count', config);
+            number_of_compeleted.value = res.data.total;
         } catch (error) {
             console.error("Error fetching total number of users:", error);
         }
@@ -214,7 +228,11 @@ export default function useLoan() {
         get_active_loans,
         get_pending_loans,
         get_rejected_loans,
-        get_user_history_loans
+        get_user_history_loans,
+        numb_of_compeleted_loans,
+        number_of_compeleted,
 
     }
 }
+
+export  default  useLoan

@@ -52,6 +52,13 @@ class LoanController extends Controller
         return response()->json(['total' => $totalRejectedLoans]);
 
     }
+    public function compeleteLoans()
+    {
+        $totalRejectedLoans = Loan::where('status', 'paid')->count();
+        return response()->json(['total' => $totalRejectedLoans]);
+
+    }
+
 
     public function loanss(Loan $loan)
     {

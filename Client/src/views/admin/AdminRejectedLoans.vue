@@ -23,13 +23,9 @@ function closeModal() {
 </script>
 
 <template>
-  <Header/>
-  <!--  <div class="lg:ml-96 lg:px-52 lg:pb-10">-->
-  <!--    <h2 class="text-2xl mb-5">List of all Pending Loans</h2>-->
-  <!--  </div>-->
-  <div class="p-4 sm:ml-64">
-    <div class="p-4 rounded-lg">
-      <h3 class="text-3xl text-center">Rejected</h3>
+
+
+      <h3 class="text-3xl text-center">List of All Rejected Loans</h3>
       <div class="mt-6 bg-white clear-end rounded-lg">
         <router-link to="admin_loan" class=" p-2 ">
           <span class=" bg-blue-500 text-white rounded hover:bg-gray-700 sm: m-5 p-3">View All Loans Records</span>
@@ -170,8 +166,6 @@ function closeModal() {
       </div>
       <AdminLoanDetails v-if="isOpen" :loan="isOpen" :close-modal="closeModal"/>
 
-    </div>
-  </div>
 
 
 </template>

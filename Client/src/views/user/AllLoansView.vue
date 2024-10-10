@@ -1,7 +1,6 @@
 <script setup>
 
 import Header from "@/layouts/user/Header.vue";
-import Footer from "@/layouts/user/Footer.vue";
 import useLoan from "@/composerables/useLoan.js";
 import {onMounted} from "vue";
 import LoanStatus from "@/components/LoanStatus.vue";
@@ -25,13 +24,9 @@ const headers = [
 </script>
 
 <template>
-  <Header/>
-<section class="md:ml-64 p-10 h-screen">
+
   <h3 class="text-center text-3xl font-sans">Here is a list of all your loans</h3>
-  <!--    <div class="ml-96 px-52 space-x-96">-->
-  <!--  <div class="p-4 sm:ml-64">-->
-  <!--    <div class="p-4 rounded-lg">-->
-  <div class="mt-6 clear-end rounded-lg w-full overflow-x-auto">
+
     <table class=" w-full rounded-3xl shadow divide-y divide-gray-200">
       <thead>
       <tr class="text-left">
@@ -72,8 +67,7 @@ const headers = [
       </tr>
       </tbody>
     </table>
-  </div>
-</section>
+
 
 
 

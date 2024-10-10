@@ -17,10 +17,9 @@ onMounted(all_loan_payments)
 </script>
 
 <template>
-  <Header/>
-  <div class="p-4 sm:ml-64">
-    <div class="p-4 rounded-lg">
-      <p class="text-3xl text-center">Here is a list of all your loan payments</p>
+
+    <div class="rounded-lg">
+      <p class="text-3xl text-center sm:ml-52">Here is a list of all your loan payments</p>
       <div class="mt-6 bg-white clear-end rounded-lg p-10">
         <table class="min-w-full  rounded-3xl shadow divide-y divide-gray-200">
           <thead>
@@ -80,7 +79,6 @@ onMounted(all_loan_payments)
         </table>
       </div>
     </div>
-  </div>
 </template>
 <Header/>
 

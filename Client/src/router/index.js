@@ -4,7 +4,6 @@ import LoginView from "@/views/auth/LoginView.vue";
 import RegistrationView from "@/views/auth/RegistrationView.vue";
 import ContactView from "@/views/user/ContactView.vue";
 import LoanView from "@/views/user/LoanView.vue";
-import AdminHomeView from "@/views/admin/AdminHomeView.vue";
 import AdminLoanView from "@/views/admin/AdminLoanView.vue";
 import AdminUserView from "@/views/admin/AdminUserView.vue";
 import AllLoansView from "@/views/user/AllLoansView.vue";
@@ -23,6 +22,7 @@ import AdminCompeleteLoans from "@/views/admin/AdminCompeleteLoans.vue";
 import AdminPendingLoans from "@/views/admin/AdminPendingLoans.vue";
 import AdminRejectedLoans from "@/views/admin/AdminRejectedLoans.vue";
 import LoanHistory from "@/views/user/LoanHistory.vue";
+import AdminHomeView from "@/views/admin/AdminHomeView.vue";
 
 
 const router = createRouter({

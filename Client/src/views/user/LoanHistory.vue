@@ -5,15 +5,13 @@ import Header from "@/layouts/user/Header.vue";
 import useLoan from "@/composerables/useLoan.js";
 import {onMounted} from "vue";
 
-
 const {loans, get_user_history_loans} = useLoan()
 
-onMounted(get_user_history_loans())
+onMounted(() => get_user_history_loans())
 </script>
 
 <template>
-  <Header/>
-  <div class="p-4 sm:ml-64">
+
     <div class="p-4 rounded-lg">
       <p class="text-3xl text-center">Here is a list of all your loan History</p>
       <div class="mt-6 bg-white clear-end rounded-lg p-10">
@@ -66,7 +64,6 @@ onMounted(get_user_history_loans())
         </table>
       </div>
     </div>
-  </div>
 
 </template>
 

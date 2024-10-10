@@ -23,13 +23,12 @@ function closeModal() {
 </script>
 
 <template>
-  <Header/>
-  <div class="p-4 sm:ml-64">
+
+    <h2 class="text-2xl ml-96"> List of all Completed Loans</h2>
+
     <div class="p-4 rounded-lg">
       <div class="mt-6 bg-white clear-end rounded-lg">
         <div class="ml-96 px-52 pb-10">
-          <h2 class="text-2xl mb-5"> Completed Loans</h2>
-          <router-link to="admin_loan"><span class="bg-blue-500 p-2 ">View All Loans Records</span></router-link>
         </div>
         <table class="min-w-full  rounded-3xl shadow divide-y divide-gray-200">
           <thead>
@@ -164,7 +163,6 @@ function closeModal() {
       <AdminLoanDetails v-if="isOpen" :loan="isOpen" :close-modal="closeModal"/>
 
     </div>
-  </div>
 
 
 </template>

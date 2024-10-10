@@ -10,8 +10,8 @@ import {ref, onMounted} from "vue";
 import axios from "axios";
 import Header from "@/layouts/user/Header.vue";
 
-const {loans, get_active_loans, deleteloan} = useLoan()
-onMounted(get_active_loans)
+const {loans, compeleted_loans, deleteloan} = useLoan()
+onMounted(compeleted_loans)
 
 const isOpen = ref(null)
 

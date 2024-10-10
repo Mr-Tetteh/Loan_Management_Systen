@@ -24,16 +24,17 @@ function closeModal() {
 
 <template>
   <Header/>
+<!--  <div class="lg:ml-96 lg:px-52 lg:pb-10">-->
+<!--    <h2 class="text-2xl mb-5">List of all Pending Loans</h2>-->
+<!--  </div>-->
   <div class="p-4 sm:ml-64">
     <div class="p-4 rounded-lg">
       <div class="mt-6 bg-white clear-end rounded-lg">
-        <div class="lg:ml-96 lg:px-52 lg:pb-10">
-          <h2 class="text-2xl mb-5">List of all Active Loans</h2>
-          <router-link to="admin_loan"><span class="bg-blue-500 p-2 ">View All Loans Records</span></router-link>
-          <br><br>
-          <router-link to="admin_completed_loan"><span class="bg-amber-500 p-2 ">View All completed Loans Records</span>
-          </router-link>
-        </div>
+          <router-link to="admin_loan" class=" p-2 ">
+            <span class=" bg-blue-500 text-white rounded hover:bg-gray-700 sm: m-5 p-3">View All Loans Records</span></router-link>
+
+            <router-link to="admin_completed_loan" class=" p-2"><span class="bg-cyan-500 text-white rounded hover:bg-gray-700 sm: m-5 float-end p-3">View All completed Loans Records</span>
+            </router-link>
         <table class="min-w-full  rounded-3xl shadow divide-y divide-gray-200">
           <thead>
           <tr>

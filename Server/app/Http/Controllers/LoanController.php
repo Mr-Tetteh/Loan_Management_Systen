@@ -58,9 +58,9 @@ class LoanController extends Controller
         return LoanResource::collection($active);
     }
 
-    public function compeletedLoans(Loan $loan)
+    public function completeLoans(Loan $loan)
     {
-        $compeleted = Loan::with('user')->where('isPaid', true)->where('status', 'completed')->latest()->get();
+        $compeleted = Loan::with('user')->where('isPaid', true)->where('status', 'paid')->latest()->get();
         return LoanResource::collection($compeleted);
     }
 

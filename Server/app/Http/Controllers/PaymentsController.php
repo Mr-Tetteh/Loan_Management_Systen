@@ -21,6 +21,7 @@ class PaymentsController extends Controller
         return PaymentsResource::collection(Payments::where('user_id', $user->id)->latest()->get());
 
     }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -28,6 +29,7 @@ class PaymentsController extends Controller
     {
         //
     }
+
     /**
      * Store a newly created resource in storage.
      */
@@ -35,10 +37,10 @@ class PaymentsController extends Controller
     {
         $loan = Loan::find($request->loan_id);
         $pay = Payments::find($request->id);
-        if(!$loan){
+        if (!$loan) {
             return response()->json([
                 'message' => 'Loan not found'
-            ] ,400);
+            ], 400);
         }
 
         $loan = $loan->load('payments');
@@ -54,6 +56,9 @@ class PaymentsController extends Controller
 
         ]);
         $loan->isPaid = $loan->amount - $total_pay == 0;
+        if ($loan->isPaid) {
+            $loan->status = 'paid';
+        }
         $loan->amount_paid = $total_pay;
         $loan->save();
         return new PaymentsResource($payment->load(['user', 'loan']));

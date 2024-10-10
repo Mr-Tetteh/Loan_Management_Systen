@@ -10,7 +10,8 @@ const props = defineProps({
 const statuses = {
   "pending": "bg-amber-100 text-amber-800",
   "rejected": "bg-rose-100 text-rose-800",
-  "approved": "bg-emerald-100 text-emerald-800"
+  "approved": "bg-sky-100 text-sky-800",
+  "paid": "bg-emerald-100 text-emerald-800",
 
 }
 

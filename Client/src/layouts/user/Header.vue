@@ -10,6 +10,13 @@ import {ChevronDownIcon} from "@heroicons/vue/20/solid/index.js";
 const {userType, isLoggedIn, username, id} = useSession()
 const {logout} = useAdminSignup()
 
+const loans = [
+  {name: "Approved", url: ''},
+  {name: "Pending Loans", url: ''},
+  {name: "Completed Loans", url: ''},
+  {name: "Rejected Loans", url: ''}
+]
+
 </script>
 <script>
 import router from "@/router/index.js";
@@ -23,8 +30,8 @@ export default {
   computed: {
     sidebarClass() {
       return this.isSidebarVisible
-          ? "fixed top-0 left-0 z-40 w-64 h-screen transition-transform sm:translate-x-0 bg-blue-950"
-          : "fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0 bg-blue-950";
+          ? "fixed top-0 left-0 z-40 w-64 h-screen transition-transform md:translate-x-0 bg-blue-950"
+          : "fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full md:translate-x-0 bg-blue-950";
     },
   },
   methods: {
@@ -42,7 +49,7 @@ const onShow = (id) => {
 <template>
   <div>
     <!-- Toggle Button -->
-    <button @click="toggleSidebar" class="sm:hidden fixed top-4 left-4 z-50 p-2 text-white bg-blue-600 rounded-md">
+    <button @click="toggleSidebar" class="md:hidden fixed top-4 left-4 z-50 p-2 text-white bg-blue-600 rounded-md">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
            class="w-6 h-6">
         <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 5.25h16.5M3.75 12h16.5m-16.5 6h16.5"/>
@@ -105,7 +112,7 @@ const onShow = (id) => {
 
           <li v-if="userType === 'Admin' &&isLoggedIn">
             <div  class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white">
-              <Menu as="div" class="relative inline-block text-left">
+              <Menu v-slot="{ open }" as="div" class="relative inline-block text-left group">
                 <div>
                   <MenuButton
                       class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white  group">
@@ -118,7 +125,7 @@ const onShow = (id) => {
                             clip-rule="evenodd"/>
                     </svg>
                     Loans
-                    <ChevronDownIcon class="-mr-1 h-5 w-5 text-gray-400" aria-hidden="true"/>
+                    <ChevronDownIcon class="-mr-1 h-5 w-5 text-gray-400 transition duration-150 " :class="open && 'rotate-180'" aria-hidden="true"/>
                   </MenuButton>
                 </div>
 
@@ -129,12 +136,12 @@ const onShow = (id) => {
                             leave-from-class="transform opacity-100 scale-100"
                             leave-to-class="transform opacity-0 scale-95">
                   <MenuItems
-                      class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-emerald-200-100 dark:hover:bg-gray-700 group">
-                    <div class="py-1 ">
-                      <router-link to="/admin_loan">
+                      class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-emerald-200-100 group">
+                    <div class="py-1 flex flex-col gap-4">
+                      <router-link v-for="loan in loans" :key="loan.name" :to="loan.url">
                         <MenuItem v-slot="{ active }">
                             <a href="#"
-                               class="flex items-center text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                               class="flex items-center text-gray-900 rounded-lg dark:text-white group">
                               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
                                    class="size-6">
                                 <path
@@ -144,52 +151,12 @@ const onShow = (id) => {
                                       clip-rule="evenodd"/>
                               </svg>
 
-                              <span class="flex-1 ms-3 whitespace-nowrap">Approved Loans</span>
+                              <span class="flex-1 ms-3 whitespace-nowrap hover:opacity-70">{{ loan.name }}</span>
                             </a>
                         </MenuItem>
                       </router-link>
-                      <br>
-
-                      <router-link to="/admin_pending_loan">
-                        <MenuItem  v-slot="{ active }">
-                          <div
-                              class="text-gray-700 flex items-center justify-between w-full px-4 py-2 text-sm">
-                            <div   class="flex items-center text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                                   class="size-6">
-                                <path
-                                    d="M10.464 8.746c.227-.18.497-.311.786-.394v2.795a2.252 2.252 0 0 1-.786-.393c-.394-.313-.546-.681-.546-1.004 0-.323.152-.691.546-1.004ZM12.75 15.662v-2.824c.347.085.664.228.921.421.427.32.579.686.579.991 0 .305-.152.671-.579.991a2.534 2.534 0 0 1-.921.42Z"/>
-                                <path fill-rule="evenodd"
-                                      d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 6a.75.75 0 0 0-1.5 0v.816a3.836 3.836 0 0 0-1.72.756c-.712.566-1.112 1.35-1.112 2.178 0 .829.4 1.612 1.113 2.178.502.4 1.102.647 1.719.756v2.978a2.536 2.536 0 0 1-.921-.421l-.879-.66a.75.75 0 0 0-.9 1.2l.879.66c.533.4 1.169.645 1.821.75V18a.75.75 0 0 0 1.5 0v-.81a4.124 4.124 0 0 0 1.821-.749c.745-.559 1.179-1.344 1.179-2.191 0-.847-.434-1.632-1.179-2.191a4.122 4.122 0 0 0-1.821-.75V8.354c.29.082.559.213.786.393l.415.33a.75.75 0 0 0 .933-1.175l-.415-.33a3.836 3.836 0 0 0-1.719-.755V6Z"
-                                      clip-rule="evenodd"/>
-                              </svg>
-
-                              <span class="flex-1 ms-3 whitespace-nowrap">Pending Loans</span>
-                            </div>
-                          </div>
-                        </MenuItem>
-                      </router-link>
 
 
-                      <router-link to="/admin_completed_loan">
-                        <MenuItem  v-slot="{ active }">
-                          <div
-                              class="text-gray-700 flex items-center justify-between w-full px-4 py-2 text-sm">
-                            <div   class="flex items-center text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                                   class="size-6">
-                                <path
-                                    d="M10.464 8.746c.227-.18.497-.311.786-.394v2.795a2.252 2.252 0 0 1-.786-.393c-.394-.313-.546-.681-.546-1.004 0-.323.152-.691.546-1.004ZM12.75 15.662v-2.824c.347.085.664.228.921.421.427.32.579.686.579.991 0 .305-.152.671-.579.991a2.534 2.534 0 0 1-.921.42Z"/>
-                                <path fill-rule="evenodd"
-                                      d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 6a.75.75 0 0 0-1.5 0v.816a3.836 3.836 0 0 0-1.72.756c-.712.566-1.112 1.35-1.112 2.178 0 .829.4 1.612 1.113 2.178.502.4 1.102.647 1.719.756v2.978a2.536 2.536 0 0 1-.921-.421l-.879-.66a.75.75 0 0 0-.9 1.2l.879.66c.533.4 1.169.645 1.821.75V18a.75.75 0 0 0 1.5 0v-.81a4.124 4.124 0 0 0 1.821-.749c.745-.559 1.179-1.344 1.179-2.191 0-.847-.434-1.632-1.179-2.191a4.122 4.122 0 0 0-1.821-.75V8.354c.29.082.559.213.786.393l.415.33a.75.75 0 0 0 .933-1.175l-.415-.33a3.836 3.836 0 0 0-1.719-.755V6Z"
-                                      clip-rule="evenodd"/>
-                              </svg>
-
-                              <span class="flex-1 ms-3 whitespace-nowrap">Completed Loans</span>
-                            </div>
-                          </div>
-                        </MenuItem>
-                      </router-link>
                     </div>
                   </MenuItems>
                 </transition>
@@ -231,6 +198,19 @@ const onShow = (id) => {
           </li>
 
           <li>
+            <router-link to="/loan_history" v-if="isLoggedIn">
+              <a href="#"
+                 class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m20.25 7.5-.625 10.632a2.25 2.25 0 0 1-2.247 2.118H6.622a2.25 2.25 0 0 1-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125Z" />
+                </svg>
+
+
+                <span class="flex-1 ms-3 whitespace-nowrap">Your Loan History</span>
+              </a>
+            </router-link>
+          </li>
+          <li>
             <router-link to="login" v-if="!isLoggedIn">
               <a href="#"
                  class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
@@ -243,20 +223,6 @@ const onShow = (id) => {
               </a>
             </router-link>
           </li>
-          <li>
-            <router-link to="admin_home" v-if="userType === 'Admin' &&isLoggedIn">
-              <a href="#"
-                 class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                     stroke="currentColor" class="size-6">
-                  <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M18 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0ZM3 19.235v-.11a6.375 6.375 0 0 1 12.75 0v.109A12.318 12.318 0 0 1 9.374 21c-2.331 0-4.512-.645-6.374-1.766Z"/>
-                </svg>
-                <span class="flex-1 ms-3 whitespace-nowrap">Admin</span>
-              </a>
-            </router-link>
-          </li>
-
           <li>
             <!--            <router-link :to="{name: 'user.profile', params: {id: {id} }}"  v-if="isLoggedIn">-->
             <a href="#" @click="onShow(id)"

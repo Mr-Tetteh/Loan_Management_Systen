@@ -48,6 +48,26 @@ export default function useLoan() {
         loans.value = res.data.data
     }
 
+
+
+    const get_rejected_loans = async () => {
+        const token = localStorage.getItem('AUTH_TOKEN')
+        const config = {
+            headers: {Authorization: `Bearer ${token}`}
+        }
+        let res = await axios.get('http://127.0.0.1:8000/api/rejected_loans', config)
+        loans.value = res.data.data
+    }
+
+    const get_user_history_loans = async () => {
+        const token = localStorage.getItem('AUTH_TOKEN')
+        const config = {
+            headers: {Authorization: `Bearer ${token}`}
+        }
+        let res = await axios.get('http://127.0.0.1:8000/api/history_loans', config)
+        loans.value = res.data.data
+    }
+
     const numb_of_approve_loans = async () => {
         const token = localStorage.getItem('AUTH_TOKEN');
         const config = {
@@ -192,7 +212,9 @@ export default function useLoan() {
         numb_of_rejected_loans,
         number_of_rejected,
         get_active_loans,
-        get_pending_loans
+        get_pending_loans,
+        get_rejected_loans,
+        get_user_history_loans
 
     }
 }

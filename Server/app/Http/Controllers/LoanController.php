@@ -27,6 +27,12 @@ class LoanController extends Controller
         return LoanResource::collection(Loan::where('user_id', auth()->id())->get());
     }
 
+    public function History()
+    {
+        return LoanResource::collection(Loan::where('user_id', auth()->id())->where('status', 'paid')->latest()->get());
+
+    }
+
 
     public function pendingLoans()
     {
@@ -67,6 +73,12 @@ class LoanController extends Controller
     public function LoansPending(Loan $loan)
     {
         $pending = Loan::with('user')->where('isPaid', false)->where('status', 'pending')->latest()->get();
+        return LoanResource::collection($pending);
+    }
+
+    public function rejectedLoan(Loan $loan)
+    {
+        $pending = Loan::with('user')->where('isPaid', false)->where('status', 'rejected')->latest()->get();
         return LoanResource::collection($pending);
     }
 

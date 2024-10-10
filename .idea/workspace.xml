@@ -5,12 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9aea767f-8c38-4fc5-96e9-77c6004700e4" name="Changes" comment="update">
+      <change afterPath="$PROJECT_DIR$/Client/src/components/TruncatableParagraph.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/src/composerables/useLoan.js" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/composerables/useLoan.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/src/layouts/user/Header.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/layouts/user/Header.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/views/admin/AdminCompeleteLoans.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/views/admin/AdminCompeleteLoans.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/views/admin/AdminHomeView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/views/admin/AdminHomeView.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/views/admin/AdminPendingLoans.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/views/admin/AdminPendingLoans.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/views/user/AllLoansView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/views/user/AllLoansView.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -221,7 +221,7 @@
       <workItem from="1727049003410" duration="6730000" />
       <workItem from="1727264790549" duration="159094000" />
       <workItem from="1727815598188" duration="90810000" />
-      <workItem from="1728175853471" duration="130891000" />
+      <workItem from="1728175853471" duration="138998000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <option name="closed" value="true" />
@@ -251,5 +251,17 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="update" />
     <option name="LAST_COMMIT_MESSAGE" value="update" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/Client/src/layouts/user/Header.vue</url>
+          <line>137</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

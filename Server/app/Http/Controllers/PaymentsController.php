@@ -21,7 +21,11 @@ class PaymentsController extends Controller
         return PaymentsResource::collection(Payments::where('user_id', $user->id)->latest()->get());
 
     }
+    public function History()
+    {
+        return PaymentsResource::collection(Payments::where('user_id', auth()->id())->where('amount_remaining', 0)->latest()->get());
 
+    }
     /**
      * Show the form for creating a new resource.
      */
@@ -55,7 +59,7 @@ class PaymentsController extends Controller
             'amount_remaining' => $loan->amount - $total_pay,
 
         ]);
-        $loan->isPaid = $loan->amount - $total_pay == 0;
+        $loan->isPaid = $loan->amount - $total_pay <= 0;
         if ($loan->isPaid) {
             $loan->status = 'paid';
         }

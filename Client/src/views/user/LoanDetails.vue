@@ -32,7 +32,7 @@ onMounted(all_loan_payments)
             <TableHeader title="Amount Paid For the month"/>
             <TableHeader title="Amount Remaining"/>
             <TableHeader title="Date"/>
-            <TableHeader title="Actions"/>
+            <TableHeader title="Action"/>
           </tr>
           </thead>
           <tbody class="bg-white divide-y divide-gray-200">
@@ -71,7 +71,7 @@ onMounted(all_loan_payments)
 
             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
               <router-link :to="{name: 'loan.invoice', params:{id: payment.id}}">
-                <p class="rounded-2xl bg-blue-500 p-2">Detail </p>
+                <p class="rounded-2xl bg-blue-500 p-2 hover:bg-gray-500">Generate Receipt</p>
               </router-link>
             </td>
           </tr>

@@ -13,7 +13,7 @@ export default function usePayments() {
         }
         try {
             let res = await axios.post('http://127.0.0.1:8000/api/pay_loans', payment, config)
-            await router.push('/admin_loan')
+            await router.push('/admin_active_loan')
         } catch (err) {
             alert(err.response.data.message)
         }
@@ -27,6 +27,14 @@ export default function usePayments() {
         let res = await axios.get(`http://127.0.0.1:8000/api/loan_payments`, config)
         payments.value = res.data.data
 
+    }
+    const get_user_history_loans = async () => {
+        const token = localStorage.getItem('AUTH_TOKEN')
+        const config = {
+            headers: {Authorization: `Bearer ${token}`}
+        }
+        let res = await axios.get('http://127.0.0.1:8000/api/history_loans', config)
+        payments.value = res.data.data
     }
 
     const get_payment = async (id) => {
@@ -43,6 +51,7 @@ export default function usePayments() {
         storepayments,
         all_loan_payments,
         get_payment,
+        get_user_history_loans,
         payment,
         payments
     }

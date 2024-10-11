@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LoanController;
+use App\Http\Controllers\PaymentsController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\Cors;
 use Illuminate\Http\Request;
@@ -37,7 +38,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('pending_loans', [LoanController::class, 'LoansPending'])->middleware(Cors::class);
     Route::get('compeleted_loans', [LoanController::class, 'completeLoans'])->middleware(Cors::class);
     Route::get('rejected_loans', [LoanController::class, 'rejectedLoan'])->middleware(Cors::class);
-    Route::get('history_loans', [LoanController::class, 'History'])->middleware(Cors::class);
+    Route::get('history_loans', [PaymentsController::class, 'History'])->middleware(Cors::class);
 
 
     Route::delete('loans/{loan}', [LoanController::class, 'destroy']);
@@ -50,9 +51,9 @@ Route::middleware('auth:sanctum')->group(function () {
 
 
 
-    Route::get('loan_payments', [\App\Http\Controllers\PaymentsController::class, 'index']);
-    Route::post('pay_loans', [\App\Http\Controllers\PaymentsController::class, 'store'])->middleware(Cors::class);
-    Route::get('payments/{payment}', [\App\Http\Controllers\PaymentsController::class, 'show']);
+    Route::get('loan_payments', [PaymentsController::class, 'index']);
+    Route::post('pay_loans', [PaymentsController::class, 'store'])->middleware(Cors::class);
+    Route::get('payments/{payment}', [PaymentsController::class, 'show']);
 
 
     //loans

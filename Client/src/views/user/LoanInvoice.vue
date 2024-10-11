@@ -27,10 +27,9 @@ const currentDateTime = ref(new Date().toLocaleString())
   <div class="p-8 bg-gray-50 shadow-lg rounded-lg">
     <!-- Header Section -->
     <div class="flex justify-between items-center mb-4 bg-blue-100 p-4 rounded-lg">
-      <h2 class="text-2xl font-semibold text-blue-800">Invoice</h2>
+      <h2 class="text-2xl font-semibold text-blue-800">Receipt</h2>
     </div>
 
-    <!-- Invoice Info Section -->
     <div class="flex justify-between items-center border-b pb-4 mb-4 bg-blue-50 p-4 rounded-lg">
       <div>
         <p class="text-gray-600">{{currentDateTime}}</p>
@@ -44,7 +43,6 @@ const currentDateTime = ref(new Date().toLocaleString())
       </ul>
     </div>
 
-    <!-- Logo and Invoice Title -->
     <div class="flex flex-col md:flex-row justify-center items-center py-4 border-b mb-4 bg-yellow-600 p-4 rounded-lg">
       <div class="flex flex-col items-center md:items-start">
         <img src="../../../tsclogo.png" alt="Logo"  width="70px" class="rounded-2xl">
@@ -52,10 +50,9 @@ const currentDateTime = ref(new Date().toLocaleString())
       </div>
     </div>
 
-    <!-- Invoice Details -->
     <div class="flex justify-center border-b pb-4 mb-4 bg-blue-50 p-4 rounded-lg">
       <div>
-        <h2 class="text-xl font-semibold text-blue-700">Invoice To:</h2>
+        <h2 class="text-xl font-semibold text-blue-700">Receipt To:</h2>
         <p class="text-gray-600">{{payment.first_name}} {{payment.other_names}} {{payment.last_name}}</p>
       </div>
     </div>

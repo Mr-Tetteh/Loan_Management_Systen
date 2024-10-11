@@ -18,6 +18,7 @@ class PaymentsController extends Controller
     public function index()
     {
         $user = Auth::user();
+        $loan = Loan::get();
         return PaymentsResource::collection(Payments::where('user_id', $user->id)->latest()->get());
 
     }

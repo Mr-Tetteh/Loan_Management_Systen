@@ -1,6 +1,7 @@
 import {ref} from "vue";
 import axios from "axios";
 import router from "@/router/index.js";
+import Swal from "sweetalert2";
 
 export default function useSignup() {
     const user = ref ([]);
@@ -106,11 +107,33 @@ export default function useSignup() {
 
     }
 
-
-
-
     const confirm_password = ref('')
 
+
+
+    const deleteuser = async (id) => {
+
+        Swal.fire({
+            title: "Are you sure you want to delete this user?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                await Swal.fire({
+                    title: "Deleted!",
+                    text: "User has been deleted successfully.",
+                    icon: "success"
+                });
+                await destoryuser(id)
+                await get_users()
+            }
+        });
+
+    }
     const destoryuser = async (id) =>{
         const token = localStorage.getItem('AUTH_TOKEN')
         const config = {
@@ -128,6 +151,7 @@ export default function useSignup() {
         user,
         get_user,
         destoryuser,
+        deleteuser,
         update_user,
         get_deleted_users,
         restoreuser,

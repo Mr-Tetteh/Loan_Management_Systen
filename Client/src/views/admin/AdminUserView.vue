@@ -9,9 +9,10 @@ import {Menu, MenuButton, MenuItem, MenuItems} from "@headlessui/vue";
 import AdminLoanDetails from "@/views/admin/AdminLoanDetails.vue";
 import AdminUserDetails from "@/views/admin/AdminUserDetails.vue";
 import UserType from "@/components/UserType.vue";
+import Swal from 'sweetalert2'
 
 
-const {users, destoryuser, get_users} = useAdminSignup()
+const {users, deleteuser, get_users} = useAdminSignup()
 
 onMounted(get_users)
 
@@ -124,7 +125,7 @@ function closeModal() {
                       </MenuItem>
 
                       <MenuItem v-slot="{ active }">
-                        <button @click="destoryuser(user.id)" class="flex items-center bg-red-200 text-gray-900 w-full h-12 px-4 py-2 text-sm">
+                        <button @click="deleteuser(user.id)" class="flex items-center bg-red-200 text-gray-900 w-full h-12 px-4 py-2 text-sm">
                           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                stroke-width="1.5" stroke="currentColor" class="h-5 w-5">
                             <path stroke-linecap="round" stroke-linejoin="round"

@@ -1,6 +1,7 @@
 import {ref} from 'vue'
 import axios from "axios";
 import router from "@/router/index.js";
+import Swal from "sweetalert2";
 
 
 const useLoan = () => {
@@ -11,6 +12,7 @@ const useLoan = () => {
     const number_of_pending = ref(0)
     const number_of_rejected = ref(0)
     const number_of_compeleted = ref(0)
+    const searchLoan = ref([])
 
 
     const get_loans = async () => {
@@ -186,11 +188,28 @@ const useLoan = () => {
     }
 
     const deleteloan = async (id) => {
-        if (!window.confirm('Are you sure you want to delete this post ??')) {
-            return
-        }
-        await destoryloan(id)
-        await get_loans()
+
+            Swal.fire({
+                title: "Are you sure you want to delete this Loan record?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!"
+            }
+            ).then(async (result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        title: "Deleted!",
+                        text: "Loan has been deleted successfully.",
+                        icon: "success"
+                    });
+                    await destoryloan(id)
+                    await get_loans()
+                }
+            });
+
     }
     const destoryloan = async (id) => {
         const token = localStorage.getItem('AUTH_TOKEN')
@@ -202,6 +221,7 @@ const useLoan = () => {
 
         // console.log(loan)
     }
+
 
 
     return {
@@ -231,7 +251,6 @@ const useLoan = () => {
         get_user_history_loans,
         numb_of_compeleted_loans,
         number_of_compeleted,
-
     }
 }
 

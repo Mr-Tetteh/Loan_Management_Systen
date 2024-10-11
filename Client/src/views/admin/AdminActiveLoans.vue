@@ -10,8 +10,12 @@ import {ref, onMounted} from "vue";
 import axios from "axios";
 import Header from "@/layouts/user/Header.vue";
 
-const {loans, get_active_loans, deleteloan} = useLoan()
-onMounted(get_active_loans)
+let loaan = ref([])
+let searchLoan = ref([])
+
+
+const {loans, get_active_loans, deleteloan,} = useLoan()
+onMounted(get_active_loans, )
 
 const isOpen = ref(null)
 
@@ -28,10 +32,11 @@ function closeModal() {
     <h2 class="text-2xl  justify-center ml-96">List of all Active Loans</h2>
 
     <div class="p-4 rounded-lg">
-
       <div class="mt-6 bg-white clear-end rounded-lg">
-          <router-link to="admin_loan"><span class="bg-blue-500 text-white rounded hover:bg-gray-700 sm: m-5 p-3">View All Loans Records</span></router-link>
-          <router-link to="admin_completed_loan"><span class="bg-cyan-500 text-white rounded hover:bg-gray-700 sm: m-5 float-end p-3">View All completed Loans Records</span>
+          <router-link to="admin_loan">
+            <span class="bg-blue-500 text-white rounded hover:bg-gray-700 sm: m-5 p-3">View All Loans Records</span></router-link>
+          <router-link to="admin_completed_loan">
+            <span class="bg-cyan-500 text-white rounded hover:bg-gray-700 sm: m-5 float-end p-3">View All completed Loans Records</span>
           </router-link>
 
         <table class="min-w-full  rounded-3xl shadow divide-y divide-gray-200">

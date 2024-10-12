@@ -1,6 +1,7 @@
 import {ref} from "vue";
 import axios from "axios";
 import router from "@/router/index.js";
+import Swal from "sweetalert2";
 
 export default function usePayments() {
     const payments = ref([])
@@ -13,9 +14,20 @@ export default function usePayments() {
         }
         try {
             let res = await axios.post('http://127.0.0.1:8000/api/pay_loans', payment, config)
+            await Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Your work has been saved",
+                showConfirmButton: false,
+                timer: 1500
+            });
             await router.push('/admin_active_loan')
         } catch (err) {
-            alert(err.response.data.message)
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: (err.response.data.message),
+            });
         }
     }
 

@@ -29,7 +29,6 @@ const pay = async (loan) =>{
 </script>
 
 <template>
-  <div class="p-4 sm:ml-64">
     <div class="p-4 rounded-lg">
       <div class="mt-6 bg-white clear-end rounded-lg shadow shadow-cyan-600 p-10">
         <form v-if="loan" @submit.prevent="pay(loan)">
@@ -205,8 +204,6 @@ const pay = async (loan) =>{
         </form>
       </div>
     </div>
-  </div>
-
 </template>
 
 <style scoped>

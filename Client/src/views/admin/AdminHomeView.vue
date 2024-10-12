@@ -28,7 +28,7 @@ const drawChart = () => {
     ['Task', 'Hours per Day'],
     ['Total Number Of Users', number.value],
     ['Total Number of approved', number_of_approve.value],
-    ['Total Number of approved', number_of_pending.value],
+    ['Total Number of pending', number_of_pending.value],
     ['Total Number of rejected', number_of_rejected.value]
 
   ])

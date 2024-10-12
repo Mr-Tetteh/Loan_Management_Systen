@@ -3,6 +3,7 @@ import axios from "axios";
 import Header from "@/layouts/user/Header.vue";
 import useLogin from "@/composerables/useLogin.js";
 import {useRouter} from "vue-router";
+import Swal from "sweetalert2";
 
 const {login_user, password} = useLogin()
 const router = useRouter()
@@ -24,7 +25,12 @@ const login = async () => {
       await router.push('/loan')
   }
   }catch (err){
-    alert(err.response.data.message)
+     Swal.fire({
+          icon: "error",
+          title: "Sorry...",
+          text: (err.response.data.message),
+        });
+
   }
 
 }

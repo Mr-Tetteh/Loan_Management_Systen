@@ -82,6 +82,31 @@ export default function useSignup() {
         user.value  = res.data.data
 
     }
+
+    const restoreUser = async (id) => {
+
+        Swal.fire({
+                title: "Are you sure you want to restore this User?",
+                text: "You can delete this user back if you want to!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, restore it!"
+            }
+        ).then(async (result) => {
+            if (result.isConfirmed) {
+                Swal.fire({
+                    title: "Restored!",
+                    text: "User has been restored successfully.",
+                    icon: "success"
+                });
+                await restoreuser(id)
+                await get_users()
+            }
+        });
+
+    }
     const restoreuser = async (id) =>{
         const token = localStorage.getItem('AUTH_TOKEN')
         const config = {
@@ -155,6 +180,7 @@ export default function useSignup() {
         update_user,
         get_deleted_users,
         restoreuser,
+        restoreUser,
         number_of_users,
         users,
         get_users,

@@ -149,9 +149,21 @@ const useLoan = () => {
         }
         try {
             let response = await axios.post('http://127.0.0.1:8000/api/loans', loan, config)
+            await Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Your work has been saved",
+                showConfirmButton: false,
+                timer: 1500
+            });
             await router.push('/all_loans')
         } catch (err) {
-            alert(err.response.data.message)
+            Swal.fire({
+                icon: "error",
+                title: "Sorry...",
+                text: (err.response.data.message),
+            });
+
         }
 
         // console.log(loan)
@@ -166,9 +178,20 @@ const useLoan = () => {
         }
         try {
             let res = await axios.patch(`http://127.0.0.1:8000/api/loans/${id}`, loan.value, config)
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Loan status has been saved",
+                showConfirmButton: false,
+                timer: 1500
+            });
             await router.push('../../admin_loan')
         } catch (err) {
-            console.log(err)
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: (err),
+            });
         }
     }
 
@@ -181,9 +204,21 @@ const useLoan = () => {
         }
         try {
             let res = await axios.patch(`http://127.0.0.1:8000/api/loans/${id}`, loan.value, config)
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Monthly Deduction saved!",
+                showConfirmButton: false,
+                timer: 1500
+            });
             await router.push('../../all_loans')
         } catch (err) {
-            console.log(err)
+
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: (err),
+            });
         }
     }
 

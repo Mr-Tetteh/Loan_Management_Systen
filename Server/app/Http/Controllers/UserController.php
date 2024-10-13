@@ -49,7 +49,19 @@ class UserController extends Controller
 
     public function update(Request $request, User $user)
     {
+//        if ($request->phone >= 10) {
+//            return response()->json(['error' => 'Phone number must be less than 10.']);
+//        }
         $user->update([
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'other_names' => $request->other_names,
+            'email' => $request->email,
+            'salary' => $request->salary,
+            'phone' => $request->phone,
+            'country' => $request->country,
+            'date_of_birth' => $request->date_of_birth,
+            'nationality' => $request->nationality,
             'national_id' => $request->national_id,
             'user_type' => $request->user_type
         ]);

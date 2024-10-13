@@ -19,9 +19,25 @@ const login = async () => {
     localStorage.setItem("USER_NAME", response.data.user.first_name)
     localStorage.setItem("USER_ID", response.data.user.id)
     if(response.data.user.user_type.toUpperCase() === 'ADMIN') {
+
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Logged in successfully!",
+        showConfirmButton: false,
+        timer: 1500
+      });
       await router.push('/admin_home')
 
     }else {
+
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Logged in successfully!",
+        showConfirmButton: false,
+        timer: 1500
+      });
       await router.push('/loan')
   }
   }catch (err){

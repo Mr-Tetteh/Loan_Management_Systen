@@ -51,6 +51,29 @@ export default function useSignup() {
         let res = await axios.get('http://127.0.0.1:8000/api/deleted', config)
         users.value = res.data.data
     }
+
+    const updated_user = async (id) => {
+        Swal.fire({
+            title: "Are you sure you want to perform this action on this user?",
+            text: "You can revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, I am sure!"
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                await Swal.fire({
+                    title: "User status changed !",
+                    text: "User status has been updated successfully.",
+                    icon: "success"
+                });
+                await update_user(id)
+                await get_users()
+            }
+        });
+
+    }
     const update_user = async (id) => {
         const token = localStorage.getItem('AUTH_TOKEN')
         const config = {
@@ -58,12 +81,57 @@ export default function useSignup() {
         }
         try{
             let res = await  axios.patch(`http://127.0.0.1:8000/api/users/${id}`, user.value, config)
+
             await router.push('../../admin_user')
         }catch (err){
-            console.log(err)
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: (err),
+            });
         }
     }
 
+
+    const updated_user_profile = async (id) => {
+        Swal.fire({
+            title: "Are you sure you want to update your details",
+            text: "You can update this again!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, I am sure!"
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                await Swal.fire({
+                    title: "Details updated !",
+                    text: "Your details have been updated successfully.",
+                    icon: "success"
+                });
+                await update_user_profile(id)
+                // await get_users()
+            }
+        });
+
+    }
+
+    const update_user_profile = async (id) => {
+        const token = localStorage.getItem('AUTH_TOKEN')
+        const config = {
+            headers: {Authorization: `Bearer ${token}`}
+        }
+        try{
+            let res = await  axios.patch(`http://127.0.0.1:8000/api/users/${id}`, user.value, config)
+
+            await router.push('/')
+        }catch (err){
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: (err),
+            });        }
+    }
     const get_user = async (id) => {
         const token = localStorage.getItem('AUTH_TOKEN')
         const config = {
@@ -186,6 +254,8 @@ export default function useSignup() {
         get_users,
         auth_user,
         logout,
-        number
+        number,
+        updated_user,
+        updated_user_profile
     }
 }

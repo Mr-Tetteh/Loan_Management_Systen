@@ -20,7 +20,7 @@ onMounted(() => get_user(props.id))
 </script>
 
 <template>
-
+<Header/>
   <div class="p-4 rounded-lg">
     <div class="mt-6 bg-white clear-end rounded-lg shadow shadow-cyan-600 p-10">
       <form @submit.prevent="editUser">

@@ -7,6 +7,7 @@ use App\Http\Requests\UpdatePaymentsRequest;
 use App\Http\Resources\PaymentsResource;
 use App\Models\Loan;
 use App\Models\Payments;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
@@ -18,15 +19,15 @@ class PaymentsController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $loan = Loan::get();
         return PaymentsResource::collection(Payments::where('user_id', $user->id)->latest()->get());
 
     }
+
     public function History()
     {
         return PaymentsResource::collection(Payments::where('user_id', auth()->id())->where('amount_remaining', 0)->latest()->get());
-
     }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -47,7 +48,6 @@ class PaymentsController extends Controller
                 'message' => 'Loan not found'
             ], 400);
         }
-
         $loan = $loan->load('payments');
         $total_currently_pay = $loan->payments->sum('amount_to_pay');
         $total_pay = $total_currently_pay + $request['amount_to_pay'];
@@ -60,7 +60,7 @@ class PaymentsController extends Controller
             'amount_remaining' => $loan->amount - $total_pay,
 
         ]);
-        $loan->isPaid = $loan->amount - $total_pay <= 0;
+        $loan->isPaid = $loan->amount - $total_pay == 0;
         if ($loan->isPaid) {
             $loan->status = 'paid';
         }

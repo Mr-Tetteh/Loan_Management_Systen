@@ -1,4 +1,6 @@
-<script setup>
+<script setup lang="ts">
+
+import {computed, ref} from "vue";
 
 import {Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems} from '@headlessui/vue'
 import {Bars3Icon, BellIcon, XMarkIcon} from '@heroicons/vue/24/outline'
@@ -6,7 +8,9 @@ import {useRouter} from "vue-router";
 import useSession from "@/composerables/useSession.js";
 import useAdminSignup from "@/composerables/useAdminSignup.js"
 import {ChevronDownIcon} from "@heroicons/vue/20/solid/index.js";
+import router from "@/router/index.js";
 
+const isSidebarVisible = ref(false)
 const {userType, isLoggedIn, username, id} = useSession()
 const {logout} = useAdminSignup()
 
@@ -17,35 +21,18 @@ const loans = [
   {name: "Rejected Loans", url: 'admin_rejected_loan'},
   {name: "All Loans", url: 'admin_loan'}
 ]
-
-
-</script>
-<script>
-import router from "@/router/index.js";
-
-export default {
-  data() {
-    return {
-      isSidebarVisible: false,
-    };
-  },
-  computed: {
-    sidebarClass() {
-      return this.isSidebarVisible
-          ? "fixed top-0 left-0 z-40 w-64 h-screen transition-transform md:translate-x-0 bg-blue-950"
-          : "fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full md:translate-x-0 bg-blue-950";
-    },
-  },
-  methods: {
-    toggleSidebar() {
-      this.isSidebarVisible = !this.isSidebarVisible;
-    },
-  },
-};
-
+function   toggleSidebar() {
+  isSidebarVisible.value = !isSidebarVisible.value;
+}
 const onShow = (id) => {
   router.push('/user_profile/' + id)
 }
+
+const sidebarClass = computed(() => {
+  return isSidebarVisible.value
+      ? "fixed top-0 left-0 z-40 w-64 h-screen transition-transform md:translate-x-0 bg-blue-950"
+      : "fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full md:translate-x-0 bg-blue-950";
+})
 </script>
 
 <template>
@@ -62,8 +49,7 @@ const onShow = (id) => {
     <aside :class="sidebarClass" aria-label="Sidebar">
       <div class="h-full px-3 py-4 overflow-y-auto bg-blue-950">
         <ul class="space-y-10 font-medium mt-10">
-
-          <li v-if="userType === 'Admin' &&isLoggedIn">
+          <li v-if="userType === 'Admin' && isLoggedIn">
             <router-link to="admin_home">
               <div
                   class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">

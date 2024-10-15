@@ -8,6 +8,7 @@ import {
   DialogPanel,
   DialogTitle,
 } from '@headlessui/vue'
+import Header from "@/layouts/user/Header.vue";
 
 
 const props = defineProps({
@@ -24,6 +25,7 @@ const props = defineProps({
 
 </script>
 <template>
+  <Header/>
   <div class="fixed inset-0 flex items-center justify-center ">
 
   </div>

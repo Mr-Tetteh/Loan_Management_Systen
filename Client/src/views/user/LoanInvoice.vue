@@ -3,6 +3,7 @@ import {onMounted, ref} from "vue";
 import usePayments from "@/composerables/usePayments.js";
 import router from "@/router/index.js";
 import {timestamp} from "@antfu/utils";
+import Header from "@/layouts/user/Header.vue";
 
 const {payment, get_payment} = usePayments()
 const props =  defineProps({
@@ -23,6 +24,7 @@ const currentDateTime = ref(new Date().toLocaleString())
 </script>
 
 <template>
+  <Header/>
 
   <div class="p-8 bg-gray-50 shadow-lg rounded-lg">
     <!-- Header Section -->

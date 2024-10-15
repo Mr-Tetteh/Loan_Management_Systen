@@ -25,6 +25,7 @@ const headers = [
 </script>
 
 <template>
+  <Header/>
 
   <h3 class="text-center text-3xl font-sans">Your current loan</h3>
 
@@ -66,7 +67,7 @@ const headers = [
 
       <td class="px-3 py-2 whitespace-nowrap  text-sm font-medium">
         <p>
-          <router-link :to="{name: 'user_loan.details'}">
+          <router-link :to="{name: 'user_loan.details', params:{id: loan.id}}">
             <span class="bg-emerald-200 p-2 rounded">Payments Details</span>
           </router-link>
         </p>

@@ -23,6 +23,7 @@ onMounted(() => get_loan_update(props.id))
 
 
 <template>
+  <Header/>
   <div v-if="loan">
     <div class="p-4 rounded-lg">
       <div class="mt-6 bg-white clear-end rounded-lg shadow shadow-cyan-600 p-10">

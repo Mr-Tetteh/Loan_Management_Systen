@@ -23,7 +23,7 @@ function closeModal() {
 </script>
 
 <template>
-
+<Header/>
 
       <h3 class="text-3xl text-center">List of All Rejected Loans</h3>
       <div class="mt-6 bg-white clear-end rounded-lg">

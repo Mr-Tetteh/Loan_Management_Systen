@@ -23,6 +23,7 @@ function closeModal() {
 </script>
 
 <template>
+  <Header/>
 
     <h2 class="text-2xl ml-96">List of all Pending Loans</h2>
 
@@ -58,24 +59,24 @@ function closeModal() {
             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
               {{ loan.email }}
             </td>
-            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+            <td class="px-6 py-4 whitespace-nowrap  text-sm font-medium">
               <LoanStatus :status="loan.status"/>
             </td>
-            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+            <td class="px-6 py-4 whitespace-nowrap  text-sm font-medium">
               GHC {{ loan.amount }}
             </td>
 
-            <!--            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">-->
+            <!--            <td class="px-6 py-4 whitespace-nowrap  text-sm font-medium">-->
             <!--              &lt;!&ndash;                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">&ndash;&gt;-->
             <!--              &lt;!&ndash;                 {{ loan.status }}&ndash;&gt;-->
             <!--              &lt;!&ndash;              </span>&ndash;&gt;-->
             <!--              <LoanStatus :status="loan.status"/>-->
             <!--            </td>-->
-            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+            <td class="px-6 py-4 whitespace-nowrap  text-sm font-medium">
               {{ loan.created_at }}
             </td>
 
-            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+            <td class="px-6 py-4 whitespace-nowrap  text-sm font-medium">
               <Menu as="div" class="relative inline-block text-left">
                 <div>
                   <MenuButton

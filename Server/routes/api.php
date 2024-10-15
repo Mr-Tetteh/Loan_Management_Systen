@@ -52,6 +52,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
 
     Route::get('loan_payments', [PaymentsController::class, 'index']);
+
     Route::post('pay_loans', [PaymentsController::class, 'store'])->middleware(Cors::class);
     Route::get('payments/{payment}', [PaymentsController::class, 'show']);
 

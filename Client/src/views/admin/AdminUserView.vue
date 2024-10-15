@@ -26,7 +26,7 @@ function closeModal() {
 </script>
 
 <template>
-
+<Header/>
     <div class="p-4 rounded-lg">
       <div class="mt-6 bg-white clear-end rounded-lg">
         <router-link to="admin_add_user">

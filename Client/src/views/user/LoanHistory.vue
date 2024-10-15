@@ -11,6 +11,7 @@ onMounted(() => get_user_history_loans())
 </script>
 
 <template>
+  <Header/>
 
       <p class="text-3xl text-center">Here is a list of all your loan History</p>
       <div class="mt-6 bg-white clear-end rounded-lg p-10">

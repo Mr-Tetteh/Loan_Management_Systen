@@ -24,7 +24,7 @@ class LoanController extends Controller
 //        return response()->json([
 //            'loans' => $loans
 //        ]);
-        return LoanResource::collection(Loan::where('user_id', auth()->id())->get());
+        return LoanResource::collection(Loan::where('user_id', auth()->id())->where('isPaid', false)->get());
     }
 
     public function History()
@@ -58,8 +58,6 @@ class LoanController extends Controller
         return response()->json(['total' => $totalRejectedLoans]);
 
     }
-
-
     public function loanss(Loan $loan)
     {
         return LoanResource::collection(Loan::with('user')->latest()->get());
@@ -135,7 +133,6 @@ class LoanController extends Controller
             'purpose' => $request->purpose,
         ]);
 
-
         return new LoanResource($loan);
 
 
@@ -189,5 +186,4 @@ class LoanController extends Controller
     {
         $loan->delete();
     }
-
 }

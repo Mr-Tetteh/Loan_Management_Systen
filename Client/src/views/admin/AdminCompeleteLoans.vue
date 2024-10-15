@@ -23,6 +23,7 @@ function closeModal() {
 </script>
 
 <template>
+  <Header/>
 
     <h2 class="text-2xl ml-96"> List of all Completed Loans</h2>
 

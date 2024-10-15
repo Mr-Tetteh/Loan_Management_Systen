@@ -32,7 +32,7 @@ const register = async () => {
 </script>
 
 <template>
-
+<Header/>
   <div class="sm:mx-auto sm:w-full sm:max-w-sm ">
     <img class="rounded-full" width="80%" src="../../../tsclogo.png"
          alt="Your Company"/>

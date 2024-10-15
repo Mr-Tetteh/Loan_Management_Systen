@@ -27,11 +27,11 @@ function closeModal() {
 </script>
 
 <template>
+<Header/>
 
+    <h2 class="text-2xl lg:ml-96 sm:mb-10">List of all Active Loans</h2>
 
-    <h2 class="text-2xl  justify-center ml-96">List of all Active Loans</h2>
-
-    <div class="p-4 rounded-lg">
+    <div class=" rounded-lg">
       <div class="mt-6 bg-white clear-end rounded-lg">
           <router-link to="admin_loan">
             <span class="bg-blue-500 text-white rounded hover:bg-gray-700 sm: m-5 p-3">View All Loans Records</span></router-link>
@@ -62,24 +62,24 @@ function closeModal() {
             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
               {{ loan.email }}
             </td>
-            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+            <td class="px-6 py-4 whitespace-nowrap  text-sm font-medium">
               <LoanStatus :status="loan.status"/>
             </td>
-            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+            <td class="px-6 py-4 whitespace-nowrap  text-sm font-medium">
               GHC {{ loan.amount }}
             </td>
 
-            <!--            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">-->
+            <!--            <td class="px-6 py-4 whitespace-nowrap  text-sm font-medium">-->
             <!--              &lt;!&ndash;                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">&ndash;&gt;-->
             <!--              &lt;!&ndash;                 {{ loan.status }}&ndash;&gt;-->
             <!--              &lt;!&ndash;              </span>&ndash;&gt;-->
             <!--              <LoanStatus :status="loan.status"/>-->
             <!--            </td>-->
-            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+            <td class="px-6 py-4 whitespace-nowrap  text-sm font-medium">
               {{ loan.created_at }}
             </td>
 
-            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+            <td class="px-6 py-4 whitespace-nowrap  text-sm font-medium">
               <Menu as="div" class="relative inline-block text-left">
                 <div>
                   <MenuButton

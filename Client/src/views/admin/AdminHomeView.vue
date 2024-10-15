@@ -56,6 +56,7 @@ watch([number,number_of_pending,number_of_approve, number_of_rejected], async ()
 
 
 <template>
+  <Header/>
   <div>
     <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 overflow-y-auto bg-white">
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-4">

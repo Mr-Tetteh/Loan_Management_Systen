@@ -30,16 +30,17 @@ export default function usePayments() {
             });
         }
     }
-
     const all_loan_payments = async () => {
-        const token = localStorage.getItem('AUTH_TOKEN')
+        const token = localStorage.getItem('AUTH_TOKEN');
         const config = {
-            headers: {Authorization: `Bearer ${token}`}
-        }
-        let res = await axios.get(`http://127.0.0.1:8000/api/loan_payments`, config)
-        payments.value = res.data.data
+            headers: { Authorization: `Bearer ${token}` }
+        };
+        let res = await axios.get(`http://127.0.0.1:8000/api/loan_payments`, config);
+        payments.value = res.data.data;
+    };
 
-    }
+
+
     const get_user_history_loans = async () => {
         const token = localStorage.getItem('AUTH_TOKEN')
         const config = {

@@ -5,6 +5,7 @@ const {loan, get_loan_update, updateloan} = useLoan()
 const {payment, storepayments} = usePayments()
 import {onMounted, reactive, ref} from 'vue'
 import usePayments from "@/composerables/usePayments.js";
+import Header from "@/layouts/user/Header.vue";
 const props = defineProps({
   id: {
     type: String,
@@ -29,6 +30,7 @@ const pay = async (loan) =>{
 </script>
 
 <template>
+  <Header/>
     <div class="p-4 rounded-lg">
       <div class="mt-6 bg-white clear-end rounded-lg shadow shadow-cyan-600 p-10">
         <form v-if="loan" @submit.prevent="pay(loan)">
@@ -150,7 +152,7 @@ const pay = async (loan) =>{
                   <label for="loan_amount" class="block text-sm font-medium leading-6 text-gray-900">Amount Remaining
                   </label>
                   <div class="mt-2">
-                    <input v-model="loan.amount_paid" type="text" id="national_id" autocomplete="postal-code"
+                    <input v-model="loan.amount_remaining" type="text" id="national_id" autocomplete="postal-code"
                            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                            disabled/>
                   </div>

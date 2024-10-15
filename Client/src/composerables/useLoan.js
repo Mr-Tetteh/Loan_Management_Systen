@@ -152,7 +152,7 @@ const useLoan = () => {
             await Swal.fire({
                 position: "top-end",
                 icon: "success",
-                title: "Your work has been saved",
+                title: "Your loan has been submitted successfully.",
                 showConfirmButton: false,
                 timer: 1500
             });

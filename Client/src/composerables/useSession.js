@@ -1,3 +1,4 @@
+import { reactive, computed } from 'vue'
 const useSession = () => {
     const isLoggedIn = !!localStorage.getItem("AUTH_TOKEN")
     const userType = localStorage.getItem("USER_ROLE")
@@ -11,5 +12,4 @@ const useSession = () => {
         id
     }
 }
-
 export default useSession

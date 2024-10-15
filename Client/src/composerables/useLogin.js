@@ -1,10 +1,20 @@
 import {ref} from "vue";
 import axios from "axios";
-
+import router from "@/router/index.js";
 export default function useLogin() {
     const login_user = ref({
         email: "",
         password: ""
+    })
+
+    const forgot = ref({
+        email: "",
+    })
+
+    const reset = ref({
+        // token: router.params.token,
+        password: '',
+        confirm_password: ''
     })
     const {user} = ref([''])
 
@@ -24,6 +34,7 @@ export default function useLogin() {
         login_user,
         password,
         auth_user,
-        user
+        user,
+        forgot
     }
 }

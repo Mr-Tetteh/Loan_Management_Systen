@@ -45,10 +45,14 @@ const sidebarClass = computed(() => {
       </svg>
     </button>
 
-    <!-- Sidebar -->
     <aside :class="sidebarClass" aria-label="Sidebar">
-      <div class="h-full px-3 py-4 overflow-y-auto bg-blue-950">
-        <ul class="space-y-10 font-medium mt-10">
+      <div class="h-full px-5 py-4 overflow-y-auto bg-blue-950">
+
+        <div v-if="username" class="flex items-center p-4 gap-3">
+          <img src="/avatr.png" class="rounded-full size-10" alt=""/>
+          <span class="text-white"> {{ username }}</span>
+        </div>
+        <ul class="space-y-6 font-medium  mt-5">
           <li v-if="userType === 'Admin' && isLoggedIn">
             <router-link to="admin_home">
               <div
@@ -290,10 +294,6 @@ const sidebarClass = computed(() => {
           </li>
         </ul>
 
-        <div class="mt-5 sm:mt-40 md:mt-32 lg:mt-32 py-16 sm:py-24 md:py-32 lg:py-40">
-          <h3 class="text-white" v-if="username">Name:</h3>
-          <span class="text-white"> {{ username }}</span>
-        </div>
       </div>
     </aside>
   </div>

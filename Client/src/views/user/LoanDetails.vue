@@ -2,32 +2,20 @@
 import Header from "@/layouts/user/Header.vue";
 import {Menu, MenuButton, MenuItem, MenuItems, SwitchGroup} from "@headlessui/vue";
 import usePayments from "@/composerables/usePayments.js";
-import {computed, onMounted} from "vue";
+import {computed, onMounted, watch} from "vue";
 import {ChevronDownIcon} from "@heroicons/vue/20/solid/index.js";
 import TableHeader from "@/components/TableHeader.vue";
 import LoanStatus from "@/components/LoanStatus.vue";
-import router from "@/router/index.js";
+import { useRoute } from 'vue-router'
+
 
 
 const {payments, all_loan_payments} = usePayments()
+const route = useRoute()
 
-const props = defineProps({
-  id:{
-    id: Number,
-    required: true
-  }
+onMounted(() => {
+  all_loan_payments(route.params.id)
 })
-const currentLoanPayments = computed(() => {
-  const current = []
-  payments.value.map(item => {
-    if(Number(item.loan_id) === Number(props.id) ) {
-      console.log(item)
-      current.push(item)
-    }
-  })
-  return current
-})
-onMounted(() => all_loan_payments (props.id))
 
 </script>
 
@@ -36,7 +24,7 @@ onMounted(() => all_loan_payments (props.id))
 
     <div class="rounded-lg">
       <p class="text-3xl text-center sm:ml-52">Here is a list of all your loan payments</p>
-      <p>{{currentLoanPayments.length}}</p>
+<!--      <p>{{currentLoanPayments.length}}</p>-->
       <div class="mt-6 bg-white clear-end rounded-lg p-10">
         <table class="min-w-full  rounded-3xl shadow divide-y divide-gray-200">
           <thead>
@@ -53,7 +41,7 @@ onMounted(() => all_loan_payments (props.id))
           </tr>
           </thead>
           <tbody class="bg-white divide-y divide-gray-200">
-          <tr  v-for="(payment) in currentLoanPayments" :key="payment.id">
+          <tr  v-for="(payment) in payments" :key="payment.id">
             <td class="px-6 py-4 whitespace-nowrap flex items-center">
               <div>
                 <div class="text-sm font-medium text-gray-900">

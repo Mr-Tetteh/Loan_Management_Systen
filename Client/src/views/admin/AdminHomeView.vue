@@ -117,8 +117,10 @@ watch([number,number_of_pending,number_of_approve, number_of_rejected], async ()
 
       </div>
 
-      <div class="flex items-center justify-center h-48 mb-52 rounded ">
-        <div id="piechart" style="width: 900px; height: 500px;" class="mt-52 py-32"></div>
+      <div class=" w-full p-5 overflow-hidden">
+        <div class="pie-container max-w-[900px] mx-auto overflow-x-auto w-full">
+          <div id="piechart"></div>
+        </div>
       </div>
     </div>
   </div>

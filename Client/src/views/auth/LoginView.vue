@@ -87,7 +87,7 @@ const login = async () => {
             </div>
 
             <div class="text-sm ml-60">
-              <a href="#" class="font-semibold text-indigo-600 hover:text-indigo-500">Forgot password?</a>
+             <router-link to="forgot_password" class="font-semibold text-indigo-600 hover:text-indigo-500">Forgot password</router-link>
             </div>
           </div>
 

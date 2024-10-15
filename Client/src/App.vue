@@ -4,7 +4,7 @@ import { RouterLink, RouterView } from 'vue-router'
 
 <template>
   <main>
-    <section class="md:ml-64 p-10 h-screen">
+    <section class="md:ml-64 p-4 md:p-10 h-screen">
       <RouterView />
 
     </section>

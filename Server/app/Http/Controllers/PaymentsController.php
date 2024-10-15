@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePaymentsRequest;
 use App\Http\Requests\UpdatePaymentsRequest;
+use App\Http\Resources\LoanResource;
 use App\Http\Resources\PaymentsResource;
 use App\Models\Loan;
 use App\Models\Payments;
@@ -16,10 +17,11 @@ class PaymentsController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         $user = Auth::user();
-        return PaymentsResource::collection(Payments::where('user_id', $user->id)->latest()->get());
+        $loan = Loan::where('user_id', $user->id)->first();
+        return PaymentsResource::collection(Payments::where('loan_id', $request->payment)->get());
 
     }
 

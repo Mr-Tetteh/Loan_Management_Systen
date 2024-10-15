@@ -23,6 +23,8 @@ import AdminPendingLoans from "@/views/admin/AdminPendingLoans.vue";
 import AdminRejectedLoans from "@/views/admin/AdminRejectedLoans.vue";
 import LoanHistory from "@/views/user/LoanHistory.vue";
 import AdminHomeView from "@/views/admin/AdminHomeView.vue";
+import ForgotPassword from "@/views/auth/ForgotPassword.vue";
+import PasswordRest from "@/views/auth/PasswordRest.vue";
 
 
 const router = createRouter({
@@ -42,6 +44,19 @@ const router = createRouter({
             path: '/register',
             name: 'register',
             component: RegistrationView
+        },
+
+
+        {
+            path: '/forgot_password',
+            name: 'forgot_password',
+            component: ForgotPassword
+        },
+
+        {
+            path: '/password_reset/:token',
+            name: 'password_reset',
+            component: PasswordRest
         },
 
         {

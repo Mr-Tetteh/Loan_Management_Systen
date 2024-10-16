@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('register', [UserController::class, 'register']);
 Route::post('login', [UserController::class, 'login']);
+// rest password
+
+Route::post('reset ', [\App\Http\Controllers\PasswordController::class, 'forgotPassword']);
 
 Route::middleware('auth:sanctum')->group(function () {
     //Auth
@@ -63,7 +66,9 @@ Route::middleware('auth:sanctum')->group(function () {
     //loans
     Route::get('loans', [LoanController::class, 'all_loans']);
 
-    // Loan request route
+
+
+
 
 
 });

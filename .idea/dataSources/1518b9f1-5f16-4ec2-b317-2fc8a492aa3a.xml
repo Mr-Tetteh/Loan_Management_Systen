@@ -1200,7 +1200,7 @@ test\\_%|schema||&apos;&apos;||UPDATE|G</Grants>
     </schema>
     <schema id="344" parent="1" name="Loan_Management_System">
       <Current>1</Current>
-      <LastIntrospectionLocalTimestamp>2024-09-27.02:26:30</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2024-10-16.15:42:53</LastIntrospectionLocalTimestamp>
       <CollationName>utf8mb4_general_ci</CollationName>
     </schema>
     <schema id="345" parent="1" name="performance_schema">
@@ -1248,218 +1248,222 @@ test\\_%|schema||&apos;&apos;||UPDATE|G</Grants>
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_unicode_ci</CollationName>
     </table>
-    <table id="359" parent="344" name="password_reset_tokens">
+    <table id="359" parent="344" name="password_reset">
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_unicode_ci</CollationName>
     </table>
-    <table id="360" parent="344" name="payments">
+    <table id="360" parent="344" name="password_reset_tokens">
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_unicode_ci</CollationName>
     </table>
-    <table id="361" parent="344" name="personal_access_tokens">
+    <table id="361" parent="344" name="payments">
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_unicode_ci</CollationName>
     </table>
-    <table id="362" parent="344" name="users">
+    <table id="362" parent="344" name="personal_access_tokens">
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_unicode_ci</CollationName>
     </table>
-    <column id="363" parent="356" name="id">
+    <table id="363" parent="344" name="users">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_unicode_ci</CollationName>
+    </table>
+    <column id="364" parent="356" name="id">
       <AutoIncrement>1</AutoIncrement>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>bigint(20) unsigned|0s</StoredType>
     </column>
-    <column id="364" parent="356" name="uuid">
+    <column id="365" parent="356" name="uuid">
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StoredType>varchar(255)|0s</StoredType>
     </column>
-    <column id="365" parent="356" name="connection">
+    <column id="366" parent="356" name="connection">
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StoredType>text|0s</StoredType>
     </column>
-    <column id="366" parent="356" name="queue">
+    <column id="367" parent="356" name="queue">
       <NotNull>1</NotNull>
       <Position>4</Position>
       <StoredType>text|0s</StoredType>
     </column>
-    <column id="367" parent="356" name="payload">
+    <column id="368" parent="356" name="payload">
       <NotNull>1</NotNull>
       <Position>5</Position>
       <StoredType>longtext|0s</StoredType>
     </column>
-    <column id="368" parent="356" name="exception">
+    <column id="369" parent="356" name="exception">
       <NotNull>1</NotNull>
       <Position>6</Position>
       <StoredType>longtext|0s</StoredType>
     </column>
-    <column id="369" parent="356" name="failed_at">
+    <column id="370" parent="356" name="failed_at">
       <DefaultExpression>current_timestamp()</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>7</Position>
       <StoredType>timestamp|0s</StoredType>
     </column>
-    <index id="370" parent="356" name="PRIMARY">
+    <index id="371" parent="356" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="371" parent="356" name="failed_jobs_uuid_unique">
+    <index id="372" parent="356" name="failed_jobs_uuid_unique">
       <ColNames>uuid</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="372" parent="356" name="PRIMARY">
+    <key id="373" parent="356" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <key id="373" parent="356" name="failed_jobs_uuid_unique">
+    <key id="374" parent="356" name="failed_jobs_uuid_unique">
       <UnderlyingIndexName>failed_jobs_uuid_unique</UnderlyingIndexName>
     </key>
-    <column id="374" parent="357" name="id">
-      <AutoIncrement>1</AutoIncrement>
+    <column id="375" parent="357" name="id">
+      <AutoIncrement>30</AutoIncrement>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>bigint(20) unsigned|0s</StoredType>
     </column>
-    <column id="375" parent="357" name="user_id">
+    <column id="376" parent="357" name="user_id">
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StoredType>bigint(20) unsigned|0s</StoredType>
     </column>
-    <column id="376" parent="357" name="amount">
+    <column id="377" parent="357" name="amount">
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StoredType>double|0s</StoredType>
     </column>
-    <column id="377" parent="357" name="monthly_payment">
+    <column id="378" parent="357" name="monthly_payment">
+      <NotNull>1</NotNull>
       <Position>4</Position>
       <StoredType>decimal(8,2 digit)|0s</StoredType>
     </column>
-    <column id="378" parent="357" name="amount_remaining">
-      <DefaultExpression>0</DefaultExpression>
-      <NotNull>1</NotNull>
-      <Position>5</Position>
-      <StoredType>int(11)|0s</StoredType>
-    </column>
     <column id="379" parent="357" name="purpose">
       <NotNull>1</NotNull>
-      <Position>6</Position>
+      <Position>5</Position>
       <StoredType>longtext|0s</StoredType>
     </column>
     <column id="380" parent="357" name="status">
       <DefaultExpression>&apos;pending&apos;</DefaultExpression>
       <NotNull>1</NotNull>
-      <Position>7</Position>
+      <Position>6</Position>
       <StoredType>varchar(255)|0s</StoredType>
     </column>
     <column id="381" parent="357" name="created_at">
-      <Position>8</Position>
+      <Position>7</Position>
       <StoredType>timestamp|0s</StoredType>
     </column>
     <column id="382" parent="357" name="updated_at">
-      <Position>9</Position>
+      <Position>8</Position>
       <StoredType>timestamp|0s</StoredType>
     </column>
-    <index id="383" parent="357" name="PRIMARY">
+    <column id="383" parent="357" name="isPaid">
+      <DefaultExpression>0</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>9</Position>
+      <StoredType>tinyint(1)|0s</StoredType>
+    </column>
+    <column id="384" parent="357" name="amount_paid">
+      <DefaultExpression>0.00</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>10</Position>
+      <StoredType>decimal(10,2 digit)|0s</StoredType>
+    </column>
+    <index id="385" parent="357" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="384" parent="357" name="PRIMARY">
+    <key id="386" parent="357" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="385" parent="358" name="id">
-      <AutoIncrement>9</AutoIncrement>
+    <column id="387" parent="358" name="id">
+      <AutoIncrement>22</AutoIncrement>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>int(10) unsigned|0s</StoredType>
     </column>
-    <column id="386" parent="358" name="migration">
+    <column id="388" parent="358" name="migration">
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StoredType>varchar(255)|0s</StoredType>
     </column>
-    <column id="387" parent="358" name="batch">
+    <column id="389" parent="358" name="batch">
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StoredType>int(11)|0s</StoredType>
     </column>
-    <index id="388" parent="358" name="PRIMARY">
+    <index id="390" parent="358" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="389" parent="358" name="PRIMARY">
+    <key id="391" parent="358" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="390" parent="359" name="email">
-      <NotNull>1</NotNull>
-      <Position>1</Position>
-      <StoredType>varchar(255)|0s</StoredType>
-    </column>
-    <column id="391" parent="359" name="token">
-      <NotNull>1</NotNull>
-      <Position>2</Position>
-      <StoredType>varchar(255)|0s</StoredType>
-    </column>
-    <column id="392" parent="359" name="created_at">
-      <Position>3</Position>
-      <StoredType>timestamp|0s</StoredType>
-    </column>
-    <index id="393" parent="359" name="PRIMARY">
-      <ColNames>email</ColNames>
-      <Type>btree</Type>
-      <Unique>1</Unique>
-    </index>
-    <key id="394" parent="359" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <Primary>1</Primary>
-      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
-    </key>
-    <column id="395" parent="360" name="id">
+    <column id="392" parent="359" name="id">
       <AutoIncrement>1</AutoIncrement>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>bigint(20) unsigned|0s</StoredType>
     </column>
-    <column id="396" parent="360" name="user_id">
+    <column id="393" parent="359" name="email">
       <NotNull>1</NotNull>
       <Position>2</Position>
-      <StoredType>bigint(20) unsigned|0s</StoredType>
+      <StoredType>varchar(255)|0s</StoredType>
     </column>
-    <column id="397" parent="360" name="loan_id">
+    <column id="394" parent="359" name="token">
       <NotNull>1</NotNull>
       <Position>3</Position>
-      <StoredType>bigint(20) unsigned|0s</StoredType>
+      <StoredType>varchar(255)|0s</StoredType>
     </column>
-    <column id="398" parent="360" name="amount_to_pay">
+    <column id="395" parent="359" name="created_at">
+      <DefaultExpression>current_timestamp()</DefaultExpression>
       <NotNull>1</NotNull>
+      <OnUpdate>current_timestamp()</OnUpdate>
       <Position>4</Position>
-      <StoredType>double|0s</StoredType>
-    </column>
-    <column id="399" parent="360" name="amount_left">
-      <NotNull>1</NotNull>
-      <Position>5</Position>
-      <StoredType>double|0s</StoredType>
-    </column>
-    <column id="400" parent="360" name="created_at">
-      <Position>6</Position>
       <StoredType>timestamp|0s</StoredType>
     </column>
-    <column id="401" parent="360" name="updated_at">
-      <Position>7</Position>
+    <index id="396" parent="359" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <index id="397" parent="359" name="password_reset_email_index">
+      <ColNames>email</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="398" parent="359" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="399" parent="360" name="email">
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="400" parent="360" name="token">
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="401" parent="360" name="created_at">
+      <Position>3</Position>
       <StoredType>timestamp|0s</StoredType>
     </column>
     <index id="402" parent="360" name="PRIMARY">
-      <ColNames>id</ColNames>
+      <ColNames>email</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
@@ -1469,163 +1473,215 @@ test\\_%|schema||&apos;&apos;||UPDATE|G</Grants>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
     <column id="404" parent="361" name="id">
-      <AutoIncrement>1</AutoIncrement>
+      <AutoIncrement>48</AutoIncrement>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>bigint(20) unsigned|0s</StoredType>
     </column>
-    <column id="405" parent="361" name="tokenable_type">
+    <column id="405" parent="361" name="user_id">
       <NotNull>1</NotNull>
       <Position>2</Position>
-      <StoredType>varchar(255)|0s</StoredType>
+      <StoredType>bigint(20) unsigned|0s</StoredType>
     </column>
-    <column id="406" parent="361" name="tokenable_id">
+    <column id="406" parent="361" name="loan_id">
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StoredType>bigint(20) unsigned|0s</StoredType>
     </column>
-    <column id="407" parent="361" name="name">
+    <column id="407" parent="361" name="amount_to_pay">
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+      <StoredType>double|0s</StoredType>
+    </column>
+    <column id="408" parent="361" name="amount_remaining">
+      <Position>5</Position>
+      <StoredType>double|0s</StoredType>
+    </column>
+    <column id="409" parent="361" name="date">
+      <NotNull>1</NotNull>
+      <Position>6</Position>
+      <StoredType>date|0s</StoredType>
+    </column>
+    <column id="410" parent="361" name="created_at">
+      <Position>7</Position>
+      <StoredType>timestamp|0s</StoredType>
+    </column>
+    <column id="411" parent="361" name="updated_at">
+      <Position>8</Position>
+      <StoredType>timestamp|0s</StoredType>
+    </column>
+    <index id="412" parent="361" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="413" parent="361" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="414" parent="362" name="id">
+      <AutoIncrement>48</AutoIncrement>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StoredType>bigint(20) unsigned|0s</StoredType>
+    </column>
+    <column id="415" parent="362" name="tokenable_type">
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="416" parent="362" name="tokenable_id">
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+      <StoredType>bigint(20) unsigned|0s</StoredType>
+    </column>
+    <column id="417" parent="362" name="name">
       <NotNull>1</NotNull>
       <Position>4</Position>
       <StoredType>varchar(255)|0s</StoredType>
     </column>
-    <column id="408" parent="361" name="token">
+    <column id="418" parent="362" name="token">
       <NotNull>1</NotNull>
       <Position>5</Position>
       <StoredType>varchar(64)|0s</StoredType>
     </column>
-    <column id="409" parent="361" name="abilities">
+    <column id="419" parent="362" name="abilities">
       <Position>6</Position>
       <StoredType>text|0s</StoredType>
     </column>
-    <column id="410" parent="361" name="last_used_at">
+    <column id="420" parent="362" name="last_used_at">
       <Position>7</Position>
       <StoredType>timestamp|0s</StoredType>
     </column>
-    <column id="411" parent="361" name="expires_at">
+    <column id="421" parent="362" name="expires_at">
       <Position>8</Position>
       <StoredType>timestamp|0s</StoredType>
     </column>
-    <column id="412" parent="361" name="created_at">
+    <column id="422" parent="362" name="created_at">
       <Position>9</Position>
       <StoredType>timestamp|0s</StoredType>
     </column>
-    <column id="413" parent="361" name="updated_at">
+    <column id="423" parent="362" name="updated_at">
       <Position>10</Position>
       <StoredType>timestamp|0s</StoredType>
     </column>
-    <index id="414" parent="361" name="PRIMARY">
+    <index id="424" parent="362" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="415" parent="361" name="personal_access_tokens_token_unique">
+    <index id="425" parent="362" name="personal_access_tokens_token_unique">
       <ColNames>token</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="416" parent="361" name="personal_access_tokens_tokenable_type_tokenable_id_index">
+    <index id="426" parent="362" name="personal_access_tokens_tokenable_type_tokenable_id_index">
       <ColNames>tokenable_type
 tokenable_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="417" parent="361" name="PRIMARY">
+    <key id="427" parent="362" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <key id="418" parent="361" name="personal_access_tokens_token_unique">
+    <key id="428" parent="362" name="personal_access_tokens_token_unique">
       <UnderlyingIndexName>personal_access_tokens_token_unique</UnderlyingIndexName>
     </key>
-    <column id="419" parent="362" name="id">
-      <AutoIncrement>1</AutoIncrement>
+    <column id="429" parent="363" name="id">
+      <AutoIncrement>5</AutoIncrement>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>bigint(20) unsigned|0s</StoredType>
     </column>
-    <column id="420" parent="362" name="first_name">
+    <column id="430" parent="363" name="first_name">
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StoredType>varchar(255)|0s</StoredType>
     </column>
-    <column id="421" parent="362" name="other_names">
+    <column id="431" parent="363" name="other_names">
       <Position>3</Position>
       <StoredType>varchar(255)|0s</StoredType>
     </column>
-    <column id="422" parent="362" name="last_name">
+    <column id="432" parent="363" name="last_name">
       <NotNull>1</NotNull>
       <Position>4</Position>
       <StoredType>varchar(255)|0s</StoredType>
     </column>
-    <column id="423" parent="362" name="email">
+    <column id="433" parent="363" name="email">
       <NotNull>1</NotNull>
       <Position>5</Position>
       <StoredType>varchar(255)|0s</StoredType>
     </column>
-    <column id="424" parent="362" name="password">
+    <column id="434" parent="363" name="password">
       <NotNull>1</NotNull>
       <Position>6</Position>
       <StoredType>varchar(255)|0s</StoredType>
     </column>
-    <column id="425" parent="362" name="phone">
+    <column id="435" parent="363" name="phone">
       <NotNull>1</NotNull>
       <Position>7</Position>
       <StoredType>int(11)|0s</StoredType>
     </column>
-    <column id="426" parent="362" name="country">
+    <column id="436" parent="363" name="country">
       <NotNull>1</NotNull>
       <Position>8</Position>
       <StoredType>varchar(255)|0s</StoredType>
     </column>
-    <column id="427" parent="362" name="date_of_birth">
+    <column id="437" parent="363" name="date_of_birth">
       <NotNull>1</NotNull>
       <Position>9</Position>
       <StoredType>date|0s</StoredType>
     </column>
-    <column id="428" parent="362" name="salary">
+    <column id="438" parent="363" name="salary">
       <NotNull>1</NotNull>
       <Position>10</Position>
       <StoredType>double|0s</StoredType>
     </column>
-    <column id="429" parent="362" name="national_id">
+    <column id="439" parent="363" name="national_id">
       <NotNull>1</NotNull>
       <Position>11</Position>
       <StoredType>varchar(255)|0s</StoredType>
     </column>
-    <column id="430" parent="362" name="user_type">
+    <column id="440" parent="363" name="user_type">
       <NotNull>1</NotNull>
       <Position>12</Position>
       <StoredType>varchar(255)|0s</StoredType>
     </column>
-    <column id="431" parent="362" name="nationality">
+    <column id="441" parent="363" name="nationality">
       <NotNull>1</NotNull>
       <Position>13</Position>
       <StoredType>varchar(255)|0s</StoredType>
     </column>
-    <column id="432" parent="362" name="created_at">
+    <column id="442" parent="363" name="created_at">
       <Position>14</Position>
       <StoredType>timestamp|0s</StoredType>
     </column>
-    <column id="433" parent="362" name="updated_at">
+    <column id="443" parent="363" name="updated_at">
       <Position>15</Position>
       <StoredType>timestamp|0s</StoredType>
     </column>
-    <index id="434" parent="362" name="PRIMARY">
+    <column id="444" parent="363" name="deleted_at">
+      <Position>16</Position>
+      <StoredType>timestamp|0s</StoredType>
+    </column>
+    <index id="445" parent="363" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="435" parent="362" name="users_email_unique">
+    <index id="446" parent="363" name="users_email_unique">
       <ColNames>email</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="436" parent="362" name="PRIMARY">
+    <key id="447" parent="363" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <key id="437" parent="362" name="users_email_unique">
+    <key id="448" parent="363" name="users_email_unique">
       <UnderlyingIndexName>users_email_unique</UnderlyingIndexName>
     </key>
   </database-model>

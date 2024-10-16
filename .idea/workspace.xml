@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9aea767f-8c38-4fc5-96e9-77c6004700e4" name="Changes" comment="update">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1518b9f1-5f16-4ec2-b317-2fc8a492aa3a.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/1518b9f1-5f16-4ec2-b317-2fc8a492aa3a.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/views/user/HomeView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/views/user/HomeView.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -219,7 +217,7 @@
       <workItem from="1727049003410" duration="6730000" />
       <workItem from="1727264790549" duration="159094000" />
       <workItem from="1727815598188" duration="90810000" />
-      <workItem from="1728175853471" duration="263660000" />
+      <workItem from="1728175853471" duration="265025000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <option name="closed" value="true" />

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LoanController;
+use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\PaymentsController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\Cors;
@@ -10,9 +11,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('register', [UserController::class, 'register']);
 Route::post('login', [UserController::class, 'login']);
-// rest password
 
-Route::post('reset ', [\App\Http\Controllers\PasswordController::class, 'forgotPassword']);
+// rest password
+Route::post('forgot ', [PasswordController::class, 'forgotPassword']);
+Route::post('reset ', [PasswordController::class, 'resetPassword']);
+
+
 
 Route::middleware('auth:sanctum')->group(function () {
     //Auth

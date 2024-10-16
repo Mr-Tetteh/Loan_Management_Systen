@@ -168,6 +168,10 @@ class LoanController extends Controller
         $loan->update([
             'status' => $request->status,
         ]);
+        if ($request->status == 'rejected') {
+            $loan->isPaid = true;
+            $loan->save();
+        }
         return new LoanResource($loan);
     }
 

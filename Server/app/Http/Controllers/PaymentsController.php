@@ -28,6 +28,7 @@ class PaymentsController extends Controller
     public function History()
     {
         return PaymentsResource::collection(Payments::where('user_id', auth()->id())->where('amount_remaining', 0)->latest()->get());
+//        return LoanResource::collection(Loan::where('user_id', auth()->id())->where('status', 'paid' 'rejected')->latest()->get());
     }
 
     /**

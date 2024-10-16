@@ -8,9 +8,7 @@ import Swal from "sweetalert2";
 const {login_user, password} = useLogin()
 const router = useRouter()
 const login = async () => {
-  // if (password.value !== login_user.value.password){
-  //   alert("Invalid credentials")
-  // }
+
   try{
     const response = await axios.post('http://127.0.0.1:8000/api/login', login_user.value)
     const token = response.data.authorisation.token

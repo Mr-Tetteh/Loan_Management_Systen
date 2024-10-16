@@ -20,6 +20,7 @@ class UserController extends Controller
     {
         return UserResource::collection(User::latest()->get());
     }
+
     public function total_number_of_users()
     {
         return response()->json(['total' => User::count()]);
@@ -29,6 +30,7 @@ class UserController extends Controller
     {
         return UserResource::collection(User::onlyTrashed()->latest()->get());
     }
+
     public function restore($id)
     {
         $user = User::onlyTrashed()->findOrFail($id);
@@ -49,9 +51,12 @@ class UserController extends Controller
 
     public function update(Request $request, User $user)
     {
-//        if ($request->phone >= 10) {
-//            return response()->json(['error' => 'Phone number must be less than 10.']);
-//        }
+        $user = Auth::user();
+
+        if (!Hash::check($request->old_password, $user->password)) {
+            return response()->json(['message' => 'Old Password does not match'], 422);
+        }
+
         $user->update([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
@@ -63,12 +68,25 @@ class UserController extends Controller
             'date_of_birth' => $request->date_of_birth,
             'nationality' => $request->nationality,
             'national_id' => $request->national_id,
-            'user_type' => $request->user_type
+            'user_type' => $request->user_type,
         ]);
+
         return new UserResource($user);
     }
 
-    public function create()
+    public function update_password(Request $request, User $user)
+    {
+        $user = Auth::user();
+        if (!Hash::check($request->old_password, $user->password)) {
+            return response()->json(['message' => 'Old Password does not match'], 422);
+        }
+        $user->update([
+            'password' => Hash::make($request->new_password)
+
+        ]);
+
+    }
+     public function create()
     {
         //
     }
@@ -184,7 +202,7 @@ class UserController extends Controller
 
     public function user()
     {
-      return Auth::user();
+        return Auth::user();
 
     }
 

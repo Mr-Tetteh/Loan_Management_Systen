@@ -1,4 +1,4 @@
-import {ref} from "vue";
+import {ref, resolveDirective} from "vue";
 import axios from "axios";
 import router from "@/router/index.js";
 import Swal from "sweetalert2";
@@ -129,9 +129,40 @@ export default function useSignup() {
             Swal.fire({
                 icon: "error",
                 title: "Oops...",
-                text: (err),
-            });        }
+                text: (err.response.data.message),
+            });
+        }
     }
+
+
+    const update_user_password = async (id) => {
+        const token = localStorage.getItem('AUTH_TOKEN');
+        const config = {
+            headers: { Authorization: `Bearer ${token}` }
+        };
+
+        try {
+            let res = await axios.patch(`http://127.0.0.1:8000/api/users_password/${id}`, {
+                old_password: old_password.value,
+                new_password: new_password.value
+            }, config);
+
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Your Password has been updated successfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        } catch (err) {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: err.response.data.message,
+            });
+        }
+    }
+
     const get_user = async (id) => {
         const token = localStorage.getItem('AUTH_TOKEN')
         const config = {
@@ -201,6 +232,8 @@ export default function useSignup() {
     }
 
     const confirm_password = ref('')
+    const new_password = ref('')
+    const old_password = ref('')
 
 
 
@@ -256,6 +289,9 @@ export default function useSignup() {
         logout,
         number,
         updated_user,
-        updated_user_profile
+        updated_user_profile,
+        new_password,
+        old_password,
+        update_user_password
     }
 }

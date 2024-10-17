@@ -33,9 +33,9 @@ function closeModal() {
 
     <div class=" rounded-lg">
       <div class="mt-6 bg-white clear-end rounded-lg">
-          <router-link to="admin_loan">
+          <router-link to="/admin_loan">
             <span class="bg-blue-500 text-white rounded hover:bg-gray-700 sm: m-5 p-3">View All Loans Records</span></router-link>
-          <router-link to="admin_completed_loan">
+          <router-link to="/admin_completed_loan">
             <span class="bg-cyan-500 text-white rounded hover:bg-gray-700 sm: m-5 float-end p-3">View All completed Loans Records</span>
           </router-link>
 

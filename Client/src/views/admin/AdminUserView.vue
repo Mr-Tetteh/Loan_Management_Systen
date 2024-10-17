@@ -29,7 +29,7 @@ function closeModal() {
 <Header/>
     <div class="p-4 rounded-lg">
       <div class="mt-6 bg-white clear-end rounded-lg">
-        <router-link to="admin_add_user">
+        <router-link to="/admin_add_user">
           <button
               class="bg-purple-600 text-white rounded hover:bg-purple-700 sm: m-5 p-3">
             Add User
@@ -37,7 +37,7 @@ function closeModal() {
         </router-link>
 
 
-        <router-link to="deleted_users">
+        <router-link to="/deleted_users">
           <button
               class="bg-cyan-500 text-white rounded hover:bg-purple-700 sm: m-5 float-end p-3">
            All Deleted Users

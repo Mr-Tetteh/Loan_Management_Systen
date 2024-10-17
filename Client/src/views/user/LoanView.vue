@@ -13,7 +13,6 @@ const form = reactive({
   amount: '',
   monthly_payment: '',
 })
-// const router = useRouter()
 
 const getloan = async () => {
   await storeloan({...form})

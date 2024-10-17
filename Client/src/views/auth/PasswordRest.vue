@@ -7,9 +7,10 @@ import Swal from "sweetalert2";
 import useLogin from "@/composerables/useLogin.js";
 
 const {reset, token, password,confirm_password, reset_password} = useLogin()
-console.log(router)
+const route = useRoute()
+
 const form = reactive({
-  token: router.params.token,
+  token: route.params.token,
   email: "",
   password: "",
   confirm_password:""
@@ -50,7 +51,7 @@ const submit = async () => {
         </form>
 
         <p class="mt-10 text-center text-sm text-gray-500">
-          <router-link to="login" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
+          <router-link to="/login" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                  stroke="currentColor" class="size-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3"/>
@@ -63,8 +64,8 @@ const submit = async () => {
 
     <!-- Right Column: Image -->
     <div class="flex justify-center lg:justify-end px-6 py-12 lg:px-40 ">
-      <img src="../../../forgotPassword.jpg" alt="Login Image"
-           class="max-w-full h-auto lg:max-w-md shadow-2xl rounded-2xl"/>
+      <img src="/reset_password.jpg" alt="Login Image"
+           class=" h-auto lg:max-w-md shadow-2xl  rounded-2xl"/>
     </div>
   </div>
 

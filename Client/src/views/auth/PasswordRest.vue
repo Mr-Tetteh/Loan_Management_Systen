@@ -6,20 +6,17 @@ import router from "@/router/index.js";
 import Swal from "sweetalert2";
 import useLogin from "@/composerables/useLogin.js";
 
-const {reset} = useLogin()
+const {reset, token, password,confirm_password, reset_password} = useLogin()
+console.log(router)
+const form = reactive({
+  token: router.params.token,
+  email: "",
+  password: "",
+  confirm_password:""
+})
 
 const submit = async () => {
-  try {
-    await axios.post('http://127.0.0.1:8000/api/rest')
-    await router.push('/login')
-  } catch (err) {
-    Swal.fire({
-      icon: "error",
-      title: "Oops...",
-      text: (err),
-    });
-  }
-
+  await reset_password({...form })
 }
 </script>
 
@@ -32,16 +29,15 @@ const submit = async () => {
         <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
           Password reset
         </h2>
-        <p class="text-gray-400">We sent a code to .........@gmail.com</p>
       </div>
 
       <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
         <form class="space-y-6" @submit.prevent="submit">
-          <input v-model="reset.password" id="email" type="email" autocomplete="email" required=""
+          <input v-model="form.password" id="email" type="password" autocomplete="email" required=""
                  class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                  placeholder="New Password"/>
 
-          <input v-model="reset.confirm_password" id="email" type="email" autocomplete="email" required=""
+          <input v-model="form.confirm_password" id="email" type="password" autocomplete="email" required=""
                  class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                  placeholder="Confirm Password"/>
 
@@ -52,7 +48,6 @@ const submit = async () => {
             </button>
           </div>
         </form>
-        <p>Didn't receive the email? <a href=""><b>Click to resend</b></a></p>
 
         <p class="mt-10 text-center text-sm text-gray-500">
           <router-link to="login" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">

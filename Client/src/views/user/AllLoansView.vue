@@ -44,7 +44,7 @@ const headers = [
       </td>
 
       <td class="px-3 py-2 whitespace-nowrap text-sm font-medium">
-        GHC {{ loan.amount - loan.amount_remaining }}
+        GHC {{ loan.amount - loan.amount_paid }}
       </td>
       <td class="px-3 py-2 whitespace-nowrap text-sm font-medium">
         GHC {{ loan.monthly_payment }}

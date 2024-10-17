@@ -27,19 +27,19 @@ class PasswordController extends Controller
             $message->subject('Reset your Password');
             $message->to($email);
         });
-        return response()->json(['message' => 'Reset password link sent on your email.']);
+        return response()->json(['message' => 'A Reset password link sent on your email. Please check your inbox to update your password.']);
     }
 
 
     public function resetPassword(Request $request)
     {
+        logger($request->all());
         if ($request->input('password') !== $request->input('confirm_password')) {
             return response()->json(['message' => 'Passwords not match.'], 400);
         }
         $passwordReset = DB::table('password_reset')->where('token', $request->input('token'))->first();
 
         $user = User::where('email', $passwordReset->email)->first();
-
         if (!$user) {
             return response()->json([
                 'message' => 'Sorry User not found'

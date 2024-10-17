@@ -9,6 +9,7 @@ class Loan extends Model
 {
     use HasFactory;
     protected $fillable = ['user_id','amount', 'purpose', 'status', 'monthly_payment'];
+    protected $appends = ['amount_remaining'];
 
 
     public function user()
@@ -20,5 +21,9 @@ class Loan extends Model
     {
         return $this->hasMany(Payments::class);
 
+    }
+    public function getAmountRemainingAttribute()
+    {
+        return number_format($this->attributes['amount'] - $this->attributes['amount_paid'], 2,'.');
     }
 }

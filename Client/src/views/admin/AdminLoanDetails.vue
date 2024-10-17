@@ -104,7 +104,7 @@ const props = defineProps({
                     </tr>
                     <tr>
                       <th class="p-5 text-left">Amount Remaining: </th>
-                      <td class="p-5">GHC {{ loan.amount_paid}}</td>
+                      <td class="p-5">GHC {{ loan.amount - loan.amount_paid}}</td>
                       <th class="p-5 text-left">Purpose : </th>
                       <td colspan="3" class="p-5"> {{ loan.purpose }}</td>
                       <th class="p-5 text-left">Loan Status : </th>

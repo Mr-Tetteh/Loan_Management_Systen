@@ -6,6 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="9aea767f-8c38-4fc5-96e9-77c6004700e4" name="Changes" comment="update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/composerables/useLogin.js" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/composerables/useLogin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/layouts/user/Header.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/layouts/user/Header.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/views/admin/AdminLoanDetails.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/views/admin/AdminLoanDetails.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/views/auth/ForgotPassword.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/views/auth/ForgotPassword.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/views/auth/PasswordRest.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/views/auth/PasswordRest.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/views/user/AllLoansView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/views/user/AllLoansView.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -217,7 +223,7 @@
       <workItem from="1727049003410" duration="6730000" />
       <workItem from="1727264790549" duration="159094000" />
       <workItem from="1727815598188" duration="90810000" />
-      <workItem from="1728175853471" duration="265025000" />
+      <workItem from="1728175853471" duration="285400000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <option name="closed" value="true" />

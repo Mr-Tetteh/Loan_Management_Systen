@@ -67,19 +67,19 @@ function closeModal() {
             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
               {{ user.email }}
             </td>
-            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+            <td class="px-6 py-4 whitespace-nowrap  text-sm font-medium">
               {{ user.phone }}
             </td>
-            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+            <td class="px-6 py-4 whitespace-nowrap  text-sm font-medium">
         <UserType :user-type="user.user_type"/>
             </td>
 
-            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+            <td class="px-6 py-4 whitespace-nowrap  text-sm font-medium">
               {{user.created_at}}
             </td>
 
 
-            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+            <td class="px-6 py-4 whitespace-nowrap  text-sm font-medium">
               <Menu as="div" class="relative inline-block text-left">
                 <div>
                   <MenuButton

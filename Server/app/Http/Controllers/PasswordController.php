@@ -33,10 +33,31 @@ class PasswordController extends Controller
 
     public function resetPassword(Request $request)
     {
-        logger($request->all());
         if ($request->input('password') !== $request->input('confirm_password')) {
             return response()->json(['message' => 'Passwords not match.'], 400);
         }
+
+        $passwordReset = DB::table('password_reset')
+            ->where('token', $request->input('token'))
+            ->first();
+
+        if (!$passwordReset) {
+            return response()->json([
+                'message' => 'Invalid token.'
+            ], 404);
+        }
+
+
+        if (Carbon::parse($passwordReset->created_at)->addMinute()->isPast()) {
+            DB::table('password_reset')->where('token', $request->input('token'))->delete();
+
+            return response()->json([
+                'message' => 'Token has expired.'
+            ], 400);
+        }
+
+
+
         $passwordReset = DB::table('password_reset')->where('token', $request->input('token'))->first();
 
         $user = User::where('email', $passwordReset->email)->first();

@@ -7,11 +7,11 @@ import Header from "@/layouts/user/Header.vue";
   <Header/>
 
   <div class="mx-auto  sm:py-20 lg:py-10">
-    <div class="text-center">
+    <div class="">
       <img class="mx-auto h-32 w-auto rounded-full" src="../../../tsclogo.png">
 
-      <div class="bg-black p-20  rounded-2xl shadow-2xl">
-      <h1 class="text-4xl font-bold tracking-tight text-white sm:text-6xl">Welcome to Trinity Loan Management
+      <div class="bg-black mt-8 px-5 py-10 md:p-20  rounded-2xl shadow-2xl">
+      <h1 class="text-4xl font-bold tracking-tight text-white sm:text-6xl text-center">Welcome to Trinity Loan Management
         System</h1>
       <p class="mt-6 text-lg leading-8 text-white"> Managing loans can be a complex and time-consuming process,
         but with our advanced loan management system, we make it simple and efficient. Whether you’re a business,
@@ -29,8 +29,8 @@ import Header from "@/layouts/user/Header.vue";
         matters — growing your financial portfolio with confidence.</p>
       <div class="mt-10 flex items-center justify-center gap-x-6 ">
         <div class="">
-          <h3 class="text-white text-3xl">4.8k</h3>
-          <p class="text-white text-2xl">Ratings</p>
+          <h3 class="text-white text-3x font-mono">4.8k</h3>
+          <p class="text-white  font-serif">Ratings</p>
         </div>
         <RouterLink
             class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"

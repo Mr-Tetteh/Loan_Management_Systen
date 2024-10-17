@@ -28,26 +28,27 @@ const register = async () => {
 
 <template>
 
-    <div class="  grid grid-cols-1 lg:grid-cols-2 min-h-screen items-center px-6 lg:px-8  lg:mr-32">
+    <div class="grid grid-cols-1 lg:grid-cols-2 min-h-screen items-center px-6 lg:px-8  md:-ml-64 lg:gap-10">
       <div>
         <img class="rounded-2xl" src="../../../Registering.jpg" alt="">
       </div>
-      <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+      <div class="mt-10">
 
-        <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-          <img class="rounded-full" width="70%" src="../../../tsclogo.png"
+        <div class=" mx-auto  w-full max-w-sm">
+          <img class="mx-auto rounded-full" width="40%" src="../../../tsclogo.png"
                alt="Your Company"/>
           <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Sign Up Now!
           </h2>
         </div>
 
-        <form class="space-y-6" @submit.prevent="register">
-          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <form class="space-y-6  w-full" @submit.prevent="register">
+          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 ">
             <div>
               <label for="first_name" class="block text-sm font-medium leading-6 text-gray-900">First Name</label>
               <div class="mt-2">
                 <input v-model="user.first_name" id="first_name" type="text" required=""
-                       class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
+                       class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300
+                        placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
               </div>
             </div>
 

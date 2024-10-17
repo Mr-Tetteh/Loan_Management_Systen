@@ -59,10 +59,10 @@ export default function useLogin() {
             });
             await router.push('/login')
         }catch (err){
-            Swal.fire({
+            await Swal.fire({
                 icon: "error",
                 title: "Sorry...",
-                text: (err.res.data.message),
+                text: (err.response.data.message),
             });
         }
     }

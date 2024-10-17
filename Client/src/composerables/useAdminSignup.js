@@ -212,7 +212,7 @@ export default function useSignup() {
             headers: {Authorization: `Bearer ${token}`}
         }
         await axios.get(`http://127.0.0.1:8000/api/restore/${id}`, config)
-        users.value.splice(users.value.indexOf(id), 1)
+        await router.push('admin_user')
 
     }
 

@@ -41,7 +41,7 @@ onMounted(() => {
           </tr>
           </thead>
           <tbody class="bg-white divide-y divide-gray-200">
-          <tr  v-for="(payment) in payments" :key="payment.id">
+          <tr class="hover:bg-gray-400" v-for="(payment) in payments" :key="payment.id">
             <td class="px-6 py-4 whitespace-nowrap flex items-center">
               <div>
                 <div class="text-sm font-medium text-gray-900">

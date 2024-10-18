@@ -16,7 +16,7 @@ onMounted(() => get_payment(props.id))
 
 const print = () =>{
   window.print()
-  router.push('/user_loan').catch(() => {})
+  router.push('/all_loans').catch(() => {})
 }
 
 const currentDateTime = ref(new Date().toLocaleString())
@@ -66,7 +66,7 @@ const currentDateTime = ref(new Date().toLocaleString())
           <tr class="font-bold text-gray-600 border-b">
             <th class="p-5 text-left">#</th>
             <th class="p-5 text-left">Name</th>
-            <th class="p-5 text-left">Purpose of Loan</th>
+            <th colspan="3" class="p-5 text-left">Purpose of Loan</th>
             <th class="p-5 text-left">Loan Amount</th>
             <th class="p-5 text-left">Amount Paid</th>
             <th class="p-5 text-left">Amount Remaining</th>
@@ -78,7 +78,7 @@ const currentDateTime = ref(new Date().toLocaleString())
           <tr class="border-b text-gray-700">
             <td class="p-5 text-left">1</td>
             <td class="p-5 text-left">{{ payment.first_name }} {{ payment.other_names }} {{ payment.last_name }}</td>
-            <td class="p-5 text-left">{{ payment.purpose }}</td>
+            <td colspan="3" class="p-5 text-left">{{ payment.purpose }}</td>
             <td class="p-5 text-left">GHC {{ payment.amount }}</td>
             <td class="p-5 text-left">GHC {{ payment.amount_to_pay }}</td>
             <td class="p-5 text-left">GHC {{ payment.amount_remaining }}</td>

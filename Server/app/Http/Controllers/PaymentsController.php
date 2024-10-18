@@ -21,7 +21,7 @@ class PaymentsController extends Controller
     {
         $user = Auth::user();
         $loan = Loan::where('user_id', $user->id)->first();
-        return PaymentsResource::collection(Payments::where('loan_id', $request->payment)->get());
+        return PaymentsResource::collection(Payments::where('loan_id', $request->payment)->latest()->get());
 
     }
 

@@ -51,12 +51,6 @@ class UserController extends Controller
 
     public function update(Request $request, User $user)
     {
-        $user = Auth::user();
-
-        if (!Hash::check($request->old_password, $user->password)) {
-            return response()->json(['message' => 'Old Password does not match'], 422);
-        }
-
         $user->update([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,

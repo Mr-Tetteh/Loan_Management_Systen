@@ -13,11 +13,6 @@ const props = defineProps({
     required: true
   }
 })
-const editUser = async () => {
-  await updated_user_profile(props.id)
-
-}
-
 const  update_password = async () =>{
   if (new_password.value !== confirm_password.value){
     await Swal.fire({
@@ -30,6 +25,13 @@ const  update_password = async () =>{
 
   }
 }
+
+const editUser = async () => {
+  await updated_user_profile(props.id)
+
+}
+
+
 onMounted(() => get_user(props.id))
 </script>
 

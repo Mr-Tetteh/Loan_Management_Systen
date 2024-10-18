@@ -109,14 +109,14 @@ export default function useSignup() {
                     text: "Your details have been updated successfully.",
                     icon: "success"
                 });
-                await update_user_profile(id)
+                await update_user_profile_show(id)
                 // await get_users()
             }
         });
 
     }
 
-    const update_user_profile = async (id) => {
+    const update_user_profile_show = async (id) => {
         const token = localStorage.getItem('AUTH_TOKEN')
         const config = {
             headers: {Authorization: `Bearer ${token}`}

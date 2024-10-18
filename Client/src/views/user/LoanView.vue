@@ -7,9 +7,9 @@ import axios from "axios";
 import Header from "@/layouts/user/Header.vue";
 
 
-const {loan,storeloan} = useLoan()
+const {loan, storeloan} = useLoan()
 const form = reactive({
-  purpose:'',
+  purpose: '',
   amount: '',
   monthly_payment: '',
 })
@@ -17,6 +17,7 @@ const form = reactive({
 const getloan = async () => {
   await storeloan({...form})
 }
+
 
 
 </script>
@@ -33,7 +34,6 @@ const getloan = async () => {
     </div>
     <div class="mx-auto max-w-2xl text-center">
       <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">To Get a Loan fill the form below </h2>
-      <!--      <p class="mt-2 text-lg leading-8 text-gray-600">Aute magna irure deserunt veniam aliqua magna enim voluptate.</p>-->
     </div>
     <form class="mx-auto mt-16 max-w-xl sm:mt-20" @submit.prevent="getloan">
       <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
@@ -41,8 +41,10 @@ const getloan = async () => {
           <label for="purpose_for_loan" class="block text-sm font-semibold leading-6 text-gray-900">Purpose for
             loan</label>
           <div class="mt-2.5">
+
+
             <textarea v-model="form.purpose"  id="purpose_for_loan"
-                   class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
+                   class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300"/>
           </div>
 
         </div>

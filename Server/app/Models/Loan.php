@@ -24,6 +24,8 @@ class Loan extends Model
     }
     public function getAmountRemainingAttribute()
     {
-        return number_format($this->attributes['amount'] - $this->attributes['amount_paid'], 2,'.');
+        $amountPaid = $this->attributes['amount_paid'] ?? 0;
+
+        return number_format($this->attributes['amount'] - $amountPaid, 2, '.', '');
     }
 }

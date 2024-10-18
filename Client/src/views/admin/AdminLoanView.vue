@@ -26,9 +26,9 @@ function closeModal() {
   <Header/>
 
     <div class="p-4 rounded-lg">
-      <div class="mt-6 bg-white clear-end rounded-lg">
-        <div class="ml-96 px-52 pb-10">
-        <h2 class="text-2xl p-8">List of all Loans</h2>
+      <div class="bg-white clear-end rounded-lg">
+        <div class=" ml-20 md:ml-96 pb-10">
+        <h2 class="text-2xl ">List of all Loans</h2>
         </div>
         <table class="min-w-full  rounded-3xl shadow divide-y divide-gray-200">
           <thead>
@@ -42,7 +42,7 @@ function closeModal() {
           </tr>
           </thead>
           <tbody class="bg-white divide-y divide-gray-200">
-          <tr v-for="(loan) in  loans" :key="loans.id">
+          <tr class="hover:bg-gray-400" v-for="(loan) in  loans" :key="loans.id">
             <td class="px-6 py-4 whitespace-nowrap flex items-center">
               <div>
                 <div class="text-sm font-medium text-gray-900">{{ loan.first_name }} {{ loan.other_names }}
@@ -53,24 +53,24 @@ function closeModal() {
             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
               {{ loan.email }}
             </td>
-            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+            <td class="px-6 py-4 whitespace-nowrap  text-sm font-medium">
                <LoanStatus :status="loan.status" />
               </td>
-            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+            <td class="px-6 py-4 whitespace-nowrap  text-sm font-medium">
               GHC {{ loan.amount }}
             </td>
 
-            <!--            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">-->
+            <!--            <td class="px-6 py-4 whitespace-nowrap  text-sm font-medium">-->
             <!--              &lt;!&ndash;                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">&ndash;&gt;-->
             <!--              &lt;!&ndash;                 {{ loan.status }}&ndash;&gt;-->
             <!--              &lt;!&ndash;              </span>&ndash;&gt;-->
             <!--              <LoanStatus :status="loan.status"/>-->
             <!--            </td>-->
-            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+            <td class="px-6 py-4 whitespace-nowrap  text-sm font-medium">
               {{ loan.created_at }}
             </td>
 
-            <td  class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+            <td  class="px-6 py-4 whitespace-nowrap  text-sm font-medium">
               <Menu as="div" class="relative inline-block text-left">
                 <div>
                   <MenuButton

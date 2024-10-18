@@ -51,6 +51,7 @@ class UserController extends Controller
 
     public function update(Request $request, User $user)
     {
+
         $user->update([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,

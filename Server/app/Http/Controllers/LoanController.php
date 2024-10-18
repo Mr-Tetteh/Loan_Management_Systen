@@ -115,9 +115,7 @@ class LoanController extends Controller
     public function store(StoreLoanRequest $request)
     {
         $user = Auth::user();
-//        $loan_pay = Loan::find($request->$user->id)->where('isPaid', false)->first();
         if (Loan::where('user_id', $user->id)->where('isPaid', false )->first()) {
-//        if (Loan::where('user_id', $user->id)->first()) {
             return response()->json(['message' => 'Please Pay your previous Loan to make you eligible for a new loan.'], 400);
         } else if ($request->monthly_payment < 500) {
             return response()->json(['message' => 'Minimum payment for a month is GHC 500.'], 400);
@@ -135,9 +133,6 @@ class LoanController extends Controller
 
         return new LoanResource($loan);
 
-
-//        $loan = Auth::user()->loans()->create($request->validated());
-//        return new LoanResource($loan);
     }
 
     /**

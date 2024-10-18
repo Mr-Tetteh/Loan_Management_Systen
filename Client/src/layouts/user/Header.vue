@@ -15,11 +15,11 @@ const {userType, isLoggedIn, username, id} = useSession()
 const {logout} = useAdminSignup()
 
 const loans = [
-  {name: "Active Loans", url: 'admin_active_loan'},
-  {name: "Pending Loans", url: 'admin_pending_loan'},
-  {name: "Completed Loans", url: 'admin_completed_loan'},
-  {name: "Rejected Loans", url: 'admin_rejected_loan'},
-  {name: "All Loans", url: 'admin_loan'}
+  {name: "Active Loans", url: '/admin_active_loan'},
+  {name: "Pending Loans", url: '/admin_pending_loan'},
+  {name: "Completed Loans", url: '/admin_completed_loan'},
+  {name: "Rejected Loans", url: '/admin_rejected_loan'},
+  {name: "All Loans", url: '/admin_loan'}
 ]
 function   toggleSidebar() {
   isSidebarVisible.value = !isSidebarVisible.value;

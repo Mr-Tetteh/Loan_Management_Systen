@@ -36,6 +36,7 @@ onMounted(() => {
             <TableHeader title="Monthly Payment"/>
             <TableHeader title="Amount Paid For the month"/>
             <TableHeader title="Amount Remaining"/>
+            <TableHeader title="Salary For The Month"/>
             <TableHeader title="Date"/>
             <TableHeader title="Action"/>
           </tr>
@@ -69,6 +70,10 @@ onMounted(() => {
             <td class="px-6 py-4 whitespace-nowrap  text-sm font-medium">
               {{payment.amount_remaining }}
             </td>
+            <td class="px-6 py-4 whitespace-nowrap  text-sm font-medium">
+              {{payment.salary_for_the_month }}
+            </td>
+
 
             <td class="px-6 py-4 whitespace-nowrap  text-sm font-medium">
               {{payment.date}}

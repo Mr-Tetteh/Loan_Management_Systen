@@ -70,6 +70,7 @@ const currentDateTime = ref(new Date().toLocaleString())
             <th class="p-5 text-left">Loan Amount</th>
             <th class="p-5 text-left">Amount Paid</th>
             <th class="p-5 text-left">Amount Remaining</th>
+            <th class="p-5 text-left">Salary For The Month</th>
             <th class="p-5 text-left">Phone</th>
             <th class="p-5 text-left">Date</th>
           </tr>
@@ -82,6 +83,7 @@ const currentDateTime = ref(new Date().toLocaleString())
             <td class="p-5 text-left">GHC {{ payment.amount }}</td>
             <td class="p-5 text-left">GHC {{ payment.amount_to_pay }}</td>
             <td class="p-5 text-left">GHC {{ payment.amount_remaining }}</td>
+            <td class="p-5 text-left">GHC {{ payment.salary_for_the_month }}</td>
             <td class="p-5 text-left">{{ payment.phone }}</td>
             <td class="p-5 text-left">{{ payment.date }}</td>
           </tr>

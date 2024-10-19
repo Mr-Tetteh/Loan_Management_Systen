@@ -29,6 +29,7 @@ class PaymentsResource extends JsonResource
             "amount" => $this->loan?->amount,
             "purpose" => $this->loan?->purpose,
             "amount_remaining" => $this->amount_remaining,
+            "salary_for_the_month" => $this->salary_for_the_month,
             "monthly_payment" => $this->loan?->monthly_payment,
             "loan_id" => $this->loan?->id,
             "amount_to_pay" => $this->amount_to_pay,

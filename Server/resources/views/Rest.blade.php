@@ -32,10 +32,14 @@
 <div class="card">
     <div class="card-content">
         <div class="inner">
+            <img src="https://lh3.googleusercontent.com/p/AF1QipNMHTKQNPCp-Lkk-lP23yqMDX_KwLCmhJ5AbOUF=s1360-w1360-h1020" width="30%" alt="Company Logo">
         <h3 class="text-2xl">We received a request to reset your password.</h3>
         <p>Use the link below to set up a new password for your account. <br>
             If you did not request to reset your password, ignore this <br>
-            email and the link will expire on its own.</p>
+            email and the link will expire on its own. <br>
+            This code will expire in a hour!
+
+        </p>
         <a href="http://localhost:5173/password_reset/{{$token}}"><button class="button">SET NEW PASSWORD HERE</button></a>
         </div>
     </div>

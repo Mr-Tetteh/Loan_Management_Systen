@@ -48,7 +48,7 @@ class PasswordController extends Controller
         }
 
 
-        if (Carbon::parse($passwordReset->created_at)->addMinute()->isPast()) {
+        if (Carbon::parse($passwordReset->created_at)->addHour()->isPast()) {
             DB::table('password_reset')->where('token', $request->input('token'))->delete();
 
             return response()->json([

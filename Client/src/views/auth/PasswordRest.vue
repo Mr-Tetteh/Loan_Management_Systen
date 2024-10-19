@@ -28,7 +28,7 @@ const submit = async () => {
         <img class="mx-auto h-32 w-auto rounded-full" src="../../../tsclogo.png"
              alt="Your Company"/>
         <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-          Password reset
+          Reset Your Password
         </h2>
       </div>
 

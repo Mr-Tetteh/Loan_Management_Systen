@@ -59,11 +59,12 @@ class PaymentsController extends Controller
             'user_id' => $loan->user_id,
             'loan_id' => $loan->id,
             'amount_to_pay' => $request->amount_to_pay,
+            'salary_for_the_month' => $request->salary_for_the_month,
             'date' => $request->date,
             'amount_remaining' => $loan->amount - $total_pay,
 
         ]);
-        $loan->isPaid = $loan->amount - $total_pay == 0;
+        $loan->isPaid = $loan->amount - $total_pay <= 0;
         if ($loan->isPaid) {
             $loan->status = 'paid';
         }

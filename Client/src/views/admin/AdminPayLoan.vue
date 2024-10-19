@@ -17,12 +17,13 @@ onMounted(() => get_loan_update(props.id))
 
 
 const form = reactive({
-
   date: "",
   amount_to_pay: "",
   salary_for_the_month: "",
+  amount_remaining: loan.amount_remaining,
+  email: loan.email,
   loan_id: props.id,
-})
+});
 
 const pay = async (loan) =>{
   form.user_id = loan.user_id

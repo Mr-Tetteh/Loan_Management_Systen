@@ -25,6 +25,7 @@ class StorePaymentsRequest extends FormRequest
             'amount_to_pay' => 'required|numeric',
             'user_id' => 'required|integer|',
             'loan_id' => 'required|integer|',
+            'salary_for_the_month' => 'required|integer|',
             'date' => 'required|date',
 
         ];

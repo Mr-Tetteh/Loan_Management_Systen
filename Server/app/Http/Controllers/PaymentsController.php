@@ -6,11 +6,14 @@ use App\Http\Requests\StorePaymentsRequest;
 use App\Http\Requests\UpdatePaymentsRequest;
 use App\Http\Resources\LoanResource;
 use App\Http\Resources\PaymentsResource;
+use App\Mail\PaymentReceiptMail;
 use App\Models\Loan;
 use App\Models\Payments;
 use Illuminate\Http\Request;
+use Illuminate\Mail\Message;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class PaymentsController extends Controller
 {
@@ -41,19 +44,19 @@ class PaymentsController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     */
+*/
+
     public function store(StorePaymentsRequest $request)
     {
         $loan = Loan::find($request->loan_id);
-        $pay = Payments::find($request->id);
+
         if (!$loan) {
-            return response()->json([
-                'message' => 'Loan not found'
-            ], 400);
+            return response()->json(['message' => 'Loan not found'], 400);
         }
-        $loan = $loan->load('payments');
+
+        $loan->load('payments');
         $total_currently_pay = $loan->payments->sum('amount_to_pay');
-        $total_pay = $total_currently_pay + $request['amount_to_pay'];
+        $total_pay = $total_currently_pay + $request->amount_to_pay;
 
         $payment = Payments::create([
             'user_id' => $loan->user_id,
@@ -62,16 +65,18 @@ class PaymentsController extends Controller
             'salary_for_the_month' => $request->salary_for_the_month,
             'date' => $request->date,
             'amount_remaining' => $loan->amount - $total_pay,
-
         ]);
-        $loan->isPaid = $loan->amount - $total_pay <= 0;
-        if ($loan->isPaid) {
-            $loan->status = 'paid';
-        }
+
+        $loan->isPaid = $loan->amount - $total_pay == 0;
+        $loan->status = $loan->isPaid ? 'paid' : $loan->status;
         $loan->amount_paid = $total_pay;
         $loan->save();
+
+        Mail::to($loan->user->email)->send(new PaymentReceiptMail($payment, $loan));
+
         return new PaymentsResource($payment->load(['user', 'loan']));
     }
+
 
 
     /**

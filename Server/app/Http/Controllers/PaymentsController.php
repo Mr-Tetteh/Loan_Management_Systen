@@ -49,11 +49,11 @@ class PaymentsController extends Controller
     public function store(StorePaymentsRequest $request)
     {
         $loan = Loan::find($request->loan_id);
-
         if (!$loan) {
             return response()->json(['message' => 'Loan not found'], 400);
-        }
-
+        }elseif ($loan->amount_paid + $request->amount_to_pay <= 0){
+             return response()->json(['message' => 'Monthly Amount can not be greater than Amount Remaining'], 400);
+         }
         $loan->load('payments');
         $total_currently_pay = $loan->payments->sum('amount_to_pay');
         $total_pay = $total_currently_pay + $request->amount_to_pay;

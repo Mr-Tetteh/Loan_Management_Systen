@@ -7,10 +7,12 @@ use App\Enums\UserTypeEnum;
 use App\Http\Requests\StoreLoanRequest;
 use App\Http\Requests\UpdateLoanRequest;
 use App\Http\Resources\LoanResource;
+use App\Mail\LoanStatusMail;
 use App\Models\Loan;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Request;
 
 class LoanController extends Controller
@@ -52,12 +54,14 @@ class LoanController extends Controller
         return response()->json(['total' => $totalRejectedLoans]);
 
     }
+
     public function compeleteLoans()
     {
         $totalRejectedLoans = Loan::where('status', 'paid')->count();
         return response()->json(['total' => $totalRejectedLoans]);
 
     }
+
     public function loanss(Loan $loan)
     {
         return LoanResource::collection(Loan::with('user')->latest()->get());
@@ -88,7 +92,6 @@ class LoanController extends Controller
     }
 
 
-
     public function all_loans()
     {
         return LoanResource::collection(Loan::with('user')->latest()->get());
@@ -115,7 +118,7 @@ class LoanController extends Controller
     public function store(StoreLoanRequest $request)
     {
         $user = Auth::user();
-        if (Loan::where('user_id', $user->id)->where('isPaid', false )->first()) {
+        if (Loan::where('user_id', $user->id)->where('isPaid', false)->first()) {
             return response()->json(['message' => 'Please Pay your previous Loan to make you eligible for a new loan.'], 400);
         } else if ($request->monthly_payment < 500) {
             return response()->json(['message' => 'Minimum payment for a month is GHC 500.'], 400);
@@ -130,7 +133,6 @@ class LoanController extends Controller
             'monthly_payment' => $request->monthly_payment,
             'purpose' => $request->purpose,
         ]);
-
         return new LoanResource($loan);
 
     }
@@ -167,6 +169,9 @@ class LoanController extends Controller
             $loan->isPaid = true;
             $loan->save();
         }
+
+        Mail::to($loan->user->email)->send(new LoanStatusMail($loan));
+
         return new LoanResource($loan);
     }
 
@@ -175,6 +180,7 @@ class LoanController extends Controller
         $loan->update([
             'amount_remaining' => $request->amount_remaining
         ]);
+
         return new LoanResource($loan);
     }
 

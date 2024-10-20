@@ -34,7 +34,7 @@ class PaymentsResource extends JsonResource
             "loan_id" => $this->loan?->id,
             "amount_to_pay" => $this->amount_to_pay,
             "date" => Date::createFromDate($this->date)->format('jS F, Y'),
-            "created_at" => $this->created_at,
+            "created_at" => Date::createFromDate($this->created_at)->format('jS F, Y') ,
         ];
     }
 }

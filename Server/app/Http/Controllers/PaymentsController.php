@@ -9,6 +9,7 @@ use App\Http\Resources\PaymentsResource;
 use App\Mail\PaymentReceiptMail;
 use App\Models\Loan;
 use App\Models\Payments;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Mail\Message;
 use Illuminate\Support\Facades\Auth;
@@ -27,7 +28,10 @@ class PaymentsController extends Controller
         return PaymentsResource::collection(Payments::where('loan_id', $request->payment)->latest()->get());
 
     }
-
+public function payment_history(Request $request)
+{
+    return PaymentsResource::collection(Payments::where('loan_id', $request->payment)->latest()->get());
+}
     public function History()
     {
         return PaymentsResource::collection(Payments::where('user_id', auth()->id())->where('amount_remaining', 0)->latest()->get());

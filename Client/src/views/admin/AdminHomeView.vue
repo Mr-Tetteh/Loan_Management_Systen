@@ -68,10 +68,11 @@ watch([number, number_of_pending, number_of_approve, number_of_rejected], async 
   <div>
     <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 overflow-y-auto bg-white">
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-4">
+        <router-link to="/admin_pending_loan">
         <div class="bg-amber-300 flex flex-col justify-center items-center min-h-[100px] p-4  hover:animate-bounce-slow">
-          <router-link to="/admin_pending_loan"><p class="text-2xl text-center hover:bg-gray-100">Total Number of Pending Loans</p>
-          </router-link>
+         <p class="text-2xl text-center hover:bg-gray-100">Total Number of Pending Loans</p>
           <br>
+
           <p class="flex items-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="40" viewBox="0 0 384 512">
               <path
@@ -80,9 +81,11 @@ watch([number, number_of_pending, number_of_approve, number_of_rejected], async 
             <span class="text-3xl">{{ number_of_pending }}</span>
           </p>
         </div>
+        </router-link>
+        <router-link to="/admin_active_loan">
         <div class="bg-emerald-300 flex flex-col justify-center items-center min-h-[100px] p-4  hover:animate-bounce-slow">
-          <router-link to="/admin_active_loan"><p class="text-2xl text-center hover:bg-gray-100">Total Number of Approved Loans</p>
-          </router-link>
+          <p class="text-2xl text-center hover:bg-gray-100">Total Number of Approved Loans</p>
+
           <br>
           <p class="flex items-center">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -92,8 +95,10 @@ watch([number, number_of_pending, number_of_approve, number_of_rejected], async 
             <span class="text-4xl gap-28">{{ number_of_approve }}</span>
           </p>
         </div>
+        </router-link>
+        <router-link to="/admin_user">
         <div class="bg-blue-300 flex flex-col justify-center items-center min-h-[100px] p-4  hover:animate-bounce-slow">
-          <router-link to="/admin_user"><p class="text-2xl text-center hover:bg-gray-100">Total Number of Users</p></router-link>
+          <p class="text-2xl text-center hover:bg-gray-100">Total Number of Users</p>
           <br>
           <p class="flex items-center">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -104,11 +109,12 @@ watch([number, number_of_pending, number_of_approve, number_of_rejected], async 
             <span class="text-4xl gap-28">{{ number }}</span>
           </p>
         </div>
+        </router-link>
 
-
+        <router-link to="/admin_rejected_loan">
         <div class="bg-red-300 flex flex-col justify-center items-center min-h-[100px] p-4  hover:animate-bounce-slow">
-          <router-link to="/admin_rejected_loan"><p class="text-2xl text-center hover:bg-gray-100">Total Number of Rejected Loans</p>
-          </router-link>
+           <p class="text-2xl text-center hover:bg-gray-100">Total Number of Rejected Loans</p>
+
           <br>
           <p class="flex items-center gap-3">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="40">
@@ -118,10 +124,11 @@ watch([number, number_of_pending, number_of_approve, number_of_rejected], async 
             <span class="text-4xl gap-28">{{ number_of_rejected }}</span>
           </p>
         </div>
-
+        </router-link>
+        <router-link to="/admin_completed_loan">
         <div class="bg-indigo-300 flex flex-col justify-center items-center min-h-[100px] p-4  hover:animate-bounce-slow">
-          <router-link to="/admin_completed_loan"><p class="text-2xl text-center hover:bg-gray-100">Total Number of Paid Loans</p>
-          </router-link>
+          <p class="text-2xl text-center hover:bg-gray-100">Total Number of Paid Loans</p>
+
           <br>
           <p class="flex items-center gap-3">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="40">
@@ -131,6 +138,7 @@ watch([number, number_of_pending, number_of_approve, number_of_rejected], async 
             <span class="text-4xl gap-28">{{ number_of_compeleted }}</span>
           </p>
         </div>
+        </router-link>
 
       </div>
 

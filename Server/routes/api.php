@@ -57,11 +57,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('pending', [LoanController::class, 'pendingLoans']);
     Route::get('rejected', [LoanController::class, 'rejectedLoans']);
     Route::get('compeleted_loans_count', [LoanController::class, 'compeleteLoans']);
-
-
-
-
     Route::get('loan_payments/{payment}', [PaymentsController::class, 'index']);
+    Route::get('payment_history/{payment}', [PaymentsController::class, 'payment_history']);
+
 
     Route::post('pay_loans', [PaymentsController::class, 'store'])->middleware(Cors::class);
     Route::get('payments/{payment}', [PaymentsController::class, 'show']);

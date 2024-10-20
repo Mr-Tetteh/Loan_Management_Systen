@@ -25,6 +25,7 @@ import LoanHistory from "@/views/user/LoanHistory.vue";
 import AdminHomeView from "@/views/admin/AdminHomeView.vue";
 import ForgotPassword from "@/views/auth/ForgotPassword.vue";
 import PasswordRest from "@/views/auth/PasswordRest.vue";
+import AdminUserPaymentsHistory from "@/views/admin/AdminUserPaymentsHistory.vue";
 
 
 const router = createRouter({
@@ -249,6 +250,17 @@ const router = createRouter({
             path: '/payment/:id/pay',
             name: 'payment.payment',
             component: AdminPayLoan,
+            props: true,
+            meta: {
+                requiresAuth: true,
+                roles: ['Admin']
+            }
+        },
+
+        {
+            path: '/payment/:id/history',
+            name: 'payment.history',
+            component: AdminUserPaymentsHistory,
             props: true,
             meta: {
                 requiresAuth: true,

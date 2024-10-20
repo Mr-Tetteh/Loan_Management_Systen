@@ -39,6 +39,14 @@ export default function usePayments() {
         payments.value = res.data.data;
     };
 
+    const payment_history = async (id) => {
+        const token = localStorage.getItem('AUTH_TOKEN');
+        const config = {
+            headers: { Authorization: `Bearer ${token}` }
+        };
+        let res = await axios.get(`http://127.0.0.1:8000/api/payment_history/${id}`, config);
+        payments.value = res.data.data;
+    }
 
 
     const get_user_history_loans = async () => {
@@ -65,6 +73,7 @@ export default function usePayments() {
         all_loan_payments,
         get_payment,
         get_user_history_loans,
+        payment_history,
         payment,
         payments
     }

@@ -15,6 +15,7 @@ const props = defineProps({
 
 onMounted(() => get_loan_update(props.id))
 
+const isloading = ref(false)
 
 const form = reactive({
   date: "",
@@ -29,9 +30,13 @@ const form = reactive({
 
 
 const pay = async (loan) =>{
+  if (isloading.value) return
+  isloading.value=true
   form.user_id = loan.user_id
   await storepayments({...form})
+  isloading.value=false
 }
+
 </script>
 
 <template>
@@ -211,8 +216,8 @@ const pay = async (loan) =>{
 
           </div>
           <div class="mt-6 flex items-center justify-end gap-x-6">
-            <button type="submit"
-                    class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+            <button type="submit" :disabled="isloading"
+                    class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:opacity-70 disabled:cursor-not-allowed" >
               Save
             </button>
           </div>

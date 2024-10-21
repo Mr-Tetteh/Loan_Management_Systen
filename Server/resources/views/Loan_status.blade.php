@@ -10,7 +10,6 @@
     <style>
         .card {
             border-radius: 5%;
-            background-color: lightgreen;
         }
 
         .card-content {

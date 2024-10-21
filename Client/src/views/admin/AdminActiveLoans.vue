@@ -31,13 +31,14 @@ function closeModal() {
     <h2 class="text-2xl lg:ml-96 sm:mb-10">List of all Active Loans</h2>
 
     <div class=" rounded-lg">
-      <div class="mt-6 bg-white clear-end rounded-lg">
-          <router-link to="/admin_loan">
-            <span class="bg-blue-500 text-white rounded hover:bg-gray-700 sm: m-5 p-3">View All Loans Records</span></router-link>
-          <router-link to="/admin_completed_loan">
-            <span class="bg-cyan-500 text-white rounded hover:bg-gray-700 sm: m-5 float-end p-3">View All completed Loans Records</span>
+      <div class=" mt-6 bg-white clear-end rounded-lg ">
+       <div class="flex flex-col md:flex-row gap-4  justify-between mb-10 w-full ">
+          <router-link to="/admin_loan" class="bg-blue-500 text-white rounded hover:bg-gray-700 p-3">
+            View All Loans Records</router-link>
+          <router-link to="/admin_completed_loan" class="bg-cyan-500 text-white rounded hover:bg-gray-700 p-3">
+            View All completed Loans Records
           </router-link>
-
+       </div>
         <table class="min-w-full  rounded-3xl shadow divide-y divide-gray-200">
           <thead>
           <tr>

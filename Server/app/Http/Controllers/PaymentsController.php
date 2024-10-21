@@ -55,8 +55,9 @@ public function payment_history(Request $request)
         $loan = Loan::find($request->loan_id);
         if (!$loan) {
             return response()->json(['message' => 'Loan not found'], 400);
-        }elseif ($loan->amount_paid + $request->amount_to_pay <= 0){
-             return response()->json(['message' => 'Monthly Amount can not be greater than Amount Remaining'], 400);
+        }
+        if ($request->amount_to_pay > $loan->amount_remaining) {
+             return response()->json(['message' => 'Monthly deduction can not be greater than amount remaining '], 400);
          }
         $loan->load('payments');
         $total_currently_pay = $loan->payments->sum('amount_to_pay');

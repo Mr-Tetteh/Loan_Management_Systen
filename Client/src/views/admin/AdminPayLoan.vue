@@ -25,6 +25,9 @@ const form = reactive({
   loan_id: props.id,
 });
 
+
+
+
 const pay = async (loan) =>{
   form.user_id = loan.user_id
   await storepayments({...form})

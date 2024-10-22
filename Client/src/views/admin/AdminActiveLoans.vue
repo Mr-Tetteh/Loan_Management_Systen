@@ -28,7 +28,7 @@ function closeModal() {
 <template>
 <Header/>
 
-    <h2 class="text-2xl lg:ml-96 sm:mb-10">List of all Active Loans</h2>
+    <h2 class="text-2xl ml-20 mt-8 md:ml-96">List of all Active Loans</h2>
 
     <div class=" rounded-lg">
       <div class=" mt-6 bg-white clear-end rounded-lg ">

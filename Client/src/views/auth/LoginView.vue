@@ -4,6 +4,8 @@ import Header from "@/layouts/user/Header.vue";
 import useLogin from "@/composerables/useLogin.js";
 import {useRouter} from "vue-router";
 import Swal from "sweetalert2";
+import Password from 'primevue/password';
+
 
 const {login_user, password} = useLogin()
 const router = useRouter()
@@ -53,7 +55,7 @@ const login = async () => {
 </script>
 <template>
   <Header/>
-  <div class="bg-fuchsia-100 grid grid-cols-1 lg:grid-cols-2 min-h-screen items-center px-6 lg:px-8 shadow-2xl">
+  <div class=" grid grid-cols-1 lg:grid-cols-2 min-h-screen items-center px-6 lg:px-8 shadow-2xl">
     <div class="px-6 py-12 lg:px-8">
       <div class="sm:mx-auto sm:w-full sm:max-w-sm">
         <img class="mx-auto h-32 w-auto rounded-full" src="../../../tsclogo.png"
@@ -79,9 +81,9 @@ const login = async () => {
 
             </div>
             <div class="mt-2">
-              <input v-model="login_user.password" id="password" type="password" autocomplete="current-password"
-                     required=""
-                     class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+              <Password v-model="login_user.password" :feedback="false" toggleMask  class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+
+
             </div>
 
             <div class="text-sm  text-right">

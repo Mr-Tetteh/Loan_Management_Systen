@@ -26,6 +26,7 @@ import AdminHomeView from "@/views/admin/AdminHomeView.vue";
 import ForgotPassword from "@/views/auth/ForgotPassword.vue";
 import PasswordRest from "@/views/auth/PasswordRest.vue";
 import AdminUserPaymentsHistory from "@/views/admin/AdminUserPaymentsHistory.vue";
+import NotFoundView from "@/views/user/NotFoundView.vue";
 
 
 const router = createRouter({
@@ -123,6 +124,14 @@ const router = createRouter({
             },
             props:true
         },
+
+        {
+            path: '/:catchAll(.*)',
+            name: 'not-found',
+            component: NotFoundView,
+
+        },
+
 
 
 // Admin paths

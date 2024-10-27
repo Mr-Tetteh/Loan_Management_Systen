@@ -149,8 +149,7 @@ class UserController extends Controller
     }
 
 
-    public
-    function login(Request $request)
+    public function login(Request $request)
     {
 //        DB::beginTransaction();
         try {
@@ -172,6 +171,9 @@ class UserController extends Controller
 //                    'token' => $user->createToken($user->email ?? $user->phone)->plainTextToken,
 //                ]
 //            ]);
+
+
+
             return response()->json([
                 'message' => 'Success',
                 'user' => $user,
@@ -202,8 +204,7 @@ class UserController extends Controller
     }
 
 
-    public
-    function logout()
+    public function logout()
     {
         Auth::user()->currentAccessToken()->delete();
         return response()->json([

@@ -4,11 +4,17 @@ import {computed, ref} from "vue";
 
 import {Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems} from '@headlessui/vue'
 import {Bars3Icon, BellIcon, XMarkIcon} from '@heroicons/vue/24/outline'
-import {useRouter} from "vue-router";
+import {useRoute, useRouter} from "vue-router";
 import useSession from "@/composerables/useSession.js";
 import useAdminSignup from "@/composerables/useAdminSignup.js"
 import {ChevronDownIcon} from "@heroicons/vue/20/solid/index.js";
 import router from "@/router/index.js";
+
+const isActiveLink = (routePath) => {
+  const route = useRoute()
+  return route.path === routePath
+}
+
 
 const isSidebarVisible = ref(false)
 const {userType, isLoggedIn, username, id} = useSession()
@@ -21,12 +27,14 @@ const loans = [
   {name: "Rejected Loans", url: '/admin_rejected_loan'},
   {name: "All Loans", url: '/admin_loan'}
 ]
-function   toggleSidebar() {
+
+function toggleSidebar() {
   isSidebarVisible.value = !isSidebarVisible.value;
 }
-const onShow = (id) => {
-  router.push('/user_profile/' + id)
-}
+
+// const onShow = (id) => {
+//   router.push('/user_profile/' + id)
+// }
 
 const sidebarClass = computed(() => {
   return isSidebarVisible.value
@@ -54,49 +62,45 @@ const sidebarClass = computed(() => {
         </div>
         <ul class="space-y-6 font-medium  mt-5">
           <li v-if="userType === 'Admin' && isLoggedIn">
-            <router-link to="/admin_home">
-              <div
-                  class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                <svg
-                    class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                    aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
-                  <path
-                      d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z"/>
-                  <path
-                      d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z"/>
-                </svg>
-                <span class="ms-3">Dashboard</span>
-              </div>
+            <router-link to="/admin_home"
+                         :class="[isActiveLink ('/admin_home')? 'bg-gray-900' : 'hover:bg-gray-100 dark:hover:bg-gray-700 group', 'flex items-center p-2 text-gray-900 rounded-lg dark:text-white ']">
+              <svg
+                  class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                  aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
+                <path
+                    d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z"/>
+                <path
+                    d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z"/>
+              </svg>
+              <span class="ms-3">Dashboard</span>
+
             </router-link>
           </li>
 
           <li>
-            <router-link to="/">
-              <div
-                  class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                     stroke="currentColor" class="size-6">
-                  <path stroke-linecap="round" stroke-linejoin="round"
-                        d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"/>
-                </svg>
-                <span class="ms-3">Home</span>
-              </div>
+            <router-link to="/"
+                         :class="[isActiveLink ('/')? 'bg-gray-900' : 'hover:bg-gray-100 dark:hover:bg-gray-700 group', 'flex items-center p-2 text-gray-900 rounded-lg dark:text-white ']">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                   stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                      d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"/>
+              </svg>
+              <span class="ms-3">Home</span>
+
             </router-link>
           </li>
 
           <li>
-            <router-link to="/contact">
-              <div
-                  class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                     stroke="currentColor" class="size-6">
-                  <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"/>
-                </svg>
+            <router-link to="/contact"
+                         :class="[isActiveLink ('/contact')? 'bg-gray-900' : 'hover:bg-gray-100 dark:hover:bg-gray-700 group', 'flex items-center p-2 text-gray-900 rounded-lg dark:text-white ']">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                   stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"/>
+              </svg>
 
-                <span class="flex-1 ms-3 whitespace-nowrap"> Contact</span>
-                <!--            <span class="inline-flex items-center justify-center px-2 ms-3 text-sm font-medium text-gray-800 bg-gray-100 rounded-full dark:bg-gray-700 dark:text-gray-300">Pro</span>-->
-              </div>
+              <span class="flex-1 ms-3 whitespace-nowrap"> Contact</span>
+              <!--            <span class="inline-flex items-center justify-center px-2 ms-3 text-sm font-medium text-gray-800 bg-gray-100 rounded-full dark:bg-gray-700 dark:text-gray-300">Pro</span>-->
             </router-link>
           </li>
 
@@ -131,7 +135,8 @@ const sidebarClass = computed(() => {
                   <MenuItems
                       class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-emerald-200-100 group">
                     <div class="py-1 flex flex-col gap-4">
-                      <router-link v-for="loan in loans" :key="loan.name" :to="loan.url">
+                      <router-link v-for="loan in loans" :key="loan.name" :to="loan.url"
+                                   :class="[isActiveLink (loan.url)? 'bg-gray-900' : 'hover:bg-gray-100 dark:hover:bg-gray-700 group', 'flex items-center p-2 text-gray-900 rounded-lg dark:text-white ']">
                         <MenuItem v-slot="{ active }">
                           <a href="#"
                              class="flex items-center text-gray-900 rounded-lg dark:text-white group">
@@ -160,65 +165,61 @@ const sidebarClass = computed(() => {
           </li>
 
           <li>
-            <router-link to="/loan" v-if="isLoggedIn">
-              <div
-                  class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                     stroke="currentColor" class="size-6">
-                  <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
-                </svg>
+            <router-link to="/loan" v-if="isLoggedIn"
+                         :class="[isActiveLink ('/loan')? 'bg-gray-900' : 'hover:bg-gray-100 dark:hover:bg-gray-700 group', 'flex items-center p-2 text-gray-900 rounded-lg dark:text-white ']">
 
-                <span class="flex-1 ms-3 whitespace-nowrap">Request Loan</span>
-              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                   stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+              </svg>
+
+              <span class="flex-1 ms-3 whitespace-nowrap">Request Loan</span>
+
             </router-link>
           </li>
 
           <li>
-            <router-link to="/all_loans" v-if="isLoggedIn">
-              <div
-                  class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                     stroke="currentColor" class="size-6">
-                  <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z"/>
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
-                </svg>
+            <router-link to="/all_loans" v-if="isLoggedIn"
+                         :class="[isActiveLink ('/all_loans')? 'bg-gray-900' : 'hover:bg-gray-100 dark:hover:bg-gray-700 group', 'flex items-center p-2 text-gray-900 rounded-lg dark:text-white ']">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                   stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
+              </svg>
 
-                <span class="flex-1 ms-3 whitespace-nowrap">View Your Loan</span>
-              </div>
+              <span class="flex-1 ms-3 whitespace-nowrap">View Your Loan</span>
             </router-link>
           </li>
 
           <li>
-            <router-link :to="{name: 'loan_history'}" v-if="isLoggedIn">
-              <div
-                  class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+            <router-link :to="{name: 'loan_history'}" v-if="isLoggedIn"
+                         :class="[isActiveLink ( '/loan_history')? 'bg-gray-900' : 'hover:bg-gray-100 dark:hover:bg-gray-700 group', 'flex items-center p-2 text-gray-900 rounded-lg dark:text-white ']">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                      stroke="currentColor" class="size-6">
                   <path stroke-linecap="round" stroke-linejoin="round"
                         d="m20.25 7.5-.625 10.632a2.25 2.25 0 0 1-2.247 2.118H6.622a2.25 2.25 0 0 1-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125Z"/>
                 </svg>
                 <span class="flex-1 ms-3 whitespace-nowrap">Your Loan History</span>
-              </div>
             </router-link>
           </li>
           <li>
-            <router-link to="/login" v-if="!isLoggedIn">
-              <div
-                  class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                     stroke="currentColor" class="size-6">
-                  <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15M12 9l3 3m0 0-3 3m3-3H2.25"/>
-                </svg>
-                <span class="flex-1 ms-3 whitespace-nowrap">Login</span>
-              </div>
+            <router-link to="/login" v-if="!isLoggedIn"
+                         :class="[isActiveLink ('/login')? 'bg-gray-900' : 'hover:bg-gray-100 dark:hover:bg-gray-700 group', 'flex items-center p-2 text-gray-900 rounded-lg dark:text-white ']">
+
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                   stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15M12 9l3 3m0 0-3 3m3-3H2.25"/>
+              </svg>
+              <span class="flex-1 ms-3 whitespace-nowrap">Login</span>
+
             </router-link>
           </li>
           <li>
-            <a href="#" @click="onShow(id)"
-               class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+
+            <RouterLink :to="{name: 'user.profile', params: {id: id}}" :class="[isActiveLink (`/user_profile/${id}`)? 'bg-gray-900' : 'hover:bg-gray-100 dark:hover:bg-gray-700 group', 'flex items-center p-2 text-gray-900 rounded-lg dark:text-white ']"
                v-if="isLoggedIn">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                    stroke="currentColor" class="size-6">
@@ -227,66 +228,62 @@ const sidebarClass = computed(() => {
               </svg>
 
               <span class="flex-1 ms-3 whitespace-nowrap">Profile</span>
-            </a>
+            </RouterLink>
           </li>
 
           <li>
-            <router-link to="/register" v-if="!isLoggedIn">
-              <div
-                  class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                     stroke="currentColor" class="size-6">
-                  <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M18 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0ZM3 19.235v-.11a6.375 6.375 0 0 1 12.75 0v.109A12.318 12.318 0 0 1 9.374 21c-2.331 0-4.512-.645-6.374-1.766Z"/>
-                </svg>
+            <router-link to="/register" v-if="!isLoggedIn"
+                         :class="[isActiveLink ('/register')? 'bg-gray-900' : 'hover:bg-gray-100 dark:hover:bg-gray-700 group', 'flex items-center p-2 text-gray-900 rounded-lg dark:text-white ']">
 
-                <span class="flex-1 ms-3 whitespace-nowrap">Register</span>
-              </div>
-            </router-link>
-          </li>
-
-
-          <li>
-            <router-link to="/admin_user" v-if="userType === 'Admin' &&isLoggedIn">
-              <div
-                  class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                <svg
-                    class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                    aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
-                  <path
-                      d="M14 2a3.963 3.963 0 0 0-1.4.267 6.439 6.439 0 0 1-1.331 6.638A4 4 0 1 0 14 2Zm1 9h-1.264A6.957 6.957 0 0 1 15 15v2a2.97 2.97 0 0 1-.184 1H19a1 1 0 0 0 1-1v-1a5.006 5.006 0 0 0-5-5ZM6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Z"/>
-                </svg>
-                <span class="flex-1 ms-3 whitespace-nowrap">Users</span>
-              </div>
-            </router-link>
-          </li>
-
-
-          <li>
-            <router-link to="/admin_add_user" v-if="userType === 'Admin' &&isLoggedIn">
-              <div
-                  class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                     stroke="currentColor" class="size-6">
-                  <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M18 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0ZM3 19.235v-.11a6.375 6.375 0 0 1 12.75 0v.109A12.318 12.318 0 0 1 9.374 21c-2.331 0-4.512-.645-6.374-1.766Z"/>
-                </svg>
-
-                <span class="flex-1 ms-3 whitespace-nowrap">Add User</span>
-              </div>
-            </router-link>
-          </li>
-
-          <li v-if="isLoggedIn" @click="logout">
-            <div
-                class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
-                <path fill-rule="evenodd"
-                      d="M16.5 3.75a1.5 1.5 0 0 1 1.5 1.5v13.5a1.5 1.5 0 0 1-1.5 1.5h-6a1.5 1.5 0 0 1-1.5-1.5V15a.75.75 0 0 0-1.5 0v3.75a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3V5.25a3 3 0 0 0-3-3h-6a3 3 0 0 0-3 3V9A.75.75 0 1 0 9 9V5.25a1.5 1.5 0 0 1 1.5-1.5h6ZM5.78 8.47a.75.75 0 0 0-1.06 0l-3 3a.75.75 0 0 0 0 1.06l3 3a.75.75 0 0 0 1.06-1.06l-1.72-1.72H15a.75.75 0 0 0 0-1.5H4.06l1.72-1.72a.75.75 0 0 0 0-1.06Z"
-                      clip-rule="evenodd"/>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                   stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M18 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0ZM3 19.235v-.11a6.375 6.375 0 0 1 12.75 0v.109A12.318 12.318 0 0 1 9.374 21c-2.331 0-4.512-.645-6.374-1.766Z"/>
               </svg>
-              <span class="flex-1 ms-3 whitespace-nowrap">Logout</span>
-            </div>
+
+              <span class="flex-1 ms-3 whitespace-nowrap">Register</span>
+
+            </router-link>
+          </li>
+
+
+          <li>
+            <router-link to="/admin_user" v-if="userType === 'Admin' &&isLoggedIn"
+                         :class="[isActiveLink ('/admin_user')? 'bg-gray-900' : 'hover:bg-gray-100 dark:hover:bg-gray-700 group', 'flex items-center p-2 text-gray-900 rounded-lg dark:text-white ']">
+              <svg
+                  class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                  aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
+                <path
+                    d="M14 2a3.963 3.963 0 0 0-1.4.267 6.439 6.439 0 0 1-1.331 6.638A4 4 0 1 0 14 2Zm1 9h-1.264A6.957 6.957 0 0 1 15 15v2a2.97 2.97 0 0 1-.184 1H19a1 1 0 0 0 1-1v-1a5.006 5.006 0 0 0-5-5ZM6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Z"/>
+              </svg>
+              <span class="flex-1 ms-3 whitespace-nowrap">Users</span>
+
+            </router-link>
+          </li>
+
+
+          <li>
+            <router-link to="/admin_add_user" v-if="userType === 'Admin' &&isLoggedIn"
+                         :class="[isActiveLink ('/admin_add_user')? 'bg-gray-900' : 'hover:bg-gray-100 dark:hover:bg-gray-700 group', 'flex items-center p-2 text-gray-900 rounded-lg dark:text-white ']">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                   stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M18 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0ZM3 19.235v-.11a6.375 6.375 0 0 1 12.75 0v.109A12.318 12.318 0 0 1 9.374 21c-2.331 0-4.512-.645-6.374-1.766Z"/>
+              </svg>
+
+              <span class="flex-1 ms-3 whitespace-nowrap">Add User</span>
+
+            </router-link>
+          </li>
+
+          <li v-if="isLoggedIn" @click="logout"
+              :class="[isActiveLink ('/register')? 'bg-gray-900' : 'hover:bg-gray-100 dark:hover:bg-gray-700 group', 'flex items-center p-2 text-gray-900 rounded-lg dark:text-white ']">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+              <path fill-rule="evenodd"
+                    d="M16.5 3.75a1.5 1.5 0 0 1 1.5 1.5v13.5a1.5 1.5 0 0 1-1.5 1.5h-6a1.5 1.5 0 0 1-1.5-1.5V15a.75.75 0 0 0-1.5 0v3.75a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3V5.25a3 3 0 0 0-3-3h-6a3 3 0 0 0-3 3V9A.75.75 0 1 0 9 9V5.25a1.5 1.5 0 0 1 1.5-1.5h6ZM5.78 8.47a.75.75 0 0 0-1.06 0l-3 3a.75.75 0 0 0 0 1.06l3 3a.75.75 0 0 0 1.06-1.06l-1.72-1.72H15a.75.75 0 0 0 0-1.5H4.06l1.72-1.72a.75.75 0 0 0 0-1.06Z"
+                    clip-rule="evenodd"/>
+            </svg>
+            <span class="flex-1 ms-3 whitespace-nowrap">Logout</span>
           </li>
         </ul>
 

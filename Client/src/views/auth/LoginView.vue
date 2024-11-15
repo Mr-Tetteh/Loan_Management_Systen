@@ -10,7 +10,6 @@ import Password from 'primevue/password';
 const {login_user, password} = useLogin()
 const router = useRouter()
 const login = async () => {
-
   try{
     const response = await axios.post('http://127.0.0.1:8000/api/login', login_user.value)
     const token = response.data.authorisation.token
@@ -55,7 +54,7 @@ const login = async () => {
 </script>
 <template>
   <Header/>
-  <div class=" grid grid-cols-1 lg:grid-cols-2 min-h-screen items-center px-6 lg:px-8 shadow-2xl">
+  <div class=" motion-preset-expand motion-duration-2000 grid grid-cols-1 lg:grid-cols-2 min-h-screen items-center px-6 lg:px-8 shadow-2xl">
     <div class="px-6 py-12 lg:px-8">
       <div class="sm:mx-auto sm:w-full sm:max-w-sm">
         <img class="mx-auto h-32 w-auto rounded-full" src="../../../tsclogo.png"

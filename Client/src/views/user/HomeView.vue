@@ -5,15 +5,14 @@ import Header from "@/layouts/user/Header.vue";
 
 <template>
   <Header/>
-
   <div class="mx-auto  sm:py-20 lg:py-10">
     <div class="">
-      <img class="mx-auto h-32 w-auto rounded-full" src="../../../tsclogo.png">
+      <img class="motion-preset-focus motion-duration-2000 mx-auto h-32 w-auto rounded-full" src="../../../tsclogo.png">
 
-      <div class="bg-black mt-8 px-5 py-10 md:p-20  rounded-2xl shadow-2xl">
+      <div class="motion-preset-focus motion-duration-2000 bg-black mt-8 px-5 py-10 md:p-20  rounded-2xl shadow-2xl">
       <h1 class="text-4xl font-bold tracking-tight text-white sm:text-6xl text-center">Welcome to Trinity Loan Management
         System</h1>
-      <p class="mt-6 text-lg leading-8 text-white"> Managing loans can be a complex and time-consuming process,
+      <p class=" mt-6 text-lg leading-8 text-white"> Managing loans can be a complex and time-consuming process,
         but with our advanced loan management system, we make it simple and efficient. Whether you’re a business,
         financial institution, or individual, our platform is designed to help you handle all aspects of loan
         management seamlessly..</p>

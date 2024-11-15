@@ -77,7 +77,7 @@ const sidebarClass = computed(() => {
             </router-link>
           </li>
 
-          <li>
+          <li  class = "motion-preset-blur-right motion-duration-2000">
             <router-link to="/"
                          :class="[isActiveLink ('/')? 'bg-gray-900' : 'hover:bg-gray-100 dark:hover:bg-gray-700 group', 'flex items-center p-2 text-gray-900 rounded-lg dark:text-white ']">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -90,7 +90,7 @@ const sidebarClass = computed(() => {
             </router-link>
           </li>
 
-          <li>
+          <li  class = "motion-preset-blur-right motion-duration-2000">
             <router-link to="/contact"
                          :class="[isActiveLink ('/contact')? 'bg-gray-900' : 'hover:bg-gray-100 dark:hover:bg-gray-700 group', 'flex items-center p-2 text-gray-900 rounded-lg dark:text-white ']">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -164,7 +164,7 @@ const sidebarClass = computed(() => {
 
           </li>
 
-          <li>
+          <li  class = "motion-preset-blur-right motion-duration-2000">
             <router-link to="/loan" v-if="isLoggedIn"
                          :class="[isActiveLink ('/loan')? 'bg-gray-900' : 'hover:bg-gray-100 dark:hover:bg-gray-700 group', 'flex items-center p-2 text-gray-900 rounded-lg dark:text-white ']">
 
@@ -179,7 +179,7 @@ const sidebarClass = computed(() => {
             </router-link>
           </li>
 
-          <li>
+          <li  class = "motion-preset-blur-right motion-duration-2000">
             <router-link to="/all_loans" v-if="isLoggedIn"
                          :class="[isActiveLink ('/all_loans')? 'bg-gray-900' : 'hover:bg-gray-100 dark:hover:bg-gray-700 group', 'flex items-center p-2 text-gray-900 rounded-lg dark:text-white ']">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -193,7 +193,7 @@ const sidebarClass = computed(() => {
             </router-link>
           </li>
 
-          <li>
+          <li  class = "motion-preset-blur-right motion-duration-2000">
             <router-link :to="{name: 'loan_history'}" v-if="isLoggedIn"
                          :class="[isActiveLink ( '/loan_history')? 'bg-gray-900' : 'hover:bg-gray-100 dark:hover:bg-gray-700 group', 'flex items-center p-2 text-gray-900 rounded-lg dark:text-white ']">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -204,7 +204,7 @@ const sidebarClass = computed(() => {
                 <span class="flex-1 ms-3 whitespace-nowrap">Your Loan History</span>
             </router-link>
           </li>
-          <li>
+          <li  class = "motion-preset-blur-right motion-duration-2000">
             <router-link to="/login" v-if="!isLoggedIn"
                          :class="[isActiveLink ('/login')? 'bg-gray-900' : 'hover:bg-gray-100 dark:hover:bg-gray-700 group', 'flex items-center p-2 text-gray-900 rounded-lg dark:text-white ']">
 
@@ -217,7 +217,7 @@ const sidebarClass = computed(() => {
 
             </router-link>
           </li>
-          <li>
+          <li  class = "motion-preset-blur-right motion-duration-2000">
 
             <RouterLink :to="{name: 'user.profile', params: {id: id}}" :class="[isActiveLink (`/user_profile/${id}`)? 'bg-gray-900' : 'hover:bg-gray-100 dark:hover:bg-gray-700 group', 'flex items-center p-2 text-gray-900 rounded-lg dark:text-white ']"
                v-if="isLoggedIn">
@@ -231,7 +231,7 @@ const sidebarClass = computed(() => {
             </RouterLink>
           </li>
 
-          <li>
+          <li  class = "motion-preset-blur-right motion-duration-2000">
             <router-link to="/register" v-if="!isLoggedIn"
                          :class="[isActiveLink ('/register')? 'bg-gray-900' : 'hover:bg-gray-100 dark:hover:bg-gray-700 group', 'flex items-center p-2 text-gray-900 rounded-lg dark:text-white ']">
 
@@ -247,7 +247,7 @@ const sidebarClass = computed(() => {
           </li>
 
 
-          <li>
+          <li  class = "motion-preset-blur-right motion-duration-2000">
             <router-link to="/admin_user" v-if="userType === 'Admin' &&isLoggedIn"
                          :class="[isActiveLink ('/admin_user')? 'bg-gray-900' : 'hover:bg-gray-100 dark:hover:bg-gray-700 group', 'flex items-center p-2 text-gray-900 rounded-lg dark:text-white ']">
               <svg
@@ -262,7 +262,7 @@ const sidebarClass = computed(() => {
           </li>
 
 
-          <li>
+          <li  class = "motion-preset-blur-right motion-duration-2000">
             <router-link to="/admin_add_user" v-if="userType === 'Admin' &&isLoggedIn"
                          :class="[isActiveLink ('/admin_add_user')? 'bg-gray-900' : 'hover:bg-gray-100 dark:hover:bg-gray-700 group', 'flex items-center p-2 text-gray-900 rounded-lg dark:text-white ']">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"

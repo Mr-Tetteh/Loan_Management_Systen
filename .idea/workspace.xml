@@ -6,7 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="9aea767f-8c38-4fc5-96e9-77c6004700e4" name="Changes" comment="update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/composerables/useAdminSignup.js" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/composerables/useAdminSignup.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/views/admin/AdminHomeView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/views/admin/AdminHomeView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/views/admin/AdminLoanDetails.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/views/admin/AdminLoanDetails.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/views/auth/LoginView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/views/auth/LoginView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/views/user/HomeView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/views/user/HomeView.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,8 +23,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
         <option value="Vue Composition API Component" />
       </list>
     </option>
@@ -165,6 +168,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Volumes/CODE/Laravel Projects/Loan_Management_Systen/Server/public&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -184,10 +188,13 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Server/public" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/Client/public" />
-      <recent name="$PROJECT_DIR$/Client/src/composerables" />
       <recent name="$PROJECT_DIR$/Client/src" />
+      <recent name="$PROJECT_DIR$/Client/src/composerables" />
     </key>
   </component>
   <component name="RunManager">
@@ -218,7 +225,9 @@
       <workItem from="1727049003410" duration="6730000" />
       <workItem from="1727264790549" duration="159094000" />
       <workItem from="1727815598188" duration="90810000" />
-      <workItem from="1728175853471" duration="298347000" />
+      <workItem from="1728175853471" duration="474364000" />
+      <workItem from="1730687941118" duration="26477000" />
+      <workItem from="1730897513190" duration="44280000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <option name="closed" value="true" />
@@ -254,15 +263,9 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/Client/src/composerables/useAdminSignup.js</url>
-          <line>54</line>
+          <line>165</line>
           <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/Client/src/composerables/useAdminSignup.js</url>
-          <line>76</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="11" />
+          <option name="timeStamp" value="13" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

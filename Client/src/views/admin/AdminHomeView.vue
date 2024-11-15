@@ -4,6 +4,7 @@ import useAdminSignup from "@/composerables/useAdminSignup.js";
 import {onMounted} from "vue";
 import useLoan from "@/composerables/useLoan.js";
 import {watch} from "vue";
+import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 
 const {user, number, number_of_users} = useAdminSignup();
 const {
@@ -66,7 +67,7 @@ watch([number, number_of_pending, number_of_approve, number_of_rejected], async 
 <template>
   <Header/>
   <div>
-    <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 overflow-y-auto bg-white">
+    <div class="motion-preset-pop motion-duration-1500 p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 overflow-y-auto bg-white">
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-4">
         <router-link to="/admin_pending_loan">
         <div class="bg-amber-300 flex flex-col justify-center items-center min-h-[100px] p-4  hover:animate-bounce-slow">
@@ -139,6 +140,7 @@ watch([number, number_of_pending, number_of_approve, number_of_rejected], async 
           </p>
         </div>
         </router-link>
+
 
       </div>
 

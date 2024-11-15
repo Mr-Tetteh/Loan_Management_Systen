@@ -29,7 +29,7 @@ const register = async () => {
 
 <template>
 
-    <div class="grid grid-cols-1 lg:grid-cols-2 min-h-screen items-center px-6 lg:px-8  md:-ml-64 lg:gap-10">
+    <div class="motion-preset-slide-right motion-duration-2000 grid grid-cols-1 lg:grid-cols-2 min-h-screen items-center px-6 lg:px-8  md:-ml-64 lg:gap-10">
       <div>
         <img class="rounded-2xl" src="../../../Registering.jpg" alt="">
       </div>
@@ -42,7 +42,7 @@ const register = async () => {
           </h2>
         </div>
 
-        <form class="space-y-6  w-full" @submit.prevent="register">
+        <form class=" space-y-6  w-full" @submit.prevent="register">
           <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 ">
             <div>
               <label for="first_name" class="block text-sm font-medium leading-6 text-gray-900">First Name</label>

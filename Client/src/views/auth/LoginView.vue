@@ -11,7 +11,7 @@ const {login_user, password} = useLogin()
 const router = useRouter()
 const login = async () => {
   try{
-    const response = await axios.post('http://127.0.0.1:8000/api/login', login_user.value)
+    const response = await axios.post('https://loan.local.stay/api/login', login_user.value)
     const token = response.data.authorisation.token
     localStorage.setItem("AUTH_TOKEN", token)
     localStorage.setItem("USER_ROLE", response.data.user.user_type)

@@ -177,7 +177,7 @@ export default function useSignup() {
         const config = {
             headers: {Authorization: `Bearer ${token}`}
         }
-        let res = await axios.get(`http://127.0.0.1:8000/api/users`, config)
+        let res = await axios.get(`/api/users`, config)
         user.value  = res.data.data
 
     }
@@ -211,7 +211,7 @@ export default function useSignup() {
         const config = {
             headers: {Authorization: `Bearer ${token}`}
         }
-        await axios.get(`http://127.0.0.1:8000/api/restore/${id}`, config)
+        await axios.get(`/api/restore/${id}`, config)
         await router.push('admin_user')
 
     }
@@ -223,7 +223,7 @@ export default function useSignup() {
             headers : {Authorization: `Bearer ${token}`}
         }
 
-        let res = await axios.post('http://127.0.0.1:8000/api/logout', {},config)
+        let res = await axios.post('https://loan.local.stay/api/logout', {},config)
         localStorage.removeItem("AUTH_TOKEN")
         localStorage.removeItem("USER_ROLE")
         localStorage.removeItem("USER_NAME")
@@ -265,7 +265,7 @@ export default function useSignup() {
         const config = {
             headers: {Authorization: `Bearer ${token}`}
         }
-        await axios.delete(`http://127.0.0.1:8000/api/users/${id}`, config)
+        await axios.delete(`https://loan.local.stay/api/users/${id}`, config)
         users.value.splice(users.value.indexOf(id), 1)
 
     }

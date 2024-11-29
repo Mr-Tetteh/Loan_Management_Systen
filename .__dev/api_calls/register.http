@@ -1,11 +1,14 @@
+POST https://loan.local.stay/api/register
+Content-Type: application/json
+
 {
   "first_name": "Linda",
   "last_name": "Knapp",
   "other_names": "Yoko Noble",
   "email": "ruxugur@mailinator.com",
-  "password": "Pa$$w0rd!",
+  "password": "password",
   "phone": "+1 (895) 226-1688",
-  "country": "Nisi necessitatibus",
+  "country": "Nisi necessitatibus ",
   "date_of_birth": "2000-03-25",
   "salary": "Ea voluptas at eiusm",
   "national_id": "Anim recusandae Opt",

@@ -25,14 +25,14 @@ export default function useLogin() {
         const config = {
             headers: {Authorization: `Bearer ${token}`}
         }
-        let res = await axios.get(`http://127.0.0.1:8000/api/user`, config)
+        let res = await axios.get(`https://loan.local.stay/api/user`, config)
         user.value  = res.data.data
 
     }
 
     const forgotPassword = async (forgot) =>{
         try {
-            const res = await axios.post('http://127.0.0.1:8000/api/forgot', forgot)
+            const res = await axios.post('https://loan.local.stay/api/forgot', forgot)
             Swal.fire({
                 icon: "success",
                 title: "Success!",
@@ -49,7 +49,7 @@ export default function useLogin() {
 
     const reset_password = async (reset) =>{
         try {
-            const res = await axios.post(`http://127.0.0.1:8000/api/reset`, reset)
+            const res = await axios.post(`https://loan.local.stay/api/reset`, reset)
             await Swal.fire({
                 position: "top-end",
                 icon: "success",

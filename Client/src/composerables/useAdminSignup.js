@@ -27,7 +27,7 @@ export default function useSignup() {
         const config = {
             headers : {Authorization: `Bearer ${token}`}
         }
-        let res = await axios.get('http://127.0.0.1:8000/api/Admin_all_users', config)
+        let res = await axios.get('https://loan.local.stay/api/Admin_all_users', config)
         users.value = res.data.data
     }
 
@@ -37,7 +37,7 @@ export default function useSignup() {
             headers: { Authorization: `Bearer ${token}` }
         };
         try {
-            let res = await axios.get('http://127.0.0.1:8000/api/total', config);
+            let res = await axios.get('https://loan.local.stay/api/total', config);
             number.value = res.data.total;
         } catch (error) {
             console.error("Error fetching total number of users:", error);
@@ -48,7 +48,7 @@ export default function useSignup() {
         const config = {
             headers : {Authorization: `Bearer ${token}`}
         }
-        let res = await axios.get('http://127.0.0.1:8000/api/deleted', config)
+        let res = await axios.get('https://loan.local.stay/api/deleted', config)
         users.value = res.data.data
     }
 
@@ -80,7 +80,7 @@ export default function useSignup() {
             headers: {Authorization: `Bearer ${token}`}
         }
         try{
-            let res = await  axios.patch(`http://127.0.0.1:8000/api/users/${id}`, user.value, config)
+            let res = await  axios.patch(`https://loan.local.stay/api/users/${id}`, user.value, config)
 
             await router.push('../../admin_user')
         }catch (err){
@@ -122,7 +122,7 @@ export default function useSignup() {
             headers: {Authorization: `Bearer ${token}`}
         }
         try{
-            let res = await  axios.patch(`http://127.0.0.1:8000/api/users/${id}`, user.value, config)
+            let res = await  axios.patch(`https://loan.local.stay/api/users/${id}`, user.value, config)
 
             await router.push('/')
         }catch (err){
@@ -142,7 +142,7 @@ export default function useSignup() {
         };
 
         try {
-            let res = await axios.patch(`http://127.0.0.1:8000/api/users_password/${id}`, {
+            let res = await axios.patch(`https://loan.local.stay/api/users_password/${id}`, {
                 old_password: old_password.value,
                 new_password: new_password.value
             }, config);
@@ -168,7 +168,7 @@ export default function useSignup() {
         const config = {
             headers : {Authorization: `Bearer ${token}`}
         }
-        let res = await axios.get(`http://127.0.0.1:8000/api/users/${id}`, config)
+        let res = await axios.get(`https://loan.local.stay/api/users/${id}`, config)
         user.value = res.data.data
     }
 
@@ -177,7 +177,7 @@ export default function useSignup() {
         const config = {
             headers: {Authorization: `Bearer ${token}`}
         }
-        let res = await axios.get(`/api/users`, config)
+        let res = await axios.get(`https://loan.local.stay/api/users`, config)
         user.value  = res.data.data
 
     }
@@ -211,7 +211,7 @@ export default function useSignup() {
         const config = {
             headers: {Authorization: `Bearer ${token}`}
         }
-        await axios.get(`/api/restore/${id}`, config)
+        await axios.get(`https://loan.local.stay/api/restore/${id}`, config)
         await router.push('admin_user')
 
     }

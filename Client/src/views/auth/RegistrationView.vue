@@ -11,16 +11,18 @@ const router = useRouter()
 
 
 const register = async () => {
+
+  try {
     if (confirm_password.value !== user.value.password) {
       alert("Passwords do not match")
       return
     }
-let payload = user.value
-  console.log('Payload', JSON.stringify(payload))
-    let response = await axios.post('https://loan.local.stay/api/register', payload)
-    console.log(response)
-    await router.push('/login')
 
+    let response = await axios.post('https://loan.local.stay/api/register', user.value)
+    await router.push('/login')
+  } catch (err) {
+    alert(err.response.data.message)
+  }
 
 }
 </script>

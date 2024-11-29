@@ -20,7 +20,7 @@ const useLoan = () => {
         const config = {
             headers: {Authorization: `Bearer ${token}`}
         }
-        let res = await axios.get('http://127.0.0.1:8000/api/admin_all_loans', config)
+        let res = await axios.get('https://loan.local.stay/api/admin_all_loans', config)
         loans.value = res.data.data
     }
     const get_active_loans = async () => {
@@ -28,7 +28,7 @@ const useLoan = () => {
         const config = {
             headers: {Authorization: `Bearer ${token}`}
         }
-        let res = await axios.get('http://127.0.0.1:8000/api/active_loans', config)
+        let res = await axios.get('https://loan.local.stay/api/active_loans', config)
         loans.value = res.data.data
     }
 
@@ -38,7 +38,7 @@ const useLoan = () => {
         const config = {
             headers: {Authorization: `Bearer ${token}`}
         }
-        let res = await axios.get('http://127.0.0.1:8000/api/pending_loans', config)
+        let res = await axios.get('https://loan.local.stay/api/pending_loans', config)
         loans.value = res.data.data
     }
 
@@ -47,7 +47,7 @@ const useLoan = () => {
         const config = {
             headers: {Authorization: `Bearer ${token}`}
         }
-        let res = await axios.get('http://127.0.0.1:8000/api/compeleted_loans', config)
+        let res = await axios.get('https://loan.local.stay/api/compeleted_loans', config)
         loans.value = res.data.data
     }
 
@@ -58,7 +58,7 @@ const useLoan = () => {
         const config = {
             headers: {Authorization: `Bearer ${token}`}
         }
-        let res = await axios.get('http://127.0.0.1:8000/api/rejected_loans', config)
+        let res = await axios.get('https://loan.local.stay/api/rejected_loans', config)
         loans.value = res.data.data
     }
 
@@ -67,7 +67,7 @@ const useLoan = () => {
         const config = {
             headers: {Authorization: `Bearer ${token}`}
         }
-        let res = await axios.get('http://127.0.0.1:8000/api/history_loans', config)
+        let res = await axios.get('https://loan.local.stay/api/history_loans', config)
         loans.value = res.data.data
     }
 
@@ -77,7 +77,7 @@ const useLoan = () => {
             headers: { Authorization: `Bearer ${token}` }
         };
         try {
-            let res = await axios.get('http://127.0.0.1:8000/api/approved', config);
+            let res = await axios.get('https://loan.local.stay/api/approved', config);
             number_of_approve.value = res.data.total;
         } catch (error) {
             console.error("Error fetching total number of users:", error);
@@ -90,7 +90,7 @@ const useLoan = () => {
             headers: { Authorization: `Bearer ${token}` }
         };
         try {
-            let res = await axios.get('http://127.0.0.1:8000/api/rejected', config);
+            let res = await axios.get('https://loan.local.stay/api/rejected', config);
             number_of_rejected.value = res.data.total;
         } catch (error) {
             console.error("Error fetching total number of users:", error);
@@ -103,7 +103,7 @@ const useLoan = () => {
             headers: { Authorization: `Bearer ${token}` }
         };
         try {
-            let res = await axios.get('http://127.0.0.1:8000/api/pending', config);
+            let res = await axios.get('https://loan.local.stay/api/pending', config);
             number_of_pending.value = res.data.total;
         } catch (error) {
             console.error("Error fetching total number of users:", error);
@@ -116,7 +116,7 @@ const useLoan = () => {
             headers: { Authorization: `Bearer ${token}` }
         };
         try {
-            let res = await axios.get('http://127.0.0.1:8000/api/compeleted_loans_count', config);
+            let res = await axios.get('https://loan.local.stay/api/compeleted_loans_count', config);
             number_of_compeleted.value = res.data.total;
         } catch (error) {
             console.error("Error fetching total number of users:", error);
@@ -128,7 +128,7 @@ const useLoan = () => {
         const config = {
             headers: {Authorization: `Bearer ${token}`}
         }
-        let res = await axios.get('http://127.0.0.1:8000/api/loan', config)
+        let res = await axios.get('https://loan.local.stay/api/loan', config)
         userloan.value = res.data.data
     }
 
@@ -137,7 +137,7 @@ const useLoan = () => {
         const config = {
             headers: {Authorization: `Bearer ${token}`}
         }
-        let res = await axios.get(`http://127.0.0.1:8000/api/loans/${id}`, config)
+        let res = await axios.get(`https://loan.local.stay/api/loans/${id}`, config)
         loan.value = res.data.data
     }
 
@@ -148,7 +148,7 @@ const useLoan = () => {
             headers: {Authorization: `Bearer ${token}`}
         }
         try {
-            let response = await axios.post('http://127.0.0.1:8000/api/loans', loan, config)
+            let response = await axios.post('https://loan.local.stay/api/loans', loan, config)
             await Swal.fire({
                 position: "top-end",
                 icon: "success",
@@ -177,7 +177,7 @@ const useLoan = () => {
             headers: {Authorization: `Bearer ${token}`}
         }
         try {
-            let res = await axios.patch(`http://127.0.0.1:8000/api/loans/${id}`, loan.value, config)
+            let res = await axios.patch(`https://loan.local.stay/api/loans/${id}`, loan.value, config)
             Swal.fire({
                 position: "top-end",
                 icon: "success",
@@ -203,7 +203,7 @@ const useLoan = () => {
             headers: {Authorization: `Bearer ${token}`}
         }
         try {
-            let res = await axios.patch(`http://127.0.0.1:8000/api/loans/${id}`, loan.value, config)
+            let res = await axios.patch(`https://loan.local.stay/api/loans/${id}`, loan.value, config)
             Swal.fire({
                 position: "top-end",
                 icon: "success",
@@ -251,7 +251,7 @@ const useLoan = () => {
         const config = {
             headers: {Authorization: `Bearer ${token}`}
         }
-        await axios.delete(`http://127.0.0.1:8000/api/loans/${id}`, config)
+        await axios.delete(`https://loan.local.stay/api/loans/${id}`, config)
         loans.value.splice(loans.value.indexOf(id), 1)
 
         // console.log(loan)

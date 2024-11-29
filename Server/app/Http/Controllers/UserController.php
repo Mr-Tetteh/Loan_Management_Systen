@@ -97,7 +97,6 @@ class UserController extends Controller
 
     public function register(Request $request)
     {
-        return $request->all();
         if (User::all()->where('email', $request->email)->first()
         ) {
             return response()->json([

@@ -13,7 +13,7 @@ export default function usePayments() {
             headers: {Authorization: `Bearer ${token}`}
         }
         try {
-            let res = await axios.post('http://127.0.0.1:8000/api/pay_loans', payment, config)
+            let res = await axios.post('https://loan.local.stay/api/pay_loans', payment, config)
             await Swal.fire({
                 position: "top-end",
                 icon: "success",
@@ -35,7 +35,7 @@ export default function usePayments() {
         const config = {
             headers: { Authorization: `Bearer ${token}` }
         };
-        let res = await axios.get(`http://127.0.0.1:8000/api/loan_payments/${id}`, config);
+        let res = await axios.get(`https://loan.local.stay/api/loan_payments/${id}`, config);
         payments.value = res.data.data;
     };
 
@@ -44,7 +44,7 @@ export default function usePayments() {
         const config = {
             headers: { Authorization: `Bearer ${token}` }
         };
-        let res = await axios.get(`http://127.0.0.1:8000/api/payment_history/${id}`, config);
+        let res = await axios.get(`https://loan.local.stay/api/payment_history/${id}`, config);
         payments.value = res.data.data;
     }
 
@@ -54,7 +54,7 @@ export default function usePayments() {
         const config = {
             headers: {Authorization: `Bearer ${token}`}
         }
-        let res = await axios.get('http://127.0.0.1:8000/api/history_loans', config)
+        let res = await axios.get('https://loan.local.stay/api/history_loans', config)
         payments.value = res.data.data
     }
 
@@ -63,7 +63,7 @@ export default function usePayments() {
         const config = {
             headers: {Authorization: `Bearer ${token}`}
         }
-        let res = await axios.get(`http://127.0.0.1:8000/api/payments/${id}`, config)
+        let res = await axios.get(`https://loan.local.stay/api/payments/${id}`, config)
         payment.value = res.data.data
 
     }

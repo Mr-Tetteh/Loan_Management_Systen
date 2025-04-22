@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::table('payments', function (Blueprint $table) {
             $table->date('date')->after('amount_to_pay');
+//            $table->string('salary_for_the_month')->after('loan_id');
+            $table->string('amount_remaining');
         });
     }
 

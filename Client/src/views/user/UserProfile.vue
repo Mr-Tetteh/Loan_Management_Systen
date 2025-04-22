@@ -4,6 +4,7 @@ import useAdminSignup from "@/composerables/useAdminSignup.js";
 import {onMounted, ref} from "vue";
 import Header from "@/layouts/user/Header.vue"
 import Swal from "sweetalert2";
+import Password from "primevue/password";
 
 const {user, update_user,confirm_password,new_password,old_password, update_user_password,updated_user_profile, get_user} = useAdminSignup()
 
@@ -52,7 +53,7 @@ onMounted(() => get_user(props.id))
                 <div class="mt-2">
                   <input v-model="user.first_name" type="text" name="first-name" id="first-name"
                          autocomplete="given-name"
-                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                         class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-200"
                   />
                 </div>
               </div>
@@ -62,7 +63,7 @@ onMounted(() => get_user(props.id))
                 <div class="mt-2">
                   <input v-model="user.last_name" type="text" name="last-name" id="last-name"
                          autocomplete="family-name"
-                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                         class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-200"
                   />
                 </div>
               </div>
@@ -71,7 +72,7 @@ onMounted(() => get_user(props.id))
                 <label for="other-name" class="block text-sm font-medium leading-6 text-gray-900">Other name</label>
                 <div class="mt-2">
                   <input v-model="user.other_names" type="text" id="other-name" autocomplete="family-name"
-                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                         class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-200"
                   />
                 </div>
               </div>
@@ -80,7 +81,7 @@ onMounted(() => get_user(props.id))
                 <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email Address</label>
                 <div class="mt-2">
                   <input v-model="user.email" type="email" name="email" id="last-name" autocomplete="family-name"
-                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                         class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-200"
                   />
                 </div>
               </div>
@@ -90,7 +91,7 @@ onMounted(() => get_user(props.id))
                 <label for="region" class="block text-sm font-medium leading-6 text-gray-900">Telephone Number</label>
                 <div class="mt-2">
                   <input v-model="user.phone" type="tel" name="region" id="region" autocomplete="address-level1"
-                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                         class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-200"
                   />
                 </div>
               </div>
@@ -101,7 +102,7 @@ onMounted(() => get_user(props.id))
                 <div class="mt-2">
                   <input v-model="user.country" type="text" name="postal-code" id="postal-code"
                          autocomplete="postal-code"
-                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                         class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-200"
                   />
                 </div>
               </div>
@@ -112,7 +113,7 @@ onMounted(() => get_user(props.id))
                 </label>
                 <div class="mt-2">
                   <input v-model="user.salary" type="number" id="postal-code" autocomplete="postal-code"
-                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                         class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-200"
                   />
                 </div>
               </div>
@@ -123,7 +124,7 @@ onMounted(() => get_user(props.id))
                 </label>
                 <div class="mt-2">
                   <input v-model="user.nationality" type="text" id="postal-code" autocomplete="postal-code"
-                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                         class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-200"
                   />
                 </div>
               </div>
@@ -133,7 +134,7 @@ onMounted(() => get_user(props.id))
                 </label>
                 <div class="mt-2">
                   <input v-model="user.national_id" type="text" id="national_id" autocomplete="postal-code"
-                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                         class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-200"
                   />
                 </div>
               </div>
@@ -143,7 +144,7 @@ onMounted(() => get_user(props.id))
                 </label>
                 <div class="mt-2">
                   <input v-model="user.date_of_birth" type="date" id="national_id" autocomplete="postal-code"
-                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                         class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-200"
                   />
                 </div>
               </div>
@@ -173,7 +174,7 @@ onMounted(() => get_user(props.id))
           <label for="region" class="block text-sm font-medium leading-6 text-gray-900">Enter Old Password</label>
           <div class="mt-2">
             <input v-model=" old_password" type="password" name="region" id="region" autocomplete="address-level1"
-                   class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                   class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-200"
             />
           </div>
         </div>
@@ -181,7 +182,7 @@ onMounted(() => get_user(props.id))
           <label for="region" class="block text-sm font-medium leading-6 text-gray-900">Enter New Password</label>
           <div class="mt-2">
             <input v-model="new_password" type="password" name="region" id="region" autocomplete="address-level1"
-                   class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                   class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-200"
             />
           </div>
         </div>
@@ -190,7 +191,7 @@ onMounted(() => get_user(props.id))
           <div class="mt-2">
             <input v-model="confirm_password" type="password" name="region" id="region"
                    autocomplete="address-level1"
-                   class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                   class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-200"
             />
           </div>
         </div>

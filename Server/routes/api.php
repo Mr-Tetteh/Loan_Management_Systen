@@ -50,7 +50,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('rejected_loans', [LoanController::class, 'rejectedLoan'])->middleware(Cors::class);
     Route::get('history_loans', [PaymentsController::class, 'History'])->middleware(Cors::class);
 
-
     Route::delete('loans/{loan}', [LoanController::class, 'destroy']);
     Route::patch('loans/{loan}', [LoanController::class, 'update'])->middleware(Cors::class);
     Route::get('approved', [LoanController::class, 'approvedLoans']);

@@ -70,7 +70,7 @@ const login = async () => {
             <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email address</label>
             <div class="mt-2">
               <input v-model="login_user.email" id="email" type="email" autocomplete="email" required=""
-                     class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+                     class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-200"/>
             </div>
           </div>
 
@@ -80,8 +80,9 @@ const login = async () => {
 
             </div>
             <div class="mt-2">
-              <Password v-model="login_user.password" :feedback="false" toggleMask  class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
-
+              <Password v-model="login_user.password" :feedback="false" toggleMask
+                        class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-200"
+/>
 
             </div>
 

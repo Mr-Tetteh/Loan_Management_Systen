@@ -19,7 +19,6 @@ function closeModal() {
   isOpen.value = null
 }
 
-
 </script>
 
 <template>

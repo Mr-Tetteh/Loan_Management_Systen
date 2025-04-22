@@ -115,7 +115,6 @@ export default function useSignup() {
         });
 
     }
-
     const update_user_profile_show = async (id) => {
         const token = localStorage.getItem('AUTH_TOKEN')
         const config = {
@@ -133,6 +132,7 @@ export default function useSignup() {
             });
         }
     }
+
 
 
     const update_user_password = async (id) => {

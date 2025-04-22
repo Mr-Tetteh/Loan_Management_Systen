@@ -103,6 +103,24 @@ class UserController extends Controller
                 "message" => "User already exists!",
             ], 422);
         }
+        if (User::all()->where('phone', $request->phone)->first()
+        ) {
+            return response()->json([
+                "message" => "User with this number already exists!",
+            ], 422);
+        }
+        $phone = $request->input('phone');
+        if (!preg_match('/^0\d{9}$/', $phone)) {
+            return response()->json([
+                "message" => "Invalid phone number format. Please use the format 020000000",
+            ], 422);
+        }
+        $salary = $request->input('salary');
+        if (!is_numeric($salary) || $salary <= 0) {
+            return response()->json([
+                "message" => "Salary must be a positive number",
+            ], 422);
+        }
 
         $user = \App\Models\User::create([
             'first_name' => $request->input('first_name'),

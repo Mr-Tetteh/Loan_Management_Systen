@@ -5,29 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9aea767f-8c38-4fc5-96e9-77c6004700e4" name="Changes" comment="update">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/1518b9f1-5f16-4ec2-b317-2fc8a492aa3a.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2024-11-18T140135.404.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2024-11-18T140146.404.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2024-11-18T142436.404.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2024-11-18T142547.404.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2024-11-18T142949.500.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2024-11-18T143142.500.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2024-11-18T143223.500.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2024-11-18T143252.500.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2024-11-18T143617.500.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2024-11-18T143644.500.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2024-11-18T143923.500.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2024-11-18T211221.200.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2024-11-18T211329.200.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2024-11-18T211345.200.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/http-client.cookies" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1518b9f1-5f16-4ec2-b317-2fc8a492aa3a.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/1518b9f1-5f16-4ec2-b317-2fc8a492aa3a.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/src/composerables/useAdminSignup.js" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/composerables/useAdminSignup.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/layouts/user/Header.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/layouts/user/Header.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/views/admin/AdminLoanPayment.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/views/admin/AdminLoanPayment.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/views/admin/AdminPayLoan.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/views/admin/AdminPayLoan.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/views/auth/ForgotPassword.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/views/auth/ForgotPassword.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/views/auth/LoginView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/views/auth/LoginView.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/src/views/auth/RegistrationView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/views/auth/RegistrationView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/views/user/UserProfile.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/views/user/UserProfile.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,6 +40,18 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Mr-Tetteh&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;git@github.com:Mr-Tetteh/Loan_Management_Systen.git&quot;,
+    &quot;accountId&quot;: &quot;f2101486-06b5-4190-b88c-150e4fba820b&quot;
+  }
+}</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Client/src/layouts/user/Footer.vue" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -183,9 +184,11 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;PHPUnit.Main.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;com.codeium.enabled&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Mr.Tetteh&quot;,
     &quot;last_opened_file_path&quot;: &quot;/Volumes/CODE/Laravel Projects/Loan_Management_Systen/Server/public&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -246,6 +249,37 @@
       <workItem from="1728175853471" duration="474364000" />
       <workItem from="1730687941118" duration="26477000" />
       <workItem from="1730897513190" duration="44280000" />
+      <workItem from="1733322254470" duration="58000" />
+      <workItem from="1733323504906" duration="536000" />
+      <workItem from="1733324236479" duration="13000" />
+      <workItem from="1733329130091" duration="155000" />
+      <workItem from="1733507420765" duration="663000" />
+      <workItem from="1733508297966" duration="1661000" />
+      <workItem from="1733698861684" duration="60000" />
+      <workItem from="1734045738530" duration="2157000" />
+      <workItem from="1734298560340" duration="14018000" />
+      <workItem from="1734769857879" duration="634000" />
+      <workItem from="1734994156978" duration="11204000" />
+      <workItem from="1735254283129" duration="3427000" />
+      <workItem from="1735632026317" duration="4000" />
+      <workItem from="1735674196430" duration="65000" />
+      <workItem from="1735675621291" duration="43000" />
+      <workItem from="1735763744522" duration="14000" />
+      <workItem from="1735859955280" duration="1172000" />
+      <workItem from="1735981086283" duration="903000" />
+      <workItem from="1736517539655" duration="9271000" />
+      <workItem from="1736631522337" duration="83000" />
+      <workItem from="1736637497192" duration="1239000" />
+      <workItem from="1736694576540" duration="3171000" />
+      <workItem from="1737144568590" duration="1656000" />
+      <workItem from="1737473891630" duration="611000" />
+      <workItem from="1737548872095" duration="10357000" />
+      <workItem from="1739452893769" duration="30000" />
+      <workItem from="1744127059636" duration="513000" />
+      <workItem from="1744198949509" duration="6938000" />
+      <workItem from="1744570943380" duration="238000" />
+      <workItem from="1744571420125" duration="2508000" />
+      <workItem from="1744842018460" duration="5000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <option name="closed" value="true" />
@@ -275,5 +309,31 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="update" />
     <option name="LAST_COMMIT_MESSAGE" value="update" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/Client/src/views/user/LoanInvoice.vue</url>
+          <line>28</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/Client/src/composerables/useAdminSignup.js</url>
+          <line>76</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/Client/src/composerables/useAdminSignup.js</url>
+          <line>95</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/Server/routes/api.php</url>
+          <line>31</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
